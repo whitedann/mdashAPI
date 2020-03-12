@@ -1,0 +1,8 @@
+Media Exchange (96-Well),165.8235294117647,Retrieving Plate From Cytomat,17
+Media Exchange (96-Well),189.8235294117647,Feeding Plate,17
+Media Exchange (96-Well),178.6,Returning Last Plate To Cytomat,5
+MediaExchange96W_CnC,187.09271523178808,Retrieving Plate From Cytomat,151
+MediaExchange96W_CnC,233.05960264900662,Feeding Plate,151
+MediaExchange96W_CnC,202.65625,Returning Last Plate To Cytomat,32
+Passage_1T5_3Col_CnC,6831,Passage_1T5_3Col_CnC Start,1
+Passage_IntraReplicate_CnC,5965,Passage_IntraReplicate_CnC Start,1

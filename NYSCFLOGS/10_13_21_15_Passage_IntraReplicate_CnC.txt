@@ -1,0 +1,26 @@
+Log File
+System 5  ::  Passage_IntraReplicate_CnC
+2/10/2020 1:21:15 PM Run added to database 
+
+Failed to add run to System 5
+System.Data.SqlClient.SqlException (0x80131904): Incorrect syntax near the keyword 'INSERT'.
+Incorrect syntax near the keyword 'INSERT'.
+Incorrect syntax near the keyword 'COMMIT'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteScalar()
+   at NYSCF_Custom_Logger.NYSCFCustomLogger.addGenericRun(String methodName, String systemName, Int32 runningSimuluation, String worklistPath)
+ClientConnectionId:f9aa4a69-da50-4349-a7cd-06f1d4b9e2f2
+Error Number:156,State:1,Class:15
+Failed to add run to System 5
+
+DECLARE @newID INT BEGIN TRANSACTION INSERT INTO RunInstance (MethodName, SystemName, SystemID, NumberOfPlates, StatusOfRun, IsActive, SimulationOn) VALUES ('Passage_IntraReplicate_CnC', 'System 5', 5, 0, 'Running', 0, 1) SET @newID = SCOPE_IDENTITY(); INSERT INTO RunProcess (InstanceID, ProcessName) VALUES (@newID, 'Start Of Method') INSERT INTO RunProcess (InstanceID, ProcessName) VALUES (@newID, 'Generic Method Start' INSERT INTO RunProcess (InstanceID, ProcessName) VALUES (@newID, 'Generic Method Finish' INSERT INTO RunProcess (InstanceID, ProcessName) VALUES (@newID, 'End Of Method' COMMIT TRANSACTION SELECT @newID
+2/10/2020 1:21:36 PM Aborted 

@@ -1,0 +1,82 @@
+Log File
+System 5  ::  Media Exchange (96-Well)
+1/10/2020 3:21:36 PM Run added to database 
+System.Data.SqlClient.SqlException (0x80131904): Incorrect syntax near the keyword 'WHERE'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.RunExecuteNonQueryTds(String methodName, Boolean async, Int32 timeout, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, String methodName, Boolean sendToPipe, Int32 timeout, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at NYSCF_Custom_Logger.NYSCFCustomLogger.updateRun(String sysStatus, Int32 isActive, String currentStep, Int32 id, Object numOfPlates)
+ClientConnectionId:71a84a8e-ed78-4cfd-a45b-e9b7312f5fbf
+Error Number:156,State:1,Class:15
+Failed to update run for RunID: 287
+1/10/2020 3:21:50 PM Waiting On Arm 1 
+System.Data.SqlClient.SqlException (0x80131904): Incorrect syntax near the keyword 'WHERE'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.RunExecuteNonQueryTds(String methodName, Boolean async, Int32 timeout, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, String methodName, Boolean sendToPipe, Int32 timeout, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at NYSCF_Custom_Logger.NYSCFCustomLogger.updateRun(String sysStatus, Int32 isActive, String currentStep, Int32 id, Object numOfPlates)
+ClientConnectionId:71a84a8e-ed78-4cfd-a45b-e9b7312f5fbf
+Error Number:156,State:1,Class:15
+Failed to update run for RunID: 287
+1/10/2020 3:22:02 PM Feed Cycle Start Plate Number: 1 
+System.Data.SqlClient.SqlException (0x80131904): Incorrect syntax near the keyword 'WHERE'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.RunExecuteNonQueryTds(String methodName, Boolean async, Int32 timeout, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, String methodName, Boolean sendToPipe, Int32 timeout, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at NYSCF_Custom_Logger.NYSCFCustomLogger.updateRun(String sysStatus, Int32 isActive, String currentStep, Int32 id, Object numOfPlates)
+ClientConnectionId:71a84a8e-ed78-4cfd-a45b-e9b7312f5fbf
+Error Number:156,State:1,Class:15
+Failed to update run for RunID: 287
+1/10/2020 3:22:09 PM Waiting On Arm 2 
+System.Data.SqlClient.SqlException (0x80131904): Incorrect syntax near the keyword 'WHERE'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.RunExecuteNonQueryTds(String methodName, Boolean async, Int32 timeout, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, String methodName, Boolean sendToPipe, Int32 timeout, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at NYSCF_Custom_Logger.NYSCFCustomLogger.updateRun(String sysStatus, Int32 isActive, String currentStep, Int32 id, Object numOfPlates)
+ClientConnectionId:71a84a8e-ed78-4cfd-a45b-e9b7312f5fbf
+Error Number:156,State:1,Class:15
+Failed to update run for RunID: 287
+1/10/2020 3:22:10 PM Feed Cycle Start Plate Number: 2 
+System.Data.SqlClient.SqlException (0x80131904): Incorrect syntax near the keyword 'WHERE'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.RunExecuteNonQueryTds(String methodName, Boolean async, Int32 timeout, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, String methodName, Boolean sendToPipe, Int32 timeout, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at NYSCF_Custom_Logger.NYSCFCustomLogger.updateRun(String sysStatus, Int32 isActive, String currentStep, Int32 id, Object numOfPlates)
+ClientConnectionId:71a84a8e-ed78-4cfd-a45b-e9b7312f5fbf
+Error Number:156,State:1,Class:15
+Failed to update run for RunID: 287
+1/10/2020 3:22:15 PM Depositing Final Plate 
+System.Data.SqlClient.SqlException (0x80131904): Incorrect syntax near the keyword 'WHERE'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.RunExecuteNonQueryTds(String methodName, Boolean async, Int32 timeout, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, String methodName, Boolean sendToPipe, Int32 timeout, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at NYSCF_Custom_Logger.NYSCFCustomLogger.updateRun(String sysStatus, Int32 isActive, String currentStep, Int32 id, Object numOfPlates)
+ClientConnectionId:71a84a8e-ed78-4cfd-a45b-e9b7312f5fbf
+Error Number:156,State:1,Class:15
+Failed to update run for RunID: 287
+1/10/2020 3:22:16 PM End of Method 
+1/10/2020 3:22:17 PM Deactivating Run 

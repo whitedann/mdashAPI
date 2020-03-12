@@ -1,0 +1,9 @@
+Log File
+System 5  ::  Media Exchange (96-Well)
+1/8/2020 2:01:49 PM Run added to database 
+1/8/2020 2:02:02 PM Feed Cycle Start Plate Number: 1 
+1/8/2020 2:02:16 PM Feed Cycle End Plate Number: 1 
+1/8/2020 2:02:16 PM Feed Cycle Start Plate Number: 2 
+1/8/2020 2:02:30 PM Feed Cycle End Plate Number: 2 
+1/8/2020 2:02:31 PM End of Method 
+1/8/2020 2:02:51 PM Deactivating Run 

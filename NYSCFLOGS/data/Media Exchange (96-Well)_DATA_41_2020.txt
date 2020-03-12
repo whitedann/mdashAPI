@@ -1,0 +1,3 @@
+Retrieving Plate From Cytomat,2.2848623853211,109
+Feeding Plate,2.30948012232416,109
+Returning Last Plate To Cytomat,2.11458333333333,16

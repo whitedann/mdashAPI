@@ -1,0 +1,3 @@
+Retrieving Plate From Cytomat,1.813,49
+Feeding Plate,4.245,49
+Returning Last Plate To Cytomat,1.65,10

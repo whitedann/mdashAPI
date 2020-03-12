@@ -1,0 +1,5 @@
+Log File
+System 5  ::  Media Exchange (96-Well)
+1/22/2020 3:20:11 PM Run added to database 
+1/22/2020 3:20:44 PM Retreiving Plate From Cytomat:1 
+1/22/2020 3:22:02 PM Aborted 

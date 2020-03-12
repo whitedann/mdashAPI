@@ -1,0 +1,8 @@
+Log File
+System 5  ::  Media Exchange (96-Well)
+1/23/2020 12:24:24 PM Run added to database 
+1/23/2020 12:24:46 PM Retrieving Plate From Cytomat:1 
+1/23/2020 12:24:51 PM Feed Cycle Start Plate Number: 1 
+1/23/2020 12:24:58 PM Retrieving Plate From Cytomat:2 
+1/23/2020 12:25:23 PM Feed Cycle Start Plate Number: 2 
+1/23/2020 12:25:28 PM Aborted 

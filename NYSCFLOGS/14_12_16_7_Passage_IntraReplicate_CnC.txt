@@ -1,0 +1,4 @@
+Log File
+System 5  ::  Passage_IntraReplicate_CnC
+2/14/2020 12:16:07 PM Run added to database 
+2/14/2020 12:16:16 PM Aborted 

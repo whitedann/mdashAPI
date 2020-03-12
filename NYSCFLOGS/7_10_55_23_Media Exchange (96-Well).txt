@@ -1,0 +1,7 @@
+Log File
+System 5  ::  Media Exchange (96-Well)
+1/7/2020 10:55:23 AM Display Deck Layout 0
+1/7/2020 10:55:38 AM Feed Cycle Start Plate Number: 1 123
+1/7/2020 10:55:46 AM Feed Cycle End Plate Number: 1 123
+1/7/2020 10:55:46 AM Feed Cycle Start Plate Number: 2 123
+1/7/2020 10:55:52 AM Feed Cycle End Plate Number: 2 123

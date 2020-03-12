@@ -1,0 +1,4 @@
+Log File
+System 5  ::  Media Exchange (96-Well)
+1/30/2020 3:21:09 PM Run added to database 
+1/30/2020 3:21:27 PM Aborted 

@@ -1,0 +1,3 @@
+Retrieving Plate From Cytomat,3.5,2
+Feeding Plate,7,2
+Returning Last Plate To Cytomat,3,1

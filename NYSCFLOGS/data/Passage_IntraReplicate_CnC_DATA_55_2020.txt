@@ -1,0 +1,2 @@
+Passage_IntraReplicate_CnC Start,104.711111111111,3,8.76936481503987
+Passage_IntraReplicate_CnC Finish,0,3,0

@@ -1,0 +1,4 @@
+Log File
+System 5  ::  Media Exchange (96-Well)
+2/5/2020 11:02:43 AM Run added to database 
+2/5/2020 11:04:10 AM Deactivating Run 

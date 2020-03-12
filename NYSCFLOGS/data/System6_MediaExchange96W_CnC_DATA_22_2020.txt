@@ -1,0 +1,3 @@
+Feed Cycle Start Plate Number: ,125.96,50
+Waiting On Arm ,97.9512195121951,41
+Depositing Final Plate,99.7142857142857,7

@@ -1,0 +1,10 @@
+Log File
+System 5  ::  Media Exchange (96-Well)
+1/15/2020 3:10:45 PM Run added to database 
+1/15/2020 3:10:58 PM Waiting On Arm 1 
+1/15/2020 3:11:19 PM Feed Cycle Start Plate Number: 1 
+1/15/2020 3:11:27 PM Waiting On Arm 2 
+1/15/2020 3:11:30 PM Feed Cycle Start Plate Number: 2 
+1/15/2020 3:11:37 PM Depositing Final Plate 
+1/15/2020 3:11:38 PM End of Method 
+1/15/2020 3:11:39 PM Deactivating Run 

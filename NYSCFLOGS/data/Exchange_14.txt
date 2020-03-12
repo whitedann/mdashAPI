@@ -1,0 +1,7 @@
+NameOfStep,Mean,StdDev,Occurences
+Display deck layout,0.5,0.1,100
+Enter consumable barcode,0.5,0.1,100
+Waiting On Arm,2.00833333333333,12
+Feed Cycle Start Plate Number:,0.109722222222222,12
+Depositing Final Plate,0.0166666666666667,3
+End of Method,1.0,1.0,100

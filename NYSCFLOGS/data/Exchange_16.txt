@@ -1,0 +1,4 @@
+NameOfStep,Mean,StdDev,Occurences
+Waiting On Arm,2.00833333333333,12
+Feed Cycle Start Plate Number:,0.109722222222222,12
+Depositing Final Plate,0.0166666666666667,3

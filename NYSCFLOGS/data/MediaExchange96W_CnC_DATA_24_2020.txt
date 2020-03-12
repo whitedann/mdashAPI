@@ -1,0 +1,3 @@
+Retrieving Plate From Cytomat:,255.833333333333,18
+Feed Cycle Start Plate Number:,155.75,8
+Depositing Final Plate,167.666666666667,3

@@ -1,0 +1,9 @@
+Log File
+System 5  ::  Media Exchange (96-Well)
+1/8/2020 4:27:54 PM Run added to database 
+1/8/2020 4:28:12 PM Feed Cycle Start Plate Number: 1 
+1/8/2020 4:28:12 PM Exchanging Plates With Cytomat1 
+1/8/2020 4:28:39 PM Feed Cycle Start Plate Number: 2 
+1/8/2020 4:28:40 PM Exchanging Plates With Cytomat2 
+1/8/2020 4:28:57 PM Depositing Last Plate Into Cytomat 
+1/8/2020 4:28:57 PM Aborted 
