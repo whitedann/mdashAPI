@@ -121,7 +121,7 @@ io.on("connection", socket => {
 		"WHERE RunInstance.CreatedAt > DATEADD(HOUR, -8, GETDATE()) " +
 		"AND RunInstance.SimulationOn = 0;";
 
-	setInterval( () => {
+	let userConnectionID = setInterval( () => {
 		var request = new sql.Request();
 		request.query(query, function(err, rows){
 			if(err)
@@ -130,7 +130,10 @@ io.on("connection", socket => {
 			socket.emit('showrows', rows);
 		});
 	}, 10000);
-	socket.on("disconnect", () => console.log("client disconnected"));
+	socket.on("disconnect", () => {
+		console.log("client disconnected " + userConnectionID.toString());
+		clearInterval(userConnectionID);
+	});
 });
 
 //API will land here on error
