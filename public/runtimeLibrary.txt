@@ -1,4 +1,4 @@
-*****DATA GENERATED AT Mon Apr 27 2020 16:22:33 GMT-0400 (Eastern Daylight Time)*****
+*****DATA GENERATED AT Mon Apr 27 2020 16:37:18 GMT-0400 (Eastern Daylight Time)*****
 Media Exchange (96-Well),169.0042194092827,Retrieving Plate From Cytomat,237
 Media Exchange (96-Well),218.3063829787234,Feeding Plate,235
 Media Exchange (96-Well),143.86046511627907,Returning Last Plate To Cytomat,43

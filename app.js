@@ -50,12 +50,11 @@ app.get("/generateruntimedata", (req, res) => {
 		       "FROM RunInstance " +
 		       "INNER JOIN RunProcess ON RunInstance.EntryID = RunProcess.InstanceID " +
 		       "WHERE RunInstance.isActive = 0" +
-		       "AND RunInstance.CreatedAt > DATEADD(DAY, -8, GETDATE()) " +
+		       "AND RunInstance.CreatedAt > DATEADD(DAY, -20, GETDATE()) " +
 		       "AND RunInstance.StatusOfRun = \'Finished\' " +
 		       "AND RunInstance.SimulationOn = 0;";
 
 	let cyclesLibrary = []; 
-	
 
 	let request = new sql.Request();
 	request.query(query, (err, rows) => {
@@ -87,8 +86,9 @@ app.get("/generateruntimedata", (req, res) => {
 			stepInfo.times.push(timeElapsed);
 		});
 		//Calculate Averages
-		let ostream = fs.createWriteStream("methodData.txt");
+		let ostream = fs.createWriteStream(`${__dirname}/public/runtimeLibrary.txt`);
 		ostream.once('open', fd => {
+			ostream.write("*****DATA GENERATED AT " + new Date(Date.now()) + "*****\n");
 			cyclesLibrary.forEach( method => {                                                                        	
 			       	method.stepsAndTimes.forEach( step => {
 		        		const sum = step.times.reduce( (a,b) => a + b, 0);
@@ -116,10 +116,10 @@ app.get("/:methodName", function(req, res){
 io.on("connection", socket => {
 	console.log("user connected");
 
-	var query = "SELECT RunInstance.MethodName, RunInstance.EntryID, RunInstance.CurrentStep, RunInstance.StatusOfRun, RunInstance.SystemID, RunProcess.StartedAt, RunInstance.IsActive, RunProcess.ProcessName, RunProcess.SourceBarcode, RunProcess.IsComplete FROM RunInstance " +
+	var query = "SELECT RunInstance.MethodName, RunInstance.EntryID, RunInstance.CurrentStep, RunInstance.StatusOfRun, RunInstance.SystemID, RunProcess.StartedAt, RunInstance.IsActive, RunProcess.ProcessName, RunProcess.SourceBarcode, RunProcess.IsComplete, RunProcess.TipCountWhenThisStepStarted, RunProcess.NTRTipCapacity FROM RunInstance " +
 		"INNER JOIN RunProcess ON RunProcess.InstanceID = RunInstance.EntryID " +
 		"WHERE RunInstance.CreatedAt > DATEADD(HOUR, -8, GETDATE()) " +
-		"AND RunInstance.SimulationOn = 0;";
+		"AND RunInstance.SimulationOn = 1;";
 
 	let userConnectionID = setInterval( () => {
 		var request = new sql.Request();
@@ -129,7 +129,7 @@ io.on("connection", socket => {
 			console.log('Data recieved and emitted ' + new Date(Date.now()));
 			socket.emit('showrows', rows);
 		});
-	}, 10000);
+	}, 5000);
 	socket.on("disconnect", () => {
 		console.log("client disconnected " + userConnectionID.toString());
 		clearInterval(userConnectionID);
@@ -154,11 +154,3 @@ app.use(function(e, req, res, next) {
 		});
 	}
 });
-
-
-
-
-
-
-
-
