@@ -37,7 +37,7 @@ var sqlconnect = sql.connect(dbConfig, function(err){
 app.use(express.static('public'));
 
 app.get('/info', (req, res) => {
-	const file = `${__dirname}/public/methodData.txt`;
+	const file = `${__dirname}/public/runtimeLibrary.txt`;
 	res.download(file);
 });
 
@@ -51,8 +51,8 @@ app.get("/generateruntimedata", (req, res) => {
 		       "INNER JOIN RunProcess ON RunInstance.EntryID = RunProcess.InstanceID " +
 		       "WHERE RunInstance.isActive = 0" +
 		       "AND RunInstance.CreatedAt > DATEADD(DAY, -20, GETDATE()) " +
-		       "AND RunInstance.StatusOfRun = \'Finished\' " +
-		       "AND RunInstance.SimulationOn = 0;";
+		       "AND RunInstance.StatusOfRun = \'Finished\' "; //+
+		       //"AND RunInstance.SimulationOn = 1;";
 
 	let cyclesLibrary = []; 
 
