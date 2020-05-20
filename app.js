@@ -103,12 +103,31 @@ app.get("/generateruntimedata", (req, res) => {
 });
 
 
-app.get("/:methodName", function(req, res){
-	console.log(req.params.methodName);
-	fs.readFile('NYSCFLOGS/data.txt', (e, data) => {
-		if(e) throw e;
-		res.send(data);
-	})
+app.get("/getAllData.json", function(req, res){
+
+	let query = "SELECT RunProcess.InstanceID, RunInstance.MethodName, DATEDIFF(second, RunProcess.StartedAt, LEAD(RunProcess.StartedAt) OVER (ORDER BY RunProcess.RunProcessID)) AS ElapsedTime, RunProcess.ProcessName, RunInstance.SimulationOn, RunInstance.SystemID, RunProcess.TipCountWhenThisStepStarted " +
+		"FROM RunInstance INNER JOIN RunProcess ON RunInstance.EntryID = RunProcess.InstanceID " +
+		"WHERE RunInstance.isActive = 0 AND RunInstance.CreatedAt > DATEADD(DAY, -50, GETDATE()) AND RunInstance.StatusOfRun = \'Finished\'  AND RunInstance.SimulationOn = 0";
+
+	let obs = [];
+
+	let request = new sql.Request();
+	request.query(query, (err, rows) => {
+		if(err) console.log(err);
+		rows.forEach( row => {
+			obs.push({
+				InstanceID: row.InstanceID,
+				MethodName: row.MethodName,
+				ElapsedTime: row.ElapsedTime,
+				ProcessName: row.ProcessName,
+				SystemID: row.SystemID,
+				TipSnapshot: row.TipCountWhenThisStepStarted,
+				Simulation: row.SimulationOn
+			});
+		});
+		res.end(JSON.stringify(obs));
+	});
+
 });
 
 

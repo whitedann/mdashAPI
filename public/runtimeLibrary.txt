@@ -1,27 +1,29 @@
-*****DATA GENERATED AT Thu Apr 30 2020 17:11:29 GMT-0400 (Eastern Daylight Time)*****
-Media Exchange (96-Well),201.04702194357367,Retrieving Plate From Cytomat,319
-Media Exchange (96-Well),185.0820189274448,Feeding Plate,317
-Media Exchange (96-Well),130.58620689655172,Returning Last Plate To Cytomat,58
-MediaExchange96W_CnC,160.2,Retrieving Plate From Cytomat,5
-MediaExchange96W_CnC,228,Feeding Plate,5
-MediaExchange96W_CnC,219,Returning Last Plate To Cytomat,2
-Passage_1T5_3Col_CnC,7001,Passage_1T5_3Col_CnC Start,1
-12/24-Well Media Exchange,175.84615384615384,Retrieving Plate From Cytomat,13
-12/24-Well Media Exchange,510.15384615384613,Feeding Plate,13
-12/24-Well Media Exchange,108.66666666666667,Returning Last Plate To Cytomat,3
-Passage_IntraReplicate_CnC,5,Add Media To Intermediate,3
-Passage_IntraReplicate_CnC,57.333333333333336,Geltrex pre-process,3
-Passage_IntraReplicate_CnC,10.666666666666666,Get Motherplate From Cytomat,3
-Passage_IntraReplicate_CnC,18.666666666666668,Dissociate Cells,3
-Passage_IntraReplicate_CnC,15.666666666666666,Process Intermediate Plate,3
-Passage_IntraReplicate_CnC,51.666666666666664,Centrifuge Plate,3
-Passage_IntraReplicate_CnC,68,Intrareplicate,1
-Passage_IntraReplicate_CnC,22,Initialization,2
-Passage_IntraReplicate_CnC,187,Passage,2
+*****DATA GENERATED AT Tue May 19 2020 16:35:26 GMT-0400 (Eastern Daylight Time)*****
+Media Exchange (96-Well),178.2914669223394,Retrieving Plate From Cytomat,1043
+Media Exchange (96-Well),207.97024952015354,Feeding Plate,1042
+Media Exchange (96-Well),148.109756097561,Returning Last Plate To Cytomat,82
+12/24-Well Media Exchange,193.64864864864865,Retrieving Plate From Cytomat,37
+12/24-Well Media Exchange,334.97222222222223,Feeding Plate,36
+12/24-Well Media Exchange,119.16666666666667,Returning Last Plate To Cytomat,6
 Passage_1T15,1861,Step 1 of 1T5,1
-Passage_1T15,79,Geltrex pre-process,1
-Passage_1T15,3,Get Motherplates From Cytomat,1
-Passage_1T15,32,Dissociate Cells,1
-Passage_1T15,26,Process Intermediate Plate,1
-Passage_1T15,2,Centrifuge Plate,1
-Passage_1T15,71,Passage,1
+Passage_1T15,126,Geltrex pre-process,2
+Passage_1T15,3.5,Get Motherplates From Cytomat,2
+Passage_1T15,27.5,Dissociate Cells,2
+Passage_1T15,19,Process Intermediate Plate,2
+Passage_1T15,2.5,Centrifuge Plate,2
+Passage_1T15,88,Passage,2
+Passage_IntraReplicate_CnC,137,Initialization,8
+Passage_IntraReplicate_CnC,79.375,Add Media To Intermediate,8
+Passage_IntraReplicate_CnC,351.75,Geltrex pre-process,8
+Passage_IntraReplicate_CnC,103,Get Motherplate From Cytomat,8
+Passage_IntraReplicate_CnC,787.625,Dissociate Cells,8
+Passage_IntraReplicate_CnC,324.375,Process Intermediate Plate,8
+Passage_IntraReplicate_CnC,381.875,Centrifuge Plate,8
+Passage_IntraReplicate_CnC,1128.5,Passage,8
+Passage_1T5_3Col_CnC,138,Initialization,7
+Passage_1T5_3Col_CnC,162.42857142857142,Geltrex pre-process,7
+Passage_1T5_3Col_CnC,44.285714285714285,Get Motherplates From Cytomat,7
+Passage_1T5_3Col_CnC,285.42857142857144,Dissociate Cells,7
+Passage_1T5_3Col_CnC,109.85714285714286,Process Intermediate Plate,7
+Passage_1T5_3Col_CnC,108.28571428571429,Centrifuge Plate,7
+Passage_1T5_3Col_CnC,397,Passage,7
