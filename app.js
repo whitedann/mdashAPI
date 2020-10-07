@@ -1,13 +1,12 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var sql = require('mssql');
-const sql2 = require('mssql');
 var http = require('http');
 var socketIo = require("socket.io");
 var fs = require('fs');
 var Filereader = require('filereader');
 var bodyParser = require('body-parser');
-var runBuilder = require('utils');
+var nyscfUtils = require('./helpers');
 
 var app = express();
 
@@ -43,6 +42,7 @@ var sqlconnect = sql.connect(dbConfig, function(err){
 	if(err) console.log(err);
 });
 
+/**
 var nyscfDBConfig = {
 	user: "sa",
 	password: "Suite450",
@@ -65,6 +65,7 @@ async function getPool(name, config) {
 	}
 	return pools[name];
 }
+**/
 
 
 app.use(express.static('public'));
@@ -80,8 +81,8 @@ var jsonParser = bodyParser.json();
 app.post('/api/submitWorklist', jsonParser, async function(req, res) {
 	requestCount++;
 	let query;
-	console.log(req.body.MethodCode);
-	query = await runBuilder.generateQueryString(req.body.MethodCode, req.body);
+	query = await nyscfUtils.generateQueryString(req.body.MethodCode, req.body);
+	//console.log(query);
 	let request = new sql.Request();
 	const submissionID = await request.query(query);
 	//parsing of submissionID is due to the way the SQL query returns json object. (a single element array with empty string key)
@@ -154,6 +155,7 @@ app.post("/api/updateRun", jsonParser, async function(req, res) {
 app.post("/api/updateNTRCount", jsonParser, async function(req, res) {
 	//console.log("Receiving request to update tip count for System " + req.body.SysNum + " to " + req.body.TipsLeft + "/" + req.body.NTRCapacity);
 	requestCount++;
+	if(req.body.RunID === -1) { console.log("Could not update tip count because provided runID is invalid"); res.status(200).send(); }
 	let query = "BEGIN TRANSACTION " +
 			"UPDATE RunInstance SET " +
 				"NTRCount = " + req.body.CountNTR + ", " +
@@ -164,6 +166,7 @@ app.post("/api/updateNTRCount", jsonParser, async function(req, res) {
 				"CAPACITY300UL = " + req.body.Capacity300uL +
 			" WHERE EntryID = " + req.body.RunID + ";" +
       		    "COMMIT";
+	console.log("Hello");
 
 //	const pool = await getPool('mdash', dbConfig);
 //	console.log("POOL: \n\n\n\n\n" + pool);
@@ -245,8 +248,8 @@ app.get("/api/generateruntimedata", (req, res) => {
 			       	method.stepsAndTimes.forEach( step => {
 		        		const sum = step.times.reduce( (a,b) => a + b, 0);
 		        		const avg = (sum / step.times.length) || 0;
-					const median = runBuilder.median(step.times);
-		        		ostream.write(method.name + "," + avg + "," + step.name + "," + step.times.length + "," + median + "\n");
+					const median = sum;
+		        		ostream.write(method.name + "," + avg + "," + step.name + "," + step.times.length + "," + sum + "\n");
 		        	});
 		        });
 		})
@@ -393,11 +396,11 @@ app.get("/api/getRunEntries", async function(req, res) {
 				"INNER JOIN RunProcess ON RunProcess.InstanceID = RunInstance.EntryID " +
 				"WHERE RunInstance.CreatedAt > DATEADD(HOUR, -96, \'" + dateString + "\') AND RunInstance.CreatedAt < DATEADD(HOUR, 96, \'" + dateString + "\');"
 
-	const pool = await getPool('mdash', dbConfig);
-	console.log("POOL: \n\n\n\n\n" + pool);
-	const result = await pool.request().query(query);
-//	let request = new sql.Request();
-//	const result = await request.query(query);
+	//const pool = await getPool('mdash', dbConfig);
+	//console.log("POOL: \n\n\n\n\n" + pool);
+	//const result = await pool.request().query(query);
+	let request = new sql.Request();
+	const result = await request.query(query);
 	res.status(200).send(result);
 });
 
@@ -433,9 +436,8 @@ io.on("connection", socket => {
 
 //API will land here on error
 app.use(function(req, res, next){
+	console.log("URL requested and not found:" + req.originalUrl);
 	let e = new Error("Not Found");
-	console.log(e);
-	console.log(req);
 	e.status = 404;
 	next(e);
 });
