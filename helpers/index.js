@@ -1,7 +1,7 @@
 let sql = require('mssql');
 
-const generateQueryString = async (methodCode, worklist) => {
-	let processSteps = await lookupProcessSteps(methodCode);
+const generateQueryString = async (methodCode, worklist, connection) => {
+	let processSteps = await lookupProcessSteps(methodCode, connection);
 
 	let arrayOfTaskLoops = [];
 
@@ -110,14 +110,29 @@ const generateQueryString = async (methodCode, worklist) => {
 	return query; 
 }
 
+exports.generateQueryString = generateQueryString;
 
-async function lookupProcessSteps(methodCode){
+async function lookupProcessSteps(methodCode, connection){
 	let query = "SELECT * FROM MethodProcesses WHERE MethodCode = \'" + methodCode + "\'";
-	let request = new sql.Request();
+	let request = new sql.Request(connection);
 	const result = await request.query(query);
-	return result;
+	return result.recordset;
 
 }
 
-exports.generateQueryString = generateQueryString;
+async function connectToDBs(dbPool1, dbPool2) {
+	await dbPool1.connect();
+	console.log("Connected to 1\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+	await dbPool2.connect();
+	console.log("Connected to 2\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+}
+
+exports.connectToDBs = connectToDBs;
+
+
+
+
+
+
+
 	

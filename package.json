@@ -10,10 +10,10 @@
     "filereader": "^0.10.3",
     "fs": "0.0.1-security",
     "http": "0.0.0",
-    "mssql": "^3.3.0",
+    "mssql": "^4.3.0",
     "mysql": "^2.18.1",
     "socket.io": "^2.3.0",
-    "tedious": "^8.0.1"
+    "tedious": "^8.3.1"
   },
   "devDependencies": {},
   "scripts": {
