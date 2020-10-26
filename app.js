@@ -258,7 +258,6 @@ app.get("/api/generateruntimedata", (req, res) => {
 	res.redirect(200, 'https://nyscf-dashboard.org');
 });
 
-
 app.get("/api/getAllData.json", function(req, res){
 
 	requestCount++;
@@ -291,6 +290,7 @@ app.get("/api/getAllData.json", function(req, res){
 	}
 	res.status(200).send()	
 });
+
 
 app.get("/api/getMethodTemplates.json", function(req, res){
 
@@ -348,7 +348,6 @@ app.get("/api/getMethodTemplates.json", function(req, res){
 	catch(err){
 		console.log(err + "\n**Error getting method templates");
 	}
-	res.status(200).send();
 });
 
 
@@ -409,18 +408,18 @@ app.get("/api/getRunEntries", async function(req, res) {
 	try {
 		const request = new sql.Request(dashboardPool);
 		const result = await request.query(query);
+		res.status(200).send(result.recordset);
 	}
 	catch(err){
 		console.log(err + "\n**Error with /api/getRunEntries");
 	}
-	res.status(200).send(result.recordset);
 });
 
 app.get("/api/getFutureReservations", async function(req, res, next) {
 	requestCount++;
 	let dateString = req.query.year + "-" + req.query.month + "-" + req.query.day + " 00:00:00.000";
 	let query = "SELECT " +
-			" MethodReservations.SystemID, MethodReservations.DateCreated " +
+			"Lookup_ArrayMethods.MethodName, MethodReservations.SystemID, MethodReservations.DateCreated " +
 			"FROM MethodReservations " + 
 				"INNER JOIN Lookup_ArrayMethods ON Lookup_ArrayMethods.MethodID = MethodReservations.MethodID " +
 			"WHERE MethodReservations.DateCreated > DATEADD(HOUR, -96, \'" + 
@@ -428,12 +427,66 @@ app.get("/api/getFutureReservations", async function(req, res, next) {
 	try{
 		const request = new sql.Request(nyscfPool);
 		const result = await request.query(query);
+		res.status(200).send(result.recordset);
+
 	}
 	catch(err){
 		console.log(err + "\n**Error with getFutureReservations route");
 	}
-	res.status(200).send(result.recordset);
 });
+
+/**TEST ROUTES FOR CALENDAR SCHEDULING BEGIN**/
+app.get("/api/getAllNYSCFMethods", async function(req, res, next) {
+	requestCount++;
+	let query = "SELECT MethodID, MethodName FROM Lookup_ArrayMethods;"
+	try{
+		const request = new sql.Request(nyscfPool);
+		const result = await request.query(query);
+		res.status(200).send(result.recordset);
+	}
+	catch(err){
+		console.log(err + "\n**Error with /getAllNYSCFMethods");
+	}
+});
+
+app.get("/api/getAllDashboardMethods", async function(req, res, next) {
+	requestCount++;
+	let query = "SELECT DISTINCT MethodCode, SystemNumber, NYSCFMethodID " +
+			"FROM MethodProcesses "
+	try {
+		const request = new sql.Request(dashboardPool);
+		const result = await request.query(query);
+		res.status(200).send(result.recordset);
+	}
+	catch(err){
+		console.log(err + "\n**Error with /getMethodCodeInfo");
+	}
+});
+
+app.get("/api/generateExpectedRuntimeOfMethodCode", async function(req, res, next) {
+	requestCount++;
+	let query = "SELECT EntryID, DATEDIFF(second, RunInstance.CreatedAt, RunInstance.LastUpdated) AS ElapsedTime " +
+			"FROM RunInstance WHERE " +
+				"MethodCode = \'" + req.query.methodID + "\' AND " +
+				"SimulationOn = 0 AND StatusOfRun = \'Finished\'";
+	try{
+		const request = new sql.Request(dashboardPool);
+		const result = await request.query(query);
+		let sum = 0;
+		let count = 0;
+		result.recordset.forEach( row => {
+			count++;
+			sum += row.ElapsedTime;
+		});
+		let avg = sum / count ;
+		res.json(avg);
+	}
+	catch(err){
+		console.log(err + "\n**Error with /generateExpectedRuntimeOfMethodCode");
+	}
+});
+
+/**TEST ROUTES FOR CALENDAR SCHEDULING END**/
 
 io.on("connection", socket => {
 
@@ -451,7 +504,10 @@ io.on("connection", socket => {
 	let userConnectionID = setInterval( async () => {
 		let request = new sql.Request(dashboardPool);
 		const result = request.query(query, function(err, rows){
-			if(err) throw err;
+			if(err) {
+				console.log(err);
+				throw err;
+			}
 			socket.emit('showrows', rows.recordset);
 		});
 		
