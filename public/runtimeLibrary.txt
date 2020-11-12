@@ -1,177 +1,214 @@
-*****DATA GENERATED AT Mon Oct 05 2020 15:27:25 GMT+0000 (Coordinated Universal Time)*****
-Passage_1T15,9562,Passage_1T15 Start,1,9562
-Passage_1T15,300.85714285714283,Initialization,14,295
-Passage_1T15,1831.4166666666667,Geltrex pre-process,12,2344.5
-Passage_1T15,601.9166666666666,Get Motherplates From Cytomat,12,284
-Passage_1T15,1392.0833333333333,Dissociate Cells,12,1597
-Passage_1T15,753.5,Process Intermediate Plate,12,653.5
-Passage_1T15,1360.0833333333333,Centrifuge Plate,12,1166.5
-Passage_1T15,5893,Passage,9,5866
-Passage_1T15,123,Add Media to Intermediate Plate,2,123
-Passage_1T15,2336,Geltrex Preprocess of Daughter Plates,2,2336
-Passage_1T15,21,Refill Media Trough,2,21
-Passage_1T15,191,Get Motherplate From Incubator,2,191
-Passage_1T15,80,Transfer Volume to MYST Plate,2,80
-Passage_1T15,125.5,Add Accutase to Dissociate Cells,2,125.5
-Passage_1T15,1379.5,Send Plate to Incubator,2,1379.5
-Passage_1T15,591.5,Neutralize Accutase & Transfer to Intermediate Plate,2,591.5
-Passage_1T15,671.5,Centrifuge Intermediate Plate,2,671.5
-Passage_1T15,5169,Passage Cells to Daughter Plate,2,5169
-Media Exchange (96-Well),189.22395754359363,Retrieving Plate From Cytomat,6595,163
-Media Exchange (96-Well),210.41451171280804,Feeding Plate,6574,203
-Media Exchange (96-Well),159.76183431952663,Returning Last Plate To Cytomat,676,136
-Media Exchange (96-Well),255.45652173913044,Get Plate From Cytomat,322,229
-Media Exchange (96-Well),50.91346153846154,Aspirate Old Media,312,45
-Media Exchange (96-Well),119.62006079027356,Dispense New Media,329,112
-Media Exchange (96-Well),177.60714285714286,Return Last Plate to Cytomat,28,173
-Media Exchange (96-Well),174.23809523809524,Send Last Plate to Cytomat,21,171
-Media Exchange (96-Well),291,Bring Plate to Deck,8,223.5
-MediaExchange96W_CnC,170.424,Retrieving Plate From Cytomat,125,161
-MediaExchange96W_CnC,255.392,Feeding Plate,125,230
-MediaExchange96W_CnC,189.61904761904762,Returning Last Plate To Cytomat,21,196
-Passage_1T5_3Col_CnC,7001,Passage_1T5_3Col_CnC Start,1,7001
-Passage_1T5_3Col_CnC,295.625,Initialization,8,293
-Passage_1T5_3Col_CnC,752.125,Geltrex pre-process,8,693
-Passage_1T5_3Col_CnC,223.25,Get Motherplates From Cytomat,8,176.5
-Passage_1T5_3Col_CnC,1669.5,Dissociate Cells,8,1582
-Passage_1T5_3Col_CnC,565.125,Process Intermediate Plate,8,556.5
-Passage_1T5_3Col_CnC,749.25,Centrifuge Plate,8,728.5
-Passage_1T5_3Col_CnC,2381.25,Passage,8,2381
-Passage_1T5_3Col_CnC,84,Verify Plates On Deck,1,84
-Passage_1T5_3Col_CnC,119,Add Media to Intermediate Plate,1,119
-Passage_1T5_3Col_CnC,680,Geltrex Preprocess Daughter Plates,1,680
-Passage_1T5_3Col_CnC,256.5,Get Source Plate From Cytomat,2,256.5
-Passage_1T5_3Col_CnC,73,Transfer Volume to MYST Plate,1,73
-Passage_1T5_3Col_CnC,126,Add Accutase to Source Plate,1,126
-Passage_1T5_3Col_CnC,1367,Incubate Source Plate,1,1367
-Passage_1T5_3Col_CnC,49,Add Media to Neutralize Accutase,1,49
-Passage_1T5_3Col_CnC,163,Transfer to Intermediate Plate,1,163
-Passage_1T5_3Col_CnC,778,Centrifuge Intermediate Plate,1,778
-Passage_1T5_3Col_CnC,404,Intermediate Plate Media Removal and Addition,1,404
-Passage_1T5_3Col_CnC,534,Aliquot Dead Total Plate,1,534
-Passage_1T5_3Col_CnC,46.4,Aliquot Daughter Plate,5,10
-Passage_1T5_3Col_CnC,207.4,Send Plates to Cytomat,5,211
-12/24-Well Media Exchange,218.04525547445255,Retrieving Plate From Cytomat,685,156
-12/24-Well Media Exchange,421.1141975308642,Feeding Plate,648,386
-12/24-Well Media Exchange,149.30113636363637,Returning Last Plate To Cytomat,176,117.5
-12/24-Well Media Exchange,254.20289855072463,Bring Plate to Deck,69,226
-12/24-Well Media Exchange,345.2535211267606,Media Exchange,71,360
-12/24-Well Media Exchange,137.43478260869566,Send Last Plate To Cytomat,23,152
-12/24-Well Media Exchange,159,Get Plate From Cytomat,2,159
-12/24-Well Media Exchange,149,Return Last Plate to Cytomat,1,149
-Passage_IntraReplicate_CnC,215.35294117647058,Initialization,17,159
-Passage_IntraReplicate_CnC,150.8235294117647,Add Media To Intermediate,17,156
-Passage_IntraReplicate_CnC,513.9411764705883,Geltrex pre-process,17,443
-Passage_IntraReplicate_CnC,202,Get Motherplate From Cytomat,18,175.5
-Passage_IntraReplicate_CnC,1603.235294117647,Dissociate Cells,17,1555
-Passage_IntraReplicate_CnC,681.9411764705883,Process Intermediate Plate,17,601
-Passage_IntraReplicate_CnC,866.6470588235294,Centrifuge Plate,17,761
-Passage_IntraReplicate_CnC,2422.294117647059,Passage,17,2192
-Passage_IntraReplicate_CnC,66,Verify Plates On Deck,1,66
-Passage_IntraReplicate_CnC,141,Add Media to Intermediate Plate,1,141
-Passage_IntraReplicate_CnC,417,Geltrex Preprocess Daughter Plates,1,417
-Passage_IntraReplicate_CnC,107,Remove Media From Source Plate,1,107
-Passage_IntraReplicate_CnC,63,Add Accutase to Source Plate,1,63
-Passage_IntraReplicate_CnC,1786,Incubate Source Plate,1,1786
-Passage_IntraReplicate_CnC,415,Get Source Plate From Cytomat,1,415
-Passage_IntraReplicate_CnC,212,Neutralize Accutase and Transfer to Intermediate Plate,1,212
-Passage_IntraReplicate_CnC,665,Centrifuge Intermediate Plate,1,665
-Passage_IntraReplicate_CnC,135,Remove Supernatant From Intermediate Plate,1,135
-Passage_IntraReplicate_CnC,390,Add Media to Supernatant Plate,1,390
-Passage_IntraReplicate_CnC,555,Aliquot Dead Total Plate,1,555
-Passage_IntraReplicate_CnC,157.33333333333334,Aliquot Daughter Plates,3,29
-Passage_IntraReplicate_CnC,589,Send Daughter Plates To Cytomat,1,589
-Passage To Cryovial (Partial Passage),40.89380530973451,Initialization,113,12
-Passage To Cryovial (Partial Passage),314.43362831858406,Bring Source Plate To Deck,113,230
-Passage To Cryovial (Partial Passage),1563.25,Process Source Plate & Incubation,112,1548
-Passage To Cryovial (Partial Passage),242.84070796460176,Return Source Plate To Deck,113,165
-Passage To Cryovial (Partial Passage),372.60176991150445,Transfer To Intermediate,113,351
-Passage To Cryovial (Partial Passage),435,Centrifuge Intermediate,113,262
-Passage To Cryovial (Partial Passage),761.1909090909091,Dead Total Plate Processing,110,717.5
-Passage To Cryovial (Partial Passage),482.5,Transfer to Matrix Rack,106,438
-Passage To Cryovial (Partial Passage),581.0857142857143,Add Synth-A-Freeze,70,499
-Passage To Cryovial (Partial Passage),264.3333333333333,Verify Plates & Get Source Plate,3,238
-Passage To Cryovial (Partial Passage),177.66666666666666,Source Plate Media Remove, Accutase Rinse and Addition,3,177
-Passage To Cryovial (Partial Passage),1168.75,Source Plate Incubation,4,1499
-Passage To Cryovial (Partial Passage),348.3333333333333,Dissociation & Transfer to Intermediate,3,348
-Passage To Cryovial (Partial Passage),71,Centrifuge Intermediate Plate,4,46
-Passage To Cryovial (Partial Passage),210,Place Matrix Rack and Synth-A-Freeze,3,230
-Passage To Cryovial (Partial Passage),328.3333333333333,Retrieve Plate From Cytomat,3,313
-Passage To Cryovial (Partial Passage),584.6666666666666,Add and Remove Media From Intermediate Plate,3,519
-Passage To Cryovial (Partial Passage),203.66666666666666,Seed Dead Total Plate,3,204
-Passage To Cryovial (Partial Passage),85.66666666666667,Transfer to Destination Rack,3,86
-Passage To Cryovial (Partial Passage),432.3333333333333,Remove Matrix Rack,3,331
-Passage To Cryovial (Partial Passage),21,Verify Plates On Deck,1,21
-Passage To Cryovial (Partial Passage),198,Source Plate Media Removal and Accutase Addition,1,198
-Passage To Cryovial (Partial Passage),352,Dissociate Cells and Transfer to Intermediate,1,352
-Passage To Cryovial (Partial Passage),190.66666666666666,Determine Tip Sequence and Stage Tips,3,175
-Passage To Cryovial (Partial Passage),464,Retrieve Plate From Centrifuge,1,464
-Passage To Cryovial (Partial Passage),2,Decap Matrix Rack,1,2
-Freeze_5TC_Staggered_CnC,165.28,Initialization,25,158
-Freeze_5TC_Staggered_CnC,716.2796610169491,Dissociation Of Plate,118,671.5
-Freeze_5TC_Staggered_CnC,580.6,Harvest To Intermediate,115,557
-Freeze_5TC_Staggered_CnC,1176.8260869565217,Centrifuge Intermediate Plate,23,1092
-Freeze_5TC_Staggered_CnC,1069.7826086956522,DeadTotal Plate Processing,23,985
-Freeze_5TC_Staggered_CnC,511.0869565217391,Transfer From Intermediate to Cryotubes,23,490
-Freeze_5TC_Staggered_CnC,72,Check Cytomat Inventory,17,1
-Consolidation,79.96296296296296,Preload intermediate with media,27,92
-Consolidation,183.05309734513276,Get source plate From Cytomat,113,161
-Consolidation,292.6814159292035,Remove media and accutase rinse,113,277
-Consolidation,1931.41592920354,Incubate source plate,113,2115
-Consolidation,369.53982300884957,Retrieve plate from cytomat and transfer to intermediate,113,356
-Consolidation,150.0353982300885,Transfer from source intermediate to deep well intermediate,113,96
-Consolidation,230.26548672566372,Prepare deck for the next source plate,113,221
-Consolidation,109.70370370370371,Prepare counterbalance,27,97
-Consolidation,756.8888888888889,Spin down intermediate plate,27,658
-Consolidation,314.6296296296296,Get destination plate from cytomat,27,302
-Consolidation,310.55555555555554,Place dead total plate onto the deck,27,386
-Consolidation,285.9230769230769,Seeding dead total plate and final plate,26,163.5
-Consolidation,229.96153846153845,Return final plate to cytomat,26,239.5
-Consolidation,226.63636363636363,Send dead total plate to cytomat,11,224
+*****DATA GENERATED AT Fri Nov 06 2020 15:34:56 GMT+0000 (Coordinated Universal Time)*****
+Media Exchange (96-Well),191.10667107001322,Retrieving Plate From Cytomat,6056,191.10667107001322
+Media Exchange (96-Well),210.26035110963895,Feeding Plate,6038,210.26035110963895
+Media Exchange (96-Well),161.8380165289256,Returning Last Plate To Cytomat,605,161.8380165289256
+Media Exchange (96-Well),254.89259796806968,Get Plate From Cytomat,689,254.89259796806968
+Media Exchange (96-Well),59.6710182767624,Aspirate Old Media,766,59.6710182767624
+Media Exchange (96-Well),119.1831869510665,Dispense New Media,797,119.1831869510665
+Media Exchange (96-Well),186.1014492753623,Return Last Plate to Cytomat,69,186.1014492753623
+Media Exchange (96-Well),197.90196078431373,Send Last Plate to Cytomat,51,197.90196078431373
+Media Exchange (96-Well),267.5405405405405,Bring Plate to Deck,111,267.5405405405405
+12/24-Well Media Exchange,218.86160714285714,Retrieving Plate From Cytomat,672,218.86160714285714
+12/24-Well Media Exchange,419.29133858267716,Feeding Plate,635,419.29133858267716
+12/24-Well Media Exchange,150.0057803468208,Returning Last Plate To Cytomat,173,150.0057803468208
+12/24-Well Media Exchange,269.5925925925926,Bring Plate to Deck,108,269.5925925925926
+12/24-Well Media Exchange,339.864406779661,Media Exchange,118,339.864406779661
+12/24-Well Media Exchange,141.9,Send Last Plate To Cytomat,40,141.9
+12/24-Well Media Exchange,161.4,Get Plate From Cytomat,10,161.4
+12/24-Well Media Exchange,122.57142857142857,Return Last Plate to Cytomat,7,122.57142857142857
+12/24-Well Media Exchange,184,Retrieve Plate From Cytomat,3,184
+12/24-Well Media Exchange,300.3333333333333,Perform Media Exchange,3,300.3333333333333
+Passage_IntraReplicate_CnC,215.35294117647058,Initialization,17,215.35294117647058
+Passage_IntraReplicate_CnC,150.8235294117647,Add Media To Intermediate,17,150.8235294117647
+Passage_IntraReplicate_CnC,513.9411764705883,Geltrex pre-process,17,513.9411764705883
+Passage_IntraReplicate_CnC,220.8181818181818,Get Motherplate From Cytomat,22,220.8181818181818
+Passage_IntraReplicate_CnC,1603.235294117647,Dissociate Cells,17,1603.235294117647
+Passage_IntraReplicate_CnC,681.9411764705883,Process Intermediate Plate,17,681.9411764705883
+Passage_IntraReplicate_CnC,866.6470588235294,Centrifuge Plate,17,866.6470588235294
+Passage_IntraReplicate_CnC,2422.294117647059,Passage,17,2422.294117647059
+Passage_IntraReplicate_CnC,66,Verify Plates On Deck,5,66
+Passage_IntraReplicate_CnC,153.2,Add Media to Intermediate Plate,5,153.2
+Passage_IntraReplicate_CnC,443.2,Geltrex Preprocess Daughter Plates,5,443.2
+Passage_IntraReplicate_CnC,106.6,Remove Media From Source Plate,5,106.6
+Passage_IntraReplicate_CnC,62.2,Add Accutase to Source Plate,5,62.2
+Passage_IntraReplicate_CnC,1469,Incubate Source Plate,5,1469
+Passage_IntraReplicate_CnC,434.4,Get Source Plate From Cytomat,5,434.4
+Passage_IntraReplicate_CnC,216.4,Neutralize Accutase and Transfer to Intermediate Plate,5,216.4
+Passage_IntraReplicate_CnC,841.4,Centrifuge Intermediate Plate,5,841.4
+Passage_IntraReplicate_CnC,133.2,Remove Supernatant From Intermediate Plate,5,133.2
+Passage_IntraReplicate_CnC,300,Add Media to Supernatant Plate,5,300
+Passage_IntraReplicate_CnC,298.8,Aliquot Dead Total Plate,5,298.8
+Passage_IntraReplicate_CnC,156.93333333333334,Aliquot Daughter Plates,15,156.93333333333334
+Passage_IntraReplicate_CnC,669.8,Send Daughter Plates To Cytomat,5,669.8
+Passage_1T5_3Col_CnC,295.625,Initialization,8,295.625
+Passage_1T5_3Col_CnC,752.125,Geltrex pre-process,8,752.125
+Passage_1T5_3Col_CnC,223.25,Get Motherplates From Cytomat,8,223.25
+Passage_1T5_3Col_CnC,1669.5,Dissociate Cells,8,1669.5
+Passage_1T5_3Col_CnC,565.125,Process Intermediate Plate,8,565.125
+Passage_1T5_3Col_CnC,749.25,Centrifuge Plate,8,749.25
+Passage_1T5_3Col_CnC,2381.25,Passage,8,2381.25
+Passage_1T5_3Col_CnC,84.5,Verify Plates On Deck,2,84.5
+Passage_1T5_3Col_CnC,120,Add Media to Intermediate Plate,2,120
+Passage_1T5_3Col_CnC,683,Geltrex Preprocess Daughter Plates,2,683
+Passage_1T5_3Col_CnC,260.25,Get Source Plate From Cytomat,4,260.25
+Passage_1T5_3Col_CnC,73,Transfer Volume to MYST Plate,2,73
+Passage_1T5_3Col_CnC,127,Add Accutase to Source Plate,2,127
+Passage_1T5_3Col_CnC,1478,Incubate Source Plate,2,1478
+Passage_1T5_3Col_CnC,49.5,Add Media to Neutralize Accutase,2,49.5
+Passage_1T5_3Col_CnC,162.5,Transfer to Intermediate Plate,2,162.5
+Passage_1T5_3Col_CnC,723,Centrifuge Intermediate Plate,2,723
+Passage_1T5_3Col_CnC,436,Intermediate Plate Media Removal and Addition,2,436
+Passage_1T5_3Col_CnC,942,Aliquot Dead Total Plate,2,942
+Passage_1T5_3Col_CnC,39.4,Aliquot Daughter Plate,10,39.4
+Passage_1T5_3Col_CnC,196,Send Plates to Cytomat,10,196
+Passage To Cryovial (Partial Passage),40.89380530973451,Initialization,113,40.89380530973451
+Passage To Cryovial (Partial Passage),314.43362831858406,Bring Source Plate To Deck,113,314.43362831858406
+Passage To Cryovial (Partial Passage),1563.25,Process Source Plate & Incubation,112,1563.25
+Passage To Cryovial (Partial Passage),242.84070796460176,Return Source Plate To Deck,113,242.84070796460176
+Passage To Cryovial (Partial Passage),372.60176991150445,Transfer To Intermediate,113,372.60176991150445
+Passage To Cryovial (Partial Passage),435,Centrifuge Intermediate,113,435
+Passage To Cryovial (Partial Passage),761.1909090909091,Dead Total Plate Processing,110,761.1909090909091
+Passage To Cryovial (Partial Passage),482.5,Transfer to Matrix Rack,106,482.5
+Passage To Cryovial (Partial Passage),581.0857142857143,Add Synth-A-Freeze,70,581.0857142857143
+Passage To Cryovial (Partial Passage),413.54545454545456,Verify Plates & Get Source Plate,11,413.54545454545456
+Passage To Cryovial (Partial Passage),189.36363636363637,Source Plate Media Remove, Accutase Rinse and Addition,11,189.36363636363637
+Passage To Cryovial (Partial Passage),1539.5416666666667,Source Plate Incubation,24,1539.5416666666667
+Passage To Cryovial (Partial Passage),347.8181818181818,Dissociation & Transfer to Intermediate,11,347.8181818181818
+Passage To Cryovial (Partial Passage),70.5,Centrifuge Intermediate Plate,24,70.5
+Passage To Cryovial (Partial Passage),140.54545454545453,Place Matrix Rack and Synth-A-Freeze,11,140.54545454545453
+Passage To Cryovial (Partial Passage),460.90909090909093,Retrieve Plate From Cytomat,11,460.90909090909093
+Passage To Cryovial (Partial Passage),695.2727272727273,Add and Remove Media From Intermediate Plate,11,695.2727272727273
+Passage To Cryovial (Partial Passage),209.2608695652174,Seed Dead Total Plate,23,209.2608695652174
+Passage To Cryovial (Partial Passage),261.4782608695652,Transfer to Destination Rack,23,261.4782608695652
+Passage To Cryovial (Partial Passage),410.09090909090907,Remove Matrix Rack,11,410.09090909090907
+Passage To Cryovial (Partial Passage),277.46153846153845,Verify Plates On Deck,13,277.46153846153845
+Passage To Cryovial (Partial Passage),196.23076923076923,Source Plate Media Removal and Accutase Addition,13,196.23076923076923
+Passage To Cryovial (Partial Passage),347.15384615384613,Dissociate Cells and Transfer to Intermediate,13,347.15384615384613
+Passage To Cryovial (Partial Passage),288.25,Determine Tip Sequence and Stage Tips,20,288.25
+Passage To Cryovial (Partial Passage),255.3846153846154,Retrieve Plate From Centrifuge,13,255.3846153846154
+Passage To Cryovial (Partial Passage),476.2307692307692,Decap Matrix Rack,13,476.2307692307692
+Passage To Cryovial (Partial Passage),174.41666666666666,Remove Supernatant and Resuspend,12,174.41666666666666
+Freeze_5TC_Staggered_CnC,155.53571428571428,Initialization,28,155.53571428571428
+Freeze_5TC_Staggered_CnC,716.2796610169491,Dissociation Of Plate,118,716.2796610169491
+Freeze_5TC_Staggered_CnC,580.6,Harvest To Intermediate,115,580.6
+Freeze_5TC_Staggered_CnC,1176.8260869565217,Centrifuge Intermediate Plate,23,1176.8260869565217
+Freeze_5TC_Staggered_CnC,1069.7826086956522,DeadTotal Plate Processing,23,1069.7826086956522
+Freeze_5TC_Staggered_CnC,511.0869565217391,Transfer From Intermediate to Cryotubes,23,511.0869565217391
+Freeze_5TC_Staggered_CnC,72,Check Cytomat Inventory,17,72
+Freeze_5TC_Staggered_CnC,455,Begin Dissociation of Plate,15,455
+Freeze_5TC_Staggered_CnC,474.06666666666666,Harvest Plate to Intermediate,15,474.06666666666666
+Freeze_5TC_Staggered_CnC,712.3333333333334,Centrifuge Intermediate,3,712.3333333333334
+Freeze_5TC_Staggered_CnC,220,Remove Media From Intermediate Plate,3,220
+Freeze_5TC_Staggered_CnC,488.3333333333333,Add Synth-A-Freeze,3,488.3333333333333
+Freeze_5TC_Staggered_CnC,972.6666666666666,Place Matrix Rack, Transfer to Cryovials,3,972.6666666666666
+Passage_1T15,264.11764705882354,Initialization,17,264.11764705882354
+Passage_1T15,1831.4166666666667,Geltrex pre-process,12,1831.4166666666667
+Passage_1T15,601.9166666666666,Get Motherplates From Cytomat,12,601.9166666666666
+Passage_1T15,1392.0833333333333,Dissociate Cells,12,1392.0833333333333
+Passage_1T15,753.5,Process Intermediate Plate,12,753.5
+Passage_1T15,1360.0833333333333,Centrifuge Plate,12,1360.0833333333333
+Passage_1T15,5893,Passage,9,5893
+Passage_1T15,116.8,Add Media to Intermediate Plate,5,116.8
+Passage_1T15,2297.6,Geltrex Preprocess of Daughter Plates,5,2297.6
+Passage_1T15,30.2,Refill Media Trough,5,30.2
+Passage_1T15,234.2,Get Motherplate From Incubator,5,234.2
+Passage_1T15,105,Transfer Volume to MYST Plate,5,105
+Passage_1T15,124.6,Add Accutase to Dissociate Cells,5,124.6
+Passage_1T15,1387.2,Send Plate to Incubator,5,1387.2
+Passage_1T15,608.8,Neutralize Accutase & Transfer to Intermediate Plate,5,608.8
+Passage_1T15,787.8,Centrifuge Intermediate Plate,5,787.8
+Passage_1T15,5360.4,Passage Cells to Daughter Plate,5,5360.4
+Consolidation,79.96296296296296,Preload intermediate with media,27,79.96296296296296
+Consolidation,183.05309734513276,Get source plate From Cytomat,113,183.05309734513276
+Consolidation,292.6814159292035,Remove media and accutase rinse,113,292.6814159292035
+Consolidation,1931.41592920354,Incubate source plate,113,1931.41592920354
+Consolidation,369.53982300884957,Retrieve plate from cytomat and transfer to intermediate,113,369.53982300884957
+Consolidation,150.0353982300885,Transfer from source intermediate to deep well intermediate,113,150.0353982300885
+Consolidation,230.26548672566372,Prepare deck for the next source plate,113,230.26548672566372
+Consolidation,109.70370370370371,Prepare counterbalance,27,109.70370370370371
+Consolidation,756.8888888888889,Spin down intermediate plate,27,756.8888888888889
+Consolidation,314.6296296296296,Get destination plate from cytomat,27,314.6296296296296
+Consolidation,310.55555555555554,Place dead total plate onto the deck,27,310.55555555555554
+Consolidation,285.9230769230769,Seeding dead total plate and final plate,26,285.9230769230769
+Consolidation,229.96153846153845,Return final plate to cytomat,26,229.96153846153845
+Consolidation,226.63636363636363,Send dead total plate to cytomat,11,226.63636363636363
 Consolidation,103.5,Stage Counterbalance and Pre-fill Intermediate,2,103.5
-Consolidation,276.6111111111111,Get Source Plate From Cytomat,18,278.5
-Consolidation,122.63636363636364,Remove Old Media,11,123
-Consolidation,61.36363636363637,Add Accutase,11,61
-Consolidation,1138.0555555555557,Begin Incubation,18,1360.5
-Consolidation,399.27272727272725,Bring Plate to Deck,11,317
-Consolidation,322.3636363636364,Transfer Source to Intermediate,11,346
-Consolidation,168.61111111111111,Transfer Intermediate to Intermediate Deep Well Plate,18,128.5
-Consolidation,226,Source Plate Remove, Intermediate to Waste,18,226.5
-Consolidation,91,Perform Counterbalance Match Transfer,3,98
-Consolidation,720.6666666666666,Transport Intermediate Deep Well Plate to Centrifuge,3,753
-Consolidation,170.66666666666666,Get Destination Plate From Cytomat,3,169
+Consolidation,249.8695652173913,Get Source Plate From Cytomat,23,249.8695652173913
+Consolidation,122.63636363636364,Remove Old Media,11,122.63636363636364
+Consolidation,61.36363636363637,Add Accutase,11,61.36363636363637
+Consolidation,1184.9565217391305,Begin Incubation,23,1184.9565217391305
+Consolidation,399.27272727272725,Bring Plate to Deck,11,399.27272727272725
+Consolidation,322.3636363636364,Transfer Source to Intermediate,11,322.3636363636364
+Consolidation,194,Transfer Intermediate to Intermediate Deep Well Plate,23,194
+Consolidation,221.2608695652174,Source Plate Remove, Intermediate to Waste,23,221.2608695652174
+Consolidation,87.5,Perform Counterbalance Match Transfer,4,87.5
+Consolidation,722.25,Transport Intermediate Deep Well Plate to Centrifuge,4,722.25
+Consolidation,168.5,Get Destination Plate From Cytomat,4,168.5
 Consolidation,196.5,Place Dead Total Plate,2,196.5
 Consolidation,392,Transfer From Deep Well to Destination Plate ,2,392
-Consolidation,182,Send Destination Plate to Cytomat,3,164
-Consolidation,246.66666666666666,Send Dead Total Plate to Cytomat,3,227
-Consolidation,74,Preload Deep Well Plate With Media,1,74
-Consolidation,161.71428571428572,Source Plate Media Remove,7,151
-Consolidation,143.42857142857142,Source Plate Accutase Rinse/Addition,7,144
-Consolidation,1374.5714285714287,Return Source Plate to Deck,7,239.5
-Consolidation,286.42857142857144,Transfer Source to Intermediate Plate,7,284
-Consolidation,98,OPTIONAL: Change Media Prompt,1,98
-Consolidation,288,Intermediate Plate Resuspension,1,288
-Consolidation,113,Seed Dead Total Plate,1,113
-Consolidation,35,Transfer From Deep Well to Destination Plate,1,35
-FreezeCompress_CnC,199.66666666666666,Initialization,3,181
-FreezeCompress_CnC,742.6666666666666,Get Motherplates From Cytomat,3,668
-FreezeCompress_CnC,358.3333333333333,Process Mother Plate 1,3,360
-FreezeCompress_CnC,376.6666666666667,Process Mother Plate 2,3,361
-FreezeCompress_CnC,526.3333333333334,Process Mother Plate 3,3,360
-FreezeCompress_CnC,580.3333333333334,Proess Mother Plate 4,3,561
-FreezeCompress_CnC,620.3333333333334,Process Mother Plate 1 to Intermediate,3,551
-FreezeCompress_CnC,543.6666666666666,Process Mother Plate 2 to Intermediate,3,515
-FreezeCompress_CnC,605.3333333333334,Process Mother Plate 3 to Intermediate,3,585
-FreezeCompress_CnC,721.3333333333334,Process Mother Plate 4 to Intermediate,3,742
-FreezeCompress_CnC,868,Centrifuge Intermediate,3,980
-FreezeCompress_CnC,646.6666666666666,Add Synth-A-Freeze,3,582
+Consolidation,176,Send Destination Plate to Cytomat,4,176
+Consolidation,236.25,Send Dead Total Plate to Cytomat,4,236.25
+Consolidation,71,Preload Deep Well Plate With Media,2,71
+Consolidation,202.25,Source Plate Media Remove,12,202.25
+Consolidation,143.75,Source Plate Accutase Rinse/Addition,12,143.75
+Consolidation,904.5833333333334,Return Source Plate to Deck,12,904.5833333333334
+Consolidation,289.1666666666667,Transfer Source to Intermediate Plate,12,289.1666666666667
+Consolidation,72,OPTIONAL: Change Media Prompt,2,72
+Consolidation,385,Intermediate Plate Resuspension,2,385
+Consolidation,113,Seed Dead Total Plate,2,113
+Consolidation,35,Transfer From Deep Well to Destination Plate,2,35
+FreezeCompress_CnC,199.66666666666666,Initialization,3,199.66666666666666
+FreezeCompress_CnC,742.6666666666666,Get Motherplates From Cytomat,3,742.6666666666666
+FreezeCompress_CnC,358.3333333333333,Process Mother Plate 1,3,358.3333333333333
+FreezeCompress_CnC,376.6666666666667,Process Mother Plate 2,3,376.6666666666667
+FreezeCompress_CnC,526.3333333333334,Process Mother Plate 3,3,526.3333333333334
+FreezeCompress_CnC,580.3333333333334,Proess Mother Plate 4,3,580.3333333333334
+FreezeCompress_CnC,620.3333333333334,Process Mother Plate 1 to Intermediate,3,620.3333333333334
+FreezeCompress_CnC,543.6666666666666,Process Mother Plate 2 to Intermediate,3,543.6666666666666
+FreezeCompress_CnC,605.3333333333334,Process Mother Plate 3 to Intermediate,3,605.3333333333334
+FreezeCompress_CnC,721.3333333333334,Process Mother Plate 4 to Intermediate,3,721.3333333333334
+FreezeCompress_CnC,868,Centrifuge Intermediate,3,868
+FreezeCompress_CnC,430.6,Add Synth-A-Freeze,5,430.6
 FreezeCompress_CnC,850,Place Matrix Tube Rack,2,850
-System6_Passage96W,179.83333333333334,Get Plate From Cytomat,6,175.5
-System6_Passage96W,182,Remove Media And Accutase Rinse,6,163.5
-System6_Passage96W,1718.1666666666667,Incubate Plate,6,1600.5
-System6_Passage96W,104.16666666666667,Dissociate Cells,6,77.5
-System6_Passage96W,223.16666666666666,Transfer To Intermediate,6,207
-System6_Passage96W,1074,Centrifuge Intermediate,6,1078.5
-System6_Passage96W,452.1666666666667,Aspirate Media & Resuspend Intermediate,6,418
-System6_Passage96W,270,Create Dead Total Plate,6,254
-System6_Passage96W,435.5,EB Passage,6,430.5
+FreezeCompress_CnC,74.5,Initialize,2,74.5
+FreezeCompress_CnC,451,Bring Motherplates to Deck,2,451
+FreezeCompress_CnC,110,Remove Old Media,8,110
+FreezeCompress_CnC,62.375,Add Accutase,8,62.375
+FreezeCompress_CnC,211.5,Send Motherplate to Cytomat,8,211.5
+FreezeCompress_CnC,226.75,Bring Motherplate to Deck,8,226.75
+FreezeCompress_CnC,106.625,Add Media to Neutralize Accutase,8,106.625
+FreezeCompress_CnC,169.625,Transfer Motherplate to Intermediate,8,169.625
+FreezeCompress_CnC,720,Centrifuge Intermediate Plate,2,720
+FreezeCompress_CnC,45,Remove Supernatant from,1,45
+FreezeCompress_CnC,359,Aliquot DAPI Plate,2,359
+FreezeCompress_CnC,417,Place Matrix Rack,2,417
+FreezeCompress_CnC,64.5,Transfer to Cryotubes,2,64.5
+FreezeCompress_CnC,446.5,Cap Cryotubes,2,446.5
+FreezeCompress_CnC,46,Remove Supernatant,1,46
+System6_Passage96W,179.83333333333334,Get Plate From Cytomat,6,179.83333333333334
+System6_Passage96W,182,Remove Media And Accutase Rinse,6,182
+System6_Passage96W,1718.1666666666667,Incubate Plate,6,1718.1666666666667
+System6_Passage96W,104.16666666666667,Dissociate Cells,6,104.16666666666667
+System6_Passage96W,223.16666666666666,Transfer To Intermediate,6,223.16666666666666
+System6_Passage96W,1074,Centrifuge Intermediate,6,1074
+System6_Passage96W,452.1666666666667,Aspirate Media & Resuspend Intermediate,6,452.1666666666667
+System6_Passage96W,270,Create Dead Total Plate,6,270
+System6_Passage96W,435.5,EB Passage,6,435.5
+MediaExchange96W_CnC_InclOptionEB,791,Get Plate from Cytomat,1,791
+MediaExchange96W_CnC_InclOptionEB,243,Aspirate Old Media,1,243
+MediaExchange96W_CnC_InclOptionEB,146,Dispense New Media,1,146
+MediaExchange96W_CnC_InclOptionEB,156,Return Plate to Cytomat,1,156
+Passage 1TX,246,Gathering Plates Onto The Deck...,1,246
+Passage 1TX,36,Media Remove,1,36
+Passage 1TX,66,Accutase Rinse,1,66
+Passage 1TX,62,Media Add,1,62
+Passage 1TX,1562,Incubate Plate,1,1562
+Passage 1TX,28,Neutralize Accutase ,1,28
+Passage 1TX,206,Quadrant Mixing,1,206
+Passage 1TX,59,Transfer to Intermediate,1,59
+Passage 1TX,34,Dispose Source Plate,1,34
+Passage 1TX,684,Centrifuge Intermediate Plate,1,684
+Passage 1TX,42,Remove Supernatant,1,42
+Passage 1TX,73,Resuspend Pellets,1,73
+Passage 1TX,217,Seed Dead Total Plate,1,217
+Passage 1TX,1992,Passage To Daughter Plates,1,1992

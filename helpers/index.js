@@ -98,7 +98,7 @@ const generateQueryString = async (methodCode, worklist, connection) => {
                         		"\'" + "No Details" + "\', " +
                         		"\'" + "No Source Plate" + "\', " +
                         		"\'" + "No Destination Plate" + "\', " +
-                        		"\'" + (process.IsTracked === true ? "1" : "0") + "\', " +
+                        		"\'" + (taskLoop.Processes[0].IsTracked === true ? "1" : "0") + "\', " +
                         		"\'" + taskLoop.Processes[0].NTRUsage + "\', " +
                         		"\'" + taskLoop.Processes[0].Usage1000UL + "\', " +
                         		"\'" + taskLoop.Processes[0].Usage300UL + "\') " 

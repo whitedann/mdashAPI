@@ -19,6 +19,7 @@ app.use(function (req, res, next) {
 
 var port = process.env.port || 4000;
 var requestCount = 0;
+var numOfConnections = 0;
 
 var server = app.listen(port, () => {
 	console.log("Running on port ", port);
@@ -26,6 +27,7 @@ var server = app.listen(port, () => {
 
 let requestsCountMessage = setInterval( () => {
 	console.log("Requests received this interval: " + requestCount);
+	console.log("Number of connected users: " + numOfConnections);
 	requestCount = 0;
 }, 5000);
 
@@ -249,7 +251,7 @@ app.get("/api/generateruntimedata", (req, res) => {
 		        		const sum = step.times.reduce( (a,b) => a + b, 0);
 		        		const avg = (sum / step.times.length) || 0;
 					const median = sum;
-		        		ostream.write(method.name + "," + avg + "," + step.name + "," + step.times.length + "," + sum + "\n");
+		        		ostream.write(method.name + "," + avg + "," + step.name + "," + step.times.length + "," + avg + "\n");
 		        	});
 		        });
 		})
@@ -449,6 +451,12 @@ app.get("/api/getAllNYSCFMethods", async function(req, res, next) {
 	}
 });
 
+app.get("/api/generateAverageRunTimesForLabLims", async function(req, res, next) {
+
+	requestCount++;
+
+});
+
 app.get("/api/getAllDashboardMethods", async function(req, res, next) {
 	requestCount++;
 	let query = "SELECT DISTINCT MethodCode, SystemNumber, NYSCFMethodID " +
@@ -488,6 +496,11 @@ app.get("/api/generateExpectedRuntimeOfMethodCode", async function(req, res, nex
 
 /**TEST ROUTES FOR CALENDAR SCHEDULING END**/
 
+io.use(function(socket, next){
+	numOfConnections++;
+	next();
+});
+
 io.on("connection", socket => {
 
 	var query = "SELECT " +
@@ -512,9 +525,10 @@ io.on("connection", socket => {
 		});
 		
 	}, 5000);
-	console.log("UserID " + userConnectionID + " connected at: " + new Date(Date.now()));
+
 	socket.on("disconnect", () => {
 		console.log("client disconnected "+ userConnectionID);
+		numOfConnections--;
 		clearInterval(userConnectionID);
 	});
 });
