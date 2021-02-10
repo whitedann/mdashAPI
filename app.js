@@ -87,9 +87,11 @@ app.get('/api/info', (req, res) => {
 
 var jsonParser = bodyParser.json();
 
+/** DEPRECATED 
 app.post('/api/submitWorklist', jsonParser, async function(req, res, next) {
 		requestCount++;
 		let query = await nyscfUtils.generateQueryString(req.body, dashboardPool);
+		let startTime = new Date().getTime();
 
 		if(query === ""){
 			console.log("Could not find process steps related to the submitted worklist");
@@ -103,6 +105,8 @@ app.post('/api/submitWorklist', jsonParser, async function(req, res, next) {
 			//(a single element array with empty string key)
 			res.locals.RunID = submissionID.recordset[0][""];
 			console.log("Generated RunID is: " + res.locals.RunID); 
+			let endTime = new Date().getTime();
+			console.log( "Total time required for query: " + (endTime - startTime) / 1000 );
 			res.status(200).json({"RunID" : res.locals.RunID});
 		}
 		catch(err){
@@ -126,27 +130,31 @@ app.post('/api/submitWorklist', jsonParser, async function(req, res, next) {
 		}
 });
 
-app.post('/api/submitWorklist2', jsonParser, async function(req, res, next) {
+**/
+
+app.post('/api/submitWorklist', jsonParser, async function(req, res, next) {
 		requestCount++;
+		let startTime = new Date().getTime();
 		let query = await nyscfUtils.generateRunQueryString(req.body, dashboardPool);
-		console.log("Query: " + query);
-		if(query = ""){
+		if(query === ""){
 			console.log("Could not find process steps related to submited worklist");
+			res.status(200).json({"RunID" : -9999});
 			return;
 		}
 
 		try {
 			let request = new sql.Request(dashboardPool);
 			const submissionID = await request.query(query);
-			console.log(submissionID);
 			//parsing of submissionID is due to the way the SQL query returns json object. 
 			//(a single element array with empty string key)
 			res.locals.RunID = submissionID.recordset[0][""];
 			console.log("Generated RunID is: " + res.locals.RunID); 
+			let endTime = new Date().getTime();
+			console.log( "Total time required for query: " + (endTime - startTime) / 1000 );
 			res.status(200).json({"RunID" : res.locals.RunID});
 		}
 		catch(err){
-			console.log(err + "\nError with submitWorklist route");
+			console.log(err + "\nError with submitWorklist2 route");
 		}
 		next();
 	}, async function(req, res) {
@@ -186,7 +194,7 @@ app.post("/api/advanceRun", jsonParser,  async function(req, res) {
 	
 		console.log("A process ID was not specified, so the next unfinished step is stamped");
 
-		let query = "BEGIN TRANSACTION " +
+		query = "BEGIN TRANSACTION " +
 			"DECLARE @DataID int = " + req.body.RunID + "; " +
 
 			//Set the finished step IsComplete field to 1 (completed)
@@ -211,9 +219,9 @@ app.post("/api/advanceRun", jsonParser,  async function(req, res) {
 
 	}
 	else{
-		console.log("Process ID specified as " + req.query.ProcID);	
+		console.log("Process ID specified as ");	
 
-		let query = "BEGIN TRANSACTION " +
+		query = "BEGIN TRANSACTION " +
 			"DECLARE @DataID int = " + req.body.RunID + "; " +
 
 			//Set the finished step IsComplete field to 1 (completed)
