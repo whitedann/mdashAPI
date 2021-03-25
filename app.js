@@ -24,7 +24,7 @@ var port = process.env.port || 4000;
 var requestCount = 0;
 var numOfConnections = 0;
 
-const timerMaxMilliseconds = 10000;
+const timerMaxMilliseconds = 5000;
 
 var server = app.listen(port, () => {
 	console.log("Running on port ", port);
@@ -154,7 +154,7 @@ app.post('/api/submitWorklist', jsonParser, async function(req, res, next) {
 			res.status(200).json({"RunID" : res.locals.RunID});
 		}
 		catch(err){
-			console.log(err + "\nError with submitWorklist2 route");
+			console.log(err + "\nError with submitWorklist route");
 		}
 		next();
 	}, async function(req, res) {
@@ -188,6 +188,13 @@ app.post("/api/advanceRun", jsonParser,  async function(req, res) {
 		res.status(queryStatus).send();
 	}
 
+	let consNTR = req.body.ConsumptionNTR !== undefined ? req.body.ConsumptionNTR : 0;
+	let cons300 = req.body.Consumption300uL !== undefined ? req.body.Consumption300uL : 0;
+	let cons1000 = req.body.Consumption1000uL !== undefined ? req.body.Consumption1000uL : 0;
+	let runtime = req.body.Runtime !== undefined ? req.body.Runtime : 0;
+
+	//console.log("Consumption and runtime inputs: " + consNTR + " " + cons300 + " " + cons1000 + " " + runtime);
+
 	//If a specific ProcID is given (ideal), then the run will advance to nearest step with corresponding process
 	//	so that the run can stay synced with dashboard.
 	if(true){
@@ -198,11 +205,17 @@ app.post("/api/advanceRun", jsonParser,  async function(req, res) {
 			"DECLARE @DataID int = " + req.body.RunID + "; " +
 
 			//Set the finished step IsComplete field to 1 (completed)
-			";WITH CTE AS (SELECT TOP 1 IsComplete AS COMP FROM RunProcess WHERE RunProcess.IsComplete = 0 AND InstanceID = @DataID ORDER BY RunProcessID ASC) " +
-			"UPDATE CTE SET COMP = 1; " +
+			"WITH CTE AS (SELECT TOP 1 IsComplete AS COMP, " + 
+						"ConsumptionNTR AS CONSUMPTIONNTR, " + 
+						"Consumption1000UL AS CONSUMPTION1000UL, " + 
+						"Consumption300UL AS CONSUMPTION300UL, " + 
+						"Runtime AS STEPRUNTIME " +
+			"FROM RunProcess WHERE RunProcess.IsComplete = 0 AND InstanceID = @DataID ORDER BY RunProcessID ASC) " +
+
+			"UPDATE CTE SET COMP = 1, CONSUMPTIONNTR = \'" + consNTR + "\', CONSUMPTION1000UL = \'" + cons1000 + "\', CONSUMPTION300UL = \'" + cons300 + "\', STEPRUNTIME = " + runtime + "; " +
 
 			//Punch the start time of the next step.
-			";WITH CTE (STARTTIME) AS (SELECT TOP 1 StartedAt FROM RunProcess WHERE RunProcess.IsComplete = 0 AND InstanceID = @DataID ORDER BY RunProcessID ASC) " +
+			"WITH CTE (STARTTIME) AS (SELECT TOP 1 StartedAt FROM RunProcess WHERE RunProcess.IsComplete = 0 AND InstanceID = @DataID ORDER BY RunProcessID ASC) " +
 			"UPDATE CTE SET STARTTIME = getdate(); " +
 			"UPDATE RunInstance SET " +
 				"RunInstance.CurrentProcessID = RunProcess.RunProcessID, " +
@@ -251,30 +264,13 @@ app.post("/api/advanceRun", jsonParser,  async function(req, res) {
 		const result = await request.query(query);
 		if(socketIo){
 			emitTimer.resetTimer();
-			var query2 = "SELECT " +
-					"RunInstance.MethodName, RunInstance.EntryID, RunInstance.CurrentStep, " +
-					"RunInstance.StatusOfRun, RunInstance.SystemID, RunProcess.StartedAt, " + 
-					"RunInstance.IsActive, RunInstance.SimulationOn, RunInstance.NTRCount, " + 
-					"RunInstance.COUNT1000UL, RunInstance.COUNT300UL, RunInstance.CAPACITY1000UL, " + 
-					"RunInstance.CAPACITY300UL, RunProcess.ProcessName, RunProcess.SourceBarcode, " + 
-					"RunProcess.IsComplete, RunInstance.NTRCapacity, RunProcess.RunProcessID, " + 
-					"RunInstance.CurrentProcessID, RunProcess.IsTracked, RunInstance.MethodCode, " + 
-					"RunProcess.RequiredNTRTips, RunProcess.Required1000ULTips, RunProcess.Required300ULTips " +
-					"FROM RunInstance " +
-				"INNER JOIN RunProcess ON RunProcess.InstanceID = RunInstance.EntryID " +
-				"WHERE RunInstance.CreatedAt > DATEADD(HOUR, -24, GETDATE());";
-
-
-			let request = new sql.Request(dashboardPool);
-			const result = request.query(query2, function(err, rows){
-				if(err) {
-					console.log(err);
-					throw err;
-				}
-				socketIo.sockets.emit('showrows', rows.recordset);
-			});
+			let recordSet = await nyscfUtils.getNewSocketData(dashboardPool);
+			if(socketIo){
+				emitTimer.resetTimer();
+				console.log("Emitting Data");
+				socketIo.sockets.emit('showrows', recordSet);
+			}
 		}
-
 	}
 	catch(err){
 		console.log(err + "\n**Error advancing run**");
@@ -376,6 +372,7 @@ app.get("/api/generateruntimedata", (req, res, next) => {
 	let query = "SELECT RunProcess.InstanceID, " +
 		              "RunInstance.MethodName, " +
 				"RunInstance.MethodCode, " +
+				"RunProcess.BatchSize, " +
 		              "DATEDIFF(second, RunProcess.StartedAt, LEAD(RunProcess.StartedAt) OVER (ORDER BY RunProcess.RunProcessID)) AS ElapsedTime, " +
 		              "RunProcess.ProcessName " +
 		       "FROM RunInstance " +

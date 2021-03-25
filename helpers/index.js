@@ -126,6 +126,7 @@ const generateRunQueryString = async (worklist, connection) => {
 
 	let arrayOfTaskLoops = [];
 
+	//Build task loops from tempalte
 	for(const step of processSteps){ 
 
 		let tableLoopPosition = step.TableLoopPosition;
@@ -140,7 +141,8 @@ const generateRunQueryString = async (worklist, connection) => {
 				NTRUsage: step.NTRUsage,
 				Usage1000UL: step.Usage1000UL,
 				Usage300UL: step.Usage300UL,
-				ExpectedRuntime: step.ExpectedRuntime
+				ExpectedRuntime: step.ExpectedRuntime,
+				ControlString: step.ControlString
 			}
 			found.Processes.push(newTask);
 		}
@@ -158,14 +160,15 @@ const generateRunQueryString = async (worklist, connection) => {
                                 NTRUsage: step.NTRUsage,
                                 Usage1000UL: step.Usage1000UL,
                                 Usage300UL: step.Usage300UL,
-				ExpectedRuntime: step.ExpectedRuntime
+				ExpectedRuntime: step.ExpectedRuntime,
+				ControlString: step.ControlString
 			}
 			newTaskLoop.Processes.push(newTask)
                         arrayOfTaskLoops.push(newTaskLoop);
 		}
 	}
 
-	let _testQuery = "DECLARE @newID INT " +
+	let queryToReturn = "DECLARE @newID INT " +
 				"BEGIN TRANSACTION " +
 					"INSERT INTO RunInstance (MethodName, MethodCode, SystemName, SystemID, StatusOfRun, IsActive, SimulationOn, " +
 									"UsingCytomat, UsingVSpin, UsingDecapper, UsingEasyCode, IncubationTime, VSpinTime, WorklistID) " +
@@ -199,12 +202,14 @@ const generateRunQueryString = async (worklist, connection) => {
 		let allTasks = [];
 
 		if(taskLoop.LoopControlString !== "Once()"){
-			derivedTasks = scanWorklistForTaskSatisfyingTaskLoopCondition(worklist,taskLoop);
+			derivedTasks = await scanWorklistForTaskSatisfyingTaskLoopCondition(worklist,taskLoop);
 			for(let k = 0; k < derivedTasks.Batches.length; k++){
 				let listOfSourcePlates = "";
 				let listOfDestinationPlates = "";
 				let listOfDetails = "";
+				let batchSize = 0;
 				for(let l = 0; l < derivedTasks.Batches[k].Tasks.length; l++){
+					batchSize++;
 					if(l == derivedTasks.Batches[k].Tasks.length -1){
 						listOfSourcePlates += derivedTasks.Batches[k].Tasks[l].SourcePlateBarcode;
 						listOfDestinationPlates += derivedTasks.Batches[k].Tasks[l].DestinationPlateBarcode;
@@ -217,69 +222,104 @@ const generateRunQueryString = async (worklist, connection) => {
 					}
 				}
 				for(let m = 0; m < taskLoop.Processes.length; m++){
-					console.log(taskLoop.Processes[m]);
-					totalTime += parseFloat(taskLoop.Processes[m].ExpectedRuntime);
-					lastProcessName = taskLoop.Processes[m].ProcessName;
-					_testQuery += "INSERT INTO RunProcess (" + 
-									"InstanceID, " +
-									"ProcessName, " + 
-									"ProcessDetails, " + 
-									"SourceBarcode, " + 
-									"DestinationBarcode, " + 
-									"IsTracked, " + 
-									"RequiredNTRTips, " + 
-									"Required1000ULTips, " + 
-									"Required300ULTips) " +
-								  "VALUES (" + 
-									"@newID, " +
-									"\'" + taskLoop.Processes[m].ProcessName + "\', " +
-									"\'" + listOfDetails + "\', " +
-									"\'" + listOfSourcePlates + "\', " +
-									"\'" + listOfDestinationPlates + "\', " +
-									"\'" + (taskLoop.Processes[m].IsTracked === true ? "1" : "0") + "\', " +
-									"\'" + taskLoop.Processes[m].NTRUsage + "\', " +
-									"\'" + taskLoop.Processes[m].Usage1000UL + "\', " +
-									"\'" + taskLoop.Processes[m].Usage300UL + "\'); ";
+					let OKToAddTask = false;
+					if(m !== 0){
+						let satisfiedByWorklist = await checkThatWorklistSatisfiesCondition(worklist, taskLoop.Processes[m].ControlString); 
+						if(satisfiedByWorklist){
+							OKToAddTask = true;
+						}
+						else{
+							OKToAddTask = false;
+						}
+					}
+					//Always add first task in a loop
+					else {
+						OKToAddTask = true;
+					}
+					if(OKToAddTask){
+						totalTime += parseFloat(taskLoop.Processes[m].ExpectedRuntime);
+						lastProcessName = taskLoop.Processes[m].ProcessName;
+						queryToReturn += "INSERT INTO RunProcess (" + 
+										"InstanceID, " +
+										"ProcessName, " + 
+										"ProcessDetails, " + 
+										"SourceBarcode, " + 
+										"DestinationBarcode, " +
+										"BatchSize, " +
+										"IsTracked, " + 
+										"RequiredNTRTips, " + 
+										"Required1000ULTips, " + 
+										"Required300ULTips) " +
+									  "VALUES (" + 
+										"@newID, " +
+										"\'" + taskLoop.Processes[m].ProcessName + "\', " +
+										"\'" + listOfDetails + "\', " +
+										"\'" + listOfSourcePlates + "\', " +
+										"\'" + listOfDestinationPlates + "\', " +
+										batchSize + ", " +
+										"\'" + (taskLoop.Processes[m].IsTracked === true ? "1" : "0") + "\', " +
+										"\'" + taskLoop.Processes[m].NTRUsage + "\', " +
+										"\'" + taskLoop.Processes[m].Usage1000UL + "\', " +
+										"\'" + taskLoop.Processes[m].Usage300UL + "\'); ";
+					}
 				}
 			}
 		}
 		else{
 			for(let m = 0; m < taskLoop.Processes.length; m++){
-				console.log(taskLoop.Processes[m]);
-				totalTime += parseFloat(taskLoop.Processes[m].ExpectedRuntime);
-				_testQuery += "INSERT INTO RunProcess (" + 
-									"InstanceID, " +
-									"ProcessName, " + 
-									"ProcessDetails, " + 
-									"SourceBarcode, " + 
-									"DestinationBarcode, " + 
-									"IsTracked, " + 
-									"RequiredNTRTips, " + 
-									"Required1000ULTips, " + 
-									"Required300ULTips) " +
-								  "VALUES (" + 
-									"@newID, " +
-									"\'" + taskLoop.Processes[m].ProcessName + "\', " +
-									"\'No Details\', " +
-									"\'No Source Plate\', " +
-									"\'No Destination Plate\', " +
-									"\'" + (taskLoop.Processes[m].IsTracked === true ? "1" : "0") + "\', " +
-									"\'" + taskLoop.Processes[m].NTRUsage + "\', " +
-									"\'" + taskLoop.Processes[m].Usage1000UL + "\', " +
-									"\'" + taskLoop.Processes[m].Usage300UL + "\'); ";
+				let OKToAddTask = false;
+				if(m !== 0){
+					let satisfiedByWorklist = await checkThatWorklistSatisfiesCondition(worklist, taskLoop.Processes[m].ControlString); 
+					if(satisfiedByWorklist){
+						OKToAddTask = true;
+					}
+					else{
+						OKToAddTask = false;
+					}
+				}
+				//Always add first task in a loop
+				else {
+					OKToAddTask = true;
+				}
+				if(OKToAddTask){
+					totalTime += parseFloat(taskLoop.Processes[m].ExpectedRuntime);
+					queryToReturn += "INSERT INTO RunProcess (" + 
+										"InstanceID, " +
+										"ProcessName, " + 
+										"ProcessDetails, " + 
+										"SourceBarcode, " + 
+										"DestinationBarcode, " + 
+										"IsTracked, " + 
+										"RequiredNTRTips, " + 
+										"Required1000ULTips, " + 
+										"Required300ULTips) " +
+									  "VALUES (" + 
+										"@newID, " +
+										"\'" + taskLoop.Processes[m].ProcessName + "\', " +
+										"\'No Details\', " +
+										"\'No Source Plate\', " +
+										"\'No Destination Plate\', " +
+										"\'" + (taskLoop.Processes[m].IsTracked === true ? "1" : "0") + "\', " +
+										"\'" + taskLoop.Processes[m].NTRUsage + "\', " +
+										"\'" + taskLoop.Processes[m].Usage1000UL + "\', " +
+										"\'" + taskLoop.Processes[m].Usage300UL + "\'); ";
 
-				lastProcessName = taskLoop.Processes[m].ProcessName;
+					lastProcessName = taskLoop.Processes[m].ProcessName;
+				}
 			}
 		}
 	}
 	
-	_testQuery += "COMMIT TRANSACTION SELECT @newID;";
+	queryToReturn += "COMMIT TRANSACTION SELECT @newID;";
 
-	return _testQuery;
+	return queryToReturn;
 
 }
 
+
 exports.generateRunQueryString = generateRunQueryString;
+
+/**
 
 const generateQueryString = async (worklist, connection) => {
 	let processSteps = await lookupProcessSteps(worklist.MethodCode, worklist.RuntimeContext, connection);
@@ -409,25 +449,16 @@ const generateQueryString = async (worklist, connection) => {
 			derivedTasks = scanWorklistForTaskSatisfyingTaskLoopCondition(worklist,taskLoop);
 			if(derivedTasks.Batches.length === 0) {
 				for(let k = 0; k < taskLoop.Processes.length; k++){
-					//console.log("No found entries in worklist for: " + taskLoop.Processes[k].ProcessName);
 					allTasks.push(taskLoop.Processes[k].ProcessName);
 				}
 			}
 			else{
 				for(let k = 0; k < derivedTasks.Batches.length; k++){
-					//console.log("The following tasks were derived from the worklist: " + derivedTasks.Batches[k].Tasks[0].Task);
 					allTasks.push(derivedTasks.Batches[k].Tasks[0].Task);
-					/**
-					for(let m = 0; m < derivedTasks.Batches[k].Tasks.length; m++){
-						console.log(derivedTasks.Batches[k].Tasks[m].Task);
-						allTasks.push(derivedTasks.Batches[k].Tasks[m].Task);
-					}
-					**/
 				}
 			}
 		}
 		else{
-			//console.log("The taskloop " + taskLoop.TableLoopName + " is not worklist driven");
 			allTasks.push(taskLoop.TableLoopName);
 		}
 
@@ -524,6 +555,8 @@ const generateQueryString = async (worklist, connection) => {
 
 exports.generateQueryString = generateQueryString;
 
+**/
+
 async function lookupProcessSteps(methodCode, context, connection){
 	let usesCytomat = "NULL";
 	let usesDecapper = "NULL";
@@ -593,7 +626,7 @@ async function getExpectedRuntimeOfStep(methodCode, stepName){
 	return expectedRunTime;
 }
 
-function scanWorklistForTaskSatisfyingTaskLoopCondition(worklist, taskLoop){
+async function scanWorklistForTaskSatisfyingTaskLoopCondition(worklist, taskLoop){
 	let groupOfBatches = {
 		Batches: []
 	};
@@ -605,6 +638,7 @@ function scanWorklistForTaskSatisfyingTaskLoopCondition(worklist, taskLoop){
 	let currentBatchOfTasks = {
 			Tasks: []
 		};
+
 	if(controlString === "ForEach"){
 		let batchSize = parseInt(tokens[0]);
 		let uniqueQualifier = tokens[1];
@@ -651,10 +685,10 @@ function scanWorklistForTaskSatisfyingTaskLoopCondition(worklist, taskLoop){
 							}
 							if(notUnique === false){
 								currentBatchOfTasks.Tasks.push(worklist.Tasks[i]);
-								console.log("added plate to batch");
+								//console.log("added plate to batch");
 								plateCounter++;
 								if(plateCounter == batchSize){
-									console.log("Batch full, creating new batch");
+									//console.log("Batch full, creating new batch");
 									groupOfBatches.Batches.push(currentBatchOfTasks);
 									currentBatchOfTasks = {
 										Tasks: []
@@ -741,4 +775,49 @@ function scanWorklistForTaskSatisfyingTaskLoopCondition(worklist, taskLoop){
 	return groupOfBatches;
 }
 
-
+async function checkThatWorklistSatisfiesCondition(worklist, controlString){
+	let controlStringToken = controlString.substr(0, controlString.indexOf('(')); 
+	let conditionString = controlString.substr(controlString.indexOf('(') + 1, (controlString.length - (controlString.indexOf('(') + 2)));
+	let conditionTokens = conditionString.split('.');
+	
+	if(controlString === "Once()"){
+		return true;
+	}
+	if(controlStringToken === "If"){
+		let rowToken = conditionTokens[0];
+		let colToken = conditionTokens[1];
+		let methodName = conditionTokens[2];
+		let methodParam = conditionTokens[3];
+		for(let i = 0; i < worklist.Tasks.length; i++){
+			if(worklist.Tasks[i].Task === rowToken){
+				let cellValue = worklist.Tasks[i][colToken];
+				if(!cellValue) 
+					continue;
+				else{
+					if(methodName === "Contains"){
+						if(cellValue.includes(methodParam))
+							return true;
+						else
+							return false;
+					}
+					else if(methodName == "DoesntContain"){
+						if(!cellValue.includes(methodParam))
+							return true;
+						else
+							return false;
+						
+					}
+					else if(methodName === "Equals"){
+						if(cellValue == methodParam)
+							return true;
+						else
+							return false;
+					}
+				}
+			}
+		}
+		return true;
+	}
+	else
+		return false;
+}
