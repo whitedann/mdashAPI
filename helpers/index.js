@@ -197,7 +197,6 @@ const generateRunQueryString = async (worklist, connection) => {
 		if(lastProcessName === "End of Method")
 			break;
 
-		let taskAdded = false;
 		let derivedTasks;
 		let allTasks = [];
 
@@ -208,6 +207,8 @@ const generateRunQueryString = async (worklist, connection) => {
 				let listOfDestinationPlates = "";
 				let listOfDetails = "";
 				let batchSize = 0;
+
+				//Construct meta data tags for Source, Dest, Details (for the toolips etc)
 				for(let l = 0; l < derivedTasks.Batches[k].Tasks.length; l++){
 					batchSize++;
 					if(l == derivedTasks.Batches[k].Tasks.length -1){
@@ -236,9 +237,20 @@ const generateRunQueryString = async (worklist, connection) => {
 					else {
 						OKToAddTask = true;
 					}
+					let plateIndexInBatch = getPlateIndexFromControlString(taskLoop.Processes[m].ControlString);
+					if(plateIndexInBatch > derivedTasks.Batches[k].Tasks.length){
+						OKToAddTask = false;
+					}
 					if(OKToAddTask){
 						totalTime += parseFloat(taskLoop.Processes[m].ExpectedRuntime);
 						lastProcessName = taskLoop.Processes[m].ProcessName;
+						if(plateIndexInBatch !== -1){
+							if(derivedTasks.Batches[k].Tasks[plateIndexInBatch-1]){
+								listOfSourcePlates = derivedTasks.Batches[k].Tasks[plateIndexInBatch-1].SourcePlateBarcode;
+								listOfDestinationPlates = derivedTasks.Batches[k].Tasks[plateIndexInBatch-1].DestinationPlateBarcode;
+								listOfDetails = derivedTasks.Batches[k].Tasks[plateIndexInBatch-1].Details;
+							}
+						}
 						queryToReturn += "INSERT INTO RunProcess (" + 
 										"InstanceID, " +
 										"ProcessName, " + 
@@ -643,9 +655,11 @@ async function scanWorklistForTaskSatisfyingTaskLoopCondition(worklist, taskLoop
 		let batchSize = parseInt(tokens[0]);
 		let uniqueQualifier = tokens[1];
 		let columnIdentifier = tokens[2];
+		let staggeredQualifier = tokens[3];
 		let batchIndex = 0;
 		let plateCounter = 0;
 		let uniqueness = (uniqueQualifier === "Unique" ? true : false);
+		let staggered = (staggeredQualifier === "Staggered" ? true : false);
 		for(let i = 0; i < worklist.Tasks.length; i++){
 			for(let property in worklist.Tasks[i]){
 				if(Object.prototype.hasOwnProperty.call(worklist.Tasks[i], property)){
@@ -712,11 +726,41 @@ async function scanWorklistForTaskSatisfyingTaskLoopCondition(worklist, taskLoop
 				plateCounter = 0;
 				batchIndex++;
 		}
+		//Finally, if staggered, reorganize the groupings to be staggered
+		if(staggered){
+			//Deconstruct groupings
+			let allTasks = [];
+			for(let batchIndex = 0; batchIndex < groupOfBatches.Batches.length; batchIndex++){
+				let currentBatch = groupOfBatches.Batches[batchIndex];
+				for(let taskIndex = 0; taskIndex < batchSize; taskIndex++){
+					allTasks.push(currentBatch.Tasks[taskIndex]);
+				}
+			}
+			let staggeredGroupOfBatches = {
+				Batches: []
+			};
+			for(let offsetIndex = 0; offsetIndex < allTasks.length; offsetIndex++){
+				let newBatch = {
+					Tasks: []
+				}
+				let firstTask = allTasks[offsetIndex];
+				let secondTask = allTasks[offsetIndex+1];
+				if(firstTask)
+					newBatch.Tasks.push(firstTask);
+				if(secondTask)
+					newBatch.Tasks.push(secondTask);
+				if(newBatch.Tasks.length > 0)
+					staggeredGroupOfBatches.Batches.push(newBatch);
+			}
+			groupOfBatches = staggeredGroupOfBatches;
+		}
 	}
 	else if(controlString === "If"){
+
 		let columnIdentifier = tokens[0];
 		let methodName = tokens[1];
 		let methodParameter = tokens[2];
+
 		if(methodName === "Exists"){
 			//Check that this row exists
 			for(let i = 0; i < worklist.Tasks.length; i++){
@@ -772,6 +816,17 @@ async function scanWorklistForTaskSatisfyingTaskLoopCondition(worklist, taskLoop
 			}
 		}
 	}
+	else if(controlString === "Once"){
+		for(let i = 0; i < worklist.Tasks.length; i++){
+			if(worklist.Tasks[i].Task === taskLoop.TableLoopName){
+				let newBatch = {
+					Tasks: []
+				};
+				newBatch.Tasks.push(worklist.Tasks[i]);
+				groupOfBatches.Batches.push(newBatch);
+			}
+		}
+	}
 	return groupOfBatches;
 }
 
@@ -780,7 +835,7 @@ async function checkThatWorklistSatisfiesCondition(worklist, controlString){
 	let conditionString = controlString.substr(controlString.indexOf('(') + 1, (controlString.length - (controlString.indexOf('(') + 2)));
 	let conditionTokens = conditionString.split('.');
 	
-	if(controlString === "Once()"){
+	if(controlString.includes("Once(")){
 		return true;
 	}
 	if(controlStringToken === "If"){
@@ -820,4 +875,14 @@ async function checkThatWorklistSatisfiesCondition(worklist, controlString){
 	}
 	else
 		return false;
+}
+
+function getPlateIndexFromControlString(controlString){
+	let control = controlString.substr(0,controlString.indexOf('('));
+	if(control === "Once"){
+		let innerToken = controlString.substr((controlString.indexOf('('), controlString.indexOf(')') - 1));
+		return parseInt(innerToken);
+	}
+	else 
+		return -1;
 }
