@@ -697,6 +697,35 @@ app.get("/api/getFutureReservations", async function(req, res, next) {
 	}
 });
 
+app.get("/api/getReservationBarcodes", async function(req, res, next) {
+
+	requestCount++;
+	let dateString = req.query.year + "-" + req.query.month + "-" + req.query.day + " 00:00:00.000";
+	let query = "SELECT " + 
+			"MethodReservations.Date, " +
+			"MethodReservations.SystemID, " +
+			"MethodReservations.MethodReservationID, " +
+			"Lookup_ArrayMethods.MethodName, " +
+			"MethodReservationsPlateBarcodes.PlateBarcode, " +
+			"AppSuiteUsers.UserName, " +
+			"Worklists.WorklistID " +
+			"FROM MethodReservations " +
+				"INNER JOIN MethodReservationsPlateBarcodes ON MethodReservationsPlateBarcodes.MethodReservationID = MethodReservations.MethodReservationID " +
+				"INNER JOIN AppSuiteUsers ON AppSuiteUsers.UserID = MethodReservations.UserID " +
+				"INNER JOIN Lookup_ArrayMethods ON Lookup_ArrayMethods.MethodID = MethodReservations.MethodID " +
+				"INNER JOIN Worklists ON Worklists.MethodReservationID = MethodReservations.MethodReservationID " +
+			"WHERE MethodReservations.Date > DATEADD(HOUR, -96, \'" + dateString + "\')";
+	try{
+		const request = new sql.Request(nyscfPool);
+		const result = await request.query(query);
+		res.status(200).send(result.recordset);
+	}
+	catch(err){
+		console.log(err + "\n**Error with getReservationBarcodes route");
+	}
+
+});
+
 /**TEST ROUTES FOR CALENDAR SCHEDULING BEGIN**/
 app.get("/api/getAllNYSCFMethods", async function(req, res, next) {
 	requestCount++;

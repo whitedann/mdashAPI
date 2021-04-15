@@ -12,20 +12,18 @@ const generateSchedule = async (worklist, connection) => {
 	let context = worklist.RuntimeContext;
 	if(!context){
 		context = {
-			UsesCytomat: 0,
-			UsesDecapper: 0,
-			UsesVSpin: 0,
-			UsesEasyCode: 0,
+			UsesCytomat: 1,
+			UsesDecapper: 1,
+			UsesVSpin: 1,
+			UsesEasyCode: 1,
 			IncubationTime: 0,
 			SpinTime: 0
 		}
 	}
 
-
 	let methodCode = await lookupMethodCode(worklist.MethodID, worklist.SystemNumber, connection);
 	let processSteps = await lookupProcessSteps(methodCode, context, connection);
 	let arrayOfTaskLoops = [];
-
 
 	if(processSteps.length === 0) { return 0; }
 
@@ -40,8 +38,6 @@ const generateSchedule = async (worklist, connection) => {
 			let newTask = {
 				ProcessName: step.ProcessName,
 				ProcessID: step.ProcessID,
-				IsTracked: step.IsTracked,
-				NTRUsage: step.NTRUsage,
 				Usage1000UL: step.Usage1000UL,
 				Usage300UL: step.Usage300UL
 			}
@@ -86,7 +82,6 @@ const generateSchedule = async (worklist, connection) => {
 		}
 	}
 	return totalTime;
-
 }
 
 exports.generateSchedule = generateSchedule;
@@ -200,7 +195,7 @@ const generateRunQueryString = async (worklist, connection) => {
 		let derivedTasks;
 		let allTasks = [];
 
-		if(taskLoop.LoopControlString !== "Once()"){
+		if(taskLoop.TableLoopName !== "None"){
 			derivedTasks = await scanWorklistForTaskSatisfyingTaskLoopCondition(worklist,taskLoop);
 			for(let k = 0; k < derivedTasks.Batches.length; k++){
 				let listOfSourcePlates = "";
