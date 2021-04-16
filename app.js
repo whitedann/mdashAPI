@@ -598,6 +598,19 @@ app.post("/api/editMethod", jsonParser, async function(req, res) {
 									" AND UsesDecapper = " + (req.body.RuntimeContext.UsesDecapper === true ? 1 : 0) + 
 									" AND UsesEasyCode = " + (req.body.RuntimeContext.UsesEasyCode === true ? 1 : 0) +
 									" AND UsesVSpin = " + (req.body.RuntimeContext.UsesVSpin === true ? 1 : 0) + "; ";
+
+	let savingAsDefault = req.body.SavingAsDefault;
+	let runType = "None";
+	if(req.body.SavingAsDefault === true)
+		runType = "Default";
+	else
+		runType = "Non-Default";
+
+	if(savingAsDefault){
+		query += "UPDATE MethodProcesses Set RunType = \'Non-default\' WHERE MethodCode = \'" + req.body.MethodCode + "\'; ";
+	}
+
+
 	let steps = req.body.data;
 	steps.forEach( step => { 
 		query += "INSERT INTO MethodProcesses " + 
@@ -607,6 +620,7 @@ app.post("/api/editMethod", jsonParser, async function(req, res) {
 					"TableLoopPosition, " + 
 					"TableProcessPosition, " +
 					"MethodCode, " + 
+					"RunType, " +
 					"IsTracked, " +
 					"NTRUsage, " +
 					"Usage1000UL, " +
@@ -624,6 +638,7 @@ app.post("/api/editMethod", jsonParser, async function(req, res) {
 					step.TaskOrder + ", " + 
 					step.ProcessOrder + ", " + 
 					"\'" + req.body.MethodCode + "\', " + 
+					"\'" + runType + "\', " +
 					step.IsTracked  + ", " + 
 					step.NTRUsage + ", " +
 					step.Usage1000uL + ", " +
@@ -754,11 +769,11 @@ app.get("/api/getAllDashboardMethods", async function(req, res, next) {
 	}
 });
 
-app.get("/api/generateExpectedRuntimeOfMethodCode", async function(req, res, next) {
+app.get("/api/getExpectedRuntimeOfMethodCode", jsonParser, async function(req, res, next) {
 	requestCount++;
 	let query = "SELECT EntryID, DATEDIFF(second, RunInstance.CreatedAt, RunInstance.LastUpdated) AS ElapsedTime " +
 			"FROM RunInstance WHERE " +
-				"MethodCode = \'" + req.query.methodID + "\' AND " +
+				"MethodCode = \'" + req.body.MethodCode + "\' AND " +
 				"SimulationOn = 0 AND StatusOfRun = \'Finished\'";
 	try{
 		const request = new sql.Request(dashboardPool);

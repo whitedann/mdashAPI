@@ -12,16 +12,21 @@ const generateSchedule = async (worklist, connection) => {
 	let context = worklist.RuntimeContext;
 	if(!context){
 		context = {
-			UsesCytomat: 1,
-			UsesDecapper: 1,
-			UsesVSpin: 1,
-			UsesEasyCode: 1,
+			UsesCytomat: -1,
+			UsesDecapper: -1,
+			UsesVSpin: -1,
+			UsesEasyCode: -1,
 			IncubationTime: 0,
 			SpinTime: 0
 		}
 	}
 
-	let methodCode = await lookupMethodCode(worklist.MethodID, worklist.SystemNumber, connection);
+	let methodCode = worklist.MethodCode;
+	if(!methodCode){
+		methodCode = "No Method Code";
+	}
+	console.log("Generating schedule for methodCode " + methodCode + " on System " + worklist.SystemNumber);
+	//let methodCode = await lookupMethodCode(worklist.MethodID, worklist.SystemNumber, connection);
 	let processSteps = await lookupProcessSteps(methodCode, context, connection);
 	let arrayOfTaskLoops = [];
 
@@ -569,21 +574,25 @@ async function lookupProcessSteps(methodCode, context, connection){
 	let usesDecapper = "NULL";
 	let usesEasyCode = "NULL";
 	let usesVSpin = "NULL";
-	if(!context) { console.log("No context provided! Please update driver on system serving " + methodCode); }
+	let query = "";
+	if(context.UsesCytomat === -1 || context.UsesDecapper === -1 || context.UsesVSpin === -1 || context.UsesEasyCode === -1) { 
+		console.log("No context provided! Assuming default runtime settings " + methodCode); 
+		query = "SELECT * FROM MethodProcesses WHERE MethodCode = \'" + methodCode + "\' AND RunType = \'Default\'";		
+	}
 	else{
-		usesCytomat = (context.UsesCytomat === 1 ? 1 : (context.UsesCytomat === 0 ? 0 : 1));
-		usesDecapper = (context.UsesDecapper === 1 ? 1 : (context.UsesDecapper === 0 ? 0 : 1));
-		usesVSpin = (context.UsesVSpin === 1 ? 1 : (context.UsesVSpin === 0 ? 0 : 1));
-		usesEasyCode = (context.UsesEasyCode === 1 ? 1 : (context.UsesEasyCode === 0 ? 0 : 1));
+		usesCytomat = (context.UsesCytomat === 1 ? " = 1" : (context.UsesCytomat === 0 ? " = 0" : " = 0"));
+		usesDecapper = (context.UsesDecapper === 1 ? " = 1" : (context.UsesDecapper === 0 ? " = 0" : " = 0"));
+		usesVSpin = (context.UsesVSpin === 1 ? " = 1" : (context.UsesVSpin === 0 ? " = 0" : " = 0"));
+		usesEasyCode = (context.UsesEasyCode === 1 ? " = 1" : (context.UsesEasyCode === 0 ? " = 0" : " = 0"));
+
+		query = "SELECT * FROM MethodProcesses WHERE MethodCode = \'" + methodCode + "\'" + 
+				"AND UsesCytomat " + usesCytomat + " " + 
+				"AND UsesDecapper " + usesDecapper + " " +
+				"AND UsesVSpin " + usesVSpin + " " +
+				"AND UsesEasyCode " + usesEasyCode + ";";
 	}
 	
-	let query = "SELECT * FROM MethodProcesses WHERE MethodCode = \'" + methodCode + "\'" + 
-			"AND UsesCytomat = " + usesCytomat + " " + 
-			"AND UsesDecapper = " + usesDecapper + " " +
-			"AND UsesVSpin = " + usesVSpin + " " +
-			"AND UsesEasyCode = " + usesEasyCode + " " + 
-			"AND RunType = \'Default\';";
-
+	
 	try{
 		let request = new sql.Request(connection);
 		const result = await request.query(query);
