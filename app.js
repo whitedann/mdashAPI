@@ -48,7 +48,8 @@ var nyscfDBConfig = {
 	user: "sa",
 	password: "Suite450",
 	server: "52.44.45.242",
-	database: "NYSCF_Dev"
+	database: "NYSCF",
+	requestTimeout: 30000
 };
 
 var lablimsDBConfig = {
@@ -58,16 +59,27 @@ var lablimsDBConfig = {
 	database: "LabLIMS_Dev"
 }
 
-const nyscfPool = new sql.ConnectionPool(nyscfDBConfig);
+/**
+var newDBConfig = {
+	user: "dwhite",
+	password: "Pwner450!",
+	server: "52.44.45.242",
+	database: "NYSCF"
+}
+**/
+
+//const nyscfPool = new sql.ConnectionPool(nyscfDBConfig);
 const dashboardPool = new sql.ConnectionPool(dbConfig);
 const lablimsPool = new sql.ConnectionPool(lablimsDBConfig);
+const newDB = new sql.ConnectionPool(nyscfDBConfig);
 
-nyscfPool.connect();
+//nyscfPool.connect();
 dashboardPool.connect();
 lablimsPool.connect();
+newDB.connect();
 
 let emitTimer = new EmitTimer(async function(){
-	let recordSet = await nyscfUtils.getNewSocketData(dashboardPool);
+	let recordSet = await nyscfUtils.getNewSocketData(newDB);
 	if(socketIo){
 		emitTimer.resetTimer();
 		console.log(new Date(Date.now()) + ": Update time timed out, emitting new data on all socket connections.");
@@ -87,55 +99,13 @@ app.get('/api/info', (req, res) => {
 
 var jsonParser = bodyParser.json();
 
-/** DEPRECATED 
-app.post('/api/submitWorklist', jsonParser, async function(req, res, next) {
-		requestCount++;
-		let query = await nyscfUtils.generateQueryString(req.body, dashboardPool);
-		let startTime = new Date().getTime();
-
-		if(query === ""){
-			console.log("Could not find process steps related to the submitted worklist");
-			return;
-		}
-
-		try {
-			let request = new sql.Request(dashboardPool);
-			const submissionID = await request.query(query);
-			//parsing of submissionID is due to the way the SQL query returns json object. 
-			//(a single element array with empty string key)
-			res.locals.RunID = submissionID.recordset[0][""];
-			console.log("Generated RunID is: " + res.locals.RunID); 
-			let endTime = new Date().getTime();
-			console.log( "Total time required for query: " + (endTime - startTime) / 1000 );
-			res.status(200).json({"RunID" : res.locals.RunID});
-		}
-		catch(err){
-			console.log(err + "\nError with submitWorklist route");
-		}
-		next();
-	}, async function(req, res) {
-		try {
-			let request = new sql.Request(dashboardPool);
-			let worklistInsertionQuery = "INSERT INTO Worklists (WorkListID, RunID, log) " +
-							"VALUES (" + 
-								"\'" + req.body.WorklistID + 
-								"\', \'" + res.locals.RunID + 
-								"\', \'" + JSON.stringify(req.body, null, 2) + 
-								"\')";
-			const submissionResponse = await request.query(worklistInsertionQuery);
-			res.status(200).send();
-		}
-		catch(err){
-			console.log(err + "\nError with submitWorklist route (2nd part where the worklist is saved)");
-		}
-});
-
-**/
-
 app.post('/api/submitWorklist', jsonParser, async function(req, res, next) {
 		requestCount++;
 		let startTime = new Date().getTime();
-		let query = await nyscfUtils.generateRunQueryString(req.body, dashboardPool);
+		let query = await nyscfUtils.generateRunQueryString(req.body, newDB);
+		let endTime = new Date().getTime();
+		startTime = new Date().getTime();
+		console.log("Time to generate transaction string: " + (endTime - startTime) / 1000 );
 		if(query === ""){
 			console.log("Could not find process steps related to submited worklist");
 			res.status(200).json({"RunID" : -9999});
@@ -143,24 +113,29 @@ app.post('/api/submitWorklist', jsonParser, async function(req, res, next) {
 		}
 
 		try {
-			let request = new sql.Request(dashboardPool);
+			let request = new sql.Request(newDB);
 			const submissionID = await request.query(query);
 			//parsing of submissionID is due to the way the SQL query returns json object. 
 			//(a single element array with empty string key)
 			res.locals.RunID = submissionID.recordset[0][""];
 			console.log("Generated RunID is: " + res.locals.RunID); 
-			let endTime = new Date().getTime();
+			endTime = new Date().getTime();
 			console.log( "Total time required for query: " + (endTime - startTime) / 1000 );
 			res.status(200).json({"RunID" : res.locals.RunID});
 		}
 		catch(err){
 			console.log(err + "\nError with submitWorklist route");
+			let ostream = fs.createWriteStream(`${__dirname}/public/FailedRunAdditions.txt`);
+			ostream.once('open', fd => {
+				ostream.write("\n" + new Date(Date.now()) + ": Failed to add run " + req.body.MethodName + " on " + req.body.SystemName);
+			});
+	
 		}
 		next();
 	}, async function(req, res) {
 		try {
-			let request = new sql.Request(dashboardPool);
-			let worklistInsertionQuery = "INSERT INTO Worklists (WorkListID, RunID, log) " +
+			let request = new sql.Request(newDB);
+			let worklistInsertionQuery = "INSERT INTO DashWorklists (WorkListID, RunID, log) " +
 							"VALUES (" + 
 								"\'" + req.body.WorklistID + 
 								"\', \'" + res.locals.RunID + 
@@ -193,8 +168,6 @@ app.post("/api/advanceRun", jsonParser,  async function(req, res) {
 	let cons1000 = req.body.Consumption1000uL !== undefined ? req.body.Consumption1000uL : 0;
 	let runtime = req.body.Runtime !== undefined ? req.body.Runtime : 0;
 
-	//console.log("Consumption and runtime inputs: " + consNTR + " " + cons300 + " " + cons1000 + " " + runtime);
-
 	//If a specific ProcID is given (ideal), then the run will advance to nearest step with corresponding process
 	//	so that the run can stay synced with dashboard.
 	if(true){
@@ -210,61 +183,59 @@ app.post("/api/advanceRun", jsonParser,  async function(req, res) {
 						"Consumption1000UL AS CONSUMPTION1000UL, " + 
 						"Consumption300UL AS CONSUMPTION300UL, " + 
 						"Runtime AS STEPRUNTIME " +
-			"FROM RunProcess WHERE RunProcess.IsComplete = 0 AND InstanceID = @DataID ORDER BY RunProcessID ASC) " +
+			"FROM DashRunProcess WHERE DashRunProcess.IsComplete = 0 AND InstanceID = @DataID ORDER BY RunProcessID ASC) " +
 
 			"UPDATE CTE SET COMP = 1, CONSUMPTIONNTR = \'" + consNTR + "\', CONSUMPTION1000UL = \'" + cons1000 + "\', CONSUMPTION300UL = \'" + cons300 + "\', STEPRUNTIME = " + runtime + "; " +
 
 			//Punch the start time of the next step.
-			"WITH CTE (STARTTIME) AS (SELECT TOP 1 StartedAt FROM RunProcess WHERE RunProcess.IsComplete = 0 AND InstanceID = @DataID ORDER BY RunProcessID ASC) " +
+			"WITH CTE (STARTTIME) AS (SELECT TOP 1 StartedAt FROM DashRunProcess WHERE DashRunProcess.IsComplete = 0 AND InstanceID = @DataID ORDER BY RunProcessID ASC) " +
 			"UPDATE CTE SET STARTTIME = getdate(); " +
-			"UPDATE RunInstance SET " +
-				"RunInstance.CurrentProcessID = RunProcess.RunProcessID, " +
-				"RunInstance.CurrentStep = RunProcess.ProcessName, " +
-				"RunInstance.CurrentPlate = RunProcess.SourceBarcode, " +
-				"RunInstance.LastUpdated = getdate(), " +
-				"RunInstance.IsActive = 1 " +
-				"FROM RunProcess " +
-					"INNER JOIN RunInstance ON RunInstance.EntryID = RunProcess.InstanceID " +
-				"WHERE RunProcess.InstanceID = @DataID " + 
-					"AND RunProcess.StartedAt IS NOT NULL " +
-					"AND RunProcess.isComplete = 0; " +
+			"UPDATE DashRunInstance SET " +
+				"DashRunInstance.CurrentProcessID = DashRunProcess.RunProcessID, " +
+				"DashRunInstance.CurrentStep = DashRunProcess.ProcessName, " +
+				"DashRunInstance.CurrentPlate = DashRunProcess.SourceBarcode, " +
+				"DashRunInstance.LastUpdated = getdate(), " +
+				"DashRunInstance.IsActive = 1 " +
+				"FROM DashRunProcess " +
+					"INNER JOIN DashRunInstance ON DashRunInstance.EntryID = DashRunProcess.InstanceID " +
+				"WHERE DashRunProcess.InstanceID = @DataID " + 
+					"AND DashRunProcess.StartedAt IS NOT NULL " +
+					"AND DashRunProcess.isComplete = 0; " +
 			"COMMIT";
 
 	}
 	else{
-		console.log("Process ID specified as ");	
-
 		query = "BEGIN TRANSACTION " +
 			"DECLARE @DataID int = " + req.body.RunID + "; " +
 
 			//Set the finished step IsComplete field to 1 (completed)
-			";WITH CTE AS (SELECT TOP 1 IsComplete AS COMP FROM RunProcess WHERE RunProcess.IsComplete = 0 AND InstanceID = @DataID ORDER BY RunProcessID ASC) " +
+			";WITH CTE AS (SELECT TOP 1 IsComplete AS COMP FROM DashRunProcess WHERE DashRunProcess.IsComplete = 0 AND InstanceID = @DataID ORDER BY RunProcessID ASC) " +
 			"UPDATE CTE SET COMP = 1; " +
 
 			//Punch the start time of the next step.
-			";WITH CTE (STARTTIME) AS (SELECT TOP 1 StartedAt FROM RunProcess WHERE RunProcess.IsComplete = 0 AND InstanceID = @DataID ORDER BY RunProcessID ASC) " +
+			";WITH CTE (STARTTIME) AS (SELECT TOP 1 StartedAt FROM DashRunProcess WHERE DashRunProcess.IsComplete = 0 AND InstanceID = @DataID ORDER BY RunProcessID ASC) " +
 			"UPDATE CTE SET STARTTIME = getdate(); " +
-			"UPDATE RunInstance SET " +
-				"RunInstance.CurrentProcessID = RunProcess.RunProcessID, " +
-				"RunInstance.CurrentStep = RunProcess.ProcessName, " +
-				"RunInstance.CurrentPlate = RunProcess.SourceBarcode, " +
-				"RunInstance.LastUpdated = getdate(), " +
-				"RunInstance.IsActive = 1 " +
-				"FROM RunProcess " +
-					"INNER JOIN RunInstance ON RunInstance.EntryID = RunProcess.InstanceID " +
-				"WHERE RunProcess.InstanceID = @DataID " + 
-					"AND RunProcess.StartedAt IS NOT NULL " +
-					"AND RunProcess.isComplete = 0; " +
+			"UPDATE DashRunInstance SET " +
+				"DashRunInstance.CurrentProcessID = DashRunProcess.RunProcessID, " +
+				"DashRunInstance.CurrentStep = DashRunProcess.ProcessName, " +
+				"DashRunInstance.CurrentPlate = DashRunProcess.SourceBarcode, " +
+				"DashRunInstance.LastUpdated = getdate(), " +
+				"DashRunInstance.IsActive = 1 " +
+				"FROM DashRunProcess " +
+					"INNER JOIN DashRunInstance ON DashRunInstance.EntryID = DashRunProcess.InstanceID " +
+				"WHERE DashRunProcess.InstanceID = @DataID " + 
+					"AND DashRunProcess.StartedAt IS NOT NULL " +
+					"AND DashRunProcess.IsComplete = 0; " +
 			"COMMIT";
 
 	}
 
 	try{
-		let request = new sql.Request(dashboardPool);
+		let request = new sql.Request(newDB);
 		const result = await request.query(query);
 		if(socketIo){
 			emitTimer.resetTimer();
-			let recordSet = await nyscfUtils.getNewSocketData(dashboardPool);
+			let recordSet = await nyscfUtils.getNewSocketData(newDB);
 			if(socketIo){
 				emitTimer.resetTimer();
 				console.log("Emitting Data");
@@ -282,18 +253,18 @@ app.post("/api/advanceRun", jsonParser,  async function(req, res) {
 app.post("/api/updateRun", jsonParser, async function(req, res) {
 	requestCount++;
 	let query = "BEGIN TRANSACTION " +
-		"UPDATE RunInstance SET " +
+		"UPDATE DashRunInstance SET " +
 			"StatusOfRun =\'" + req.body.Status + "\'" +
 		"WHERE EntryID = " + req.body.RunID + ";" +
 		"COMMIT";
 	try{
-		let request = new sql.Request(dashboardPool);
+		let request = new sql.Request(newDB);
 		const result = await request.query(query);
 	}
 	catch(err){
 		console.log(err + "\n**Error updaing run**");
 	}
-	let recordSet = await nyscfUtils.getNewSocketData(dashboardPool);
+	let recordSet = await nyscfUtils.getNewSocketData(newDB);
 		if(socketIo){
 			emitTimer.resetTimer();
 			console.log("A run status  was updated, emitting on socket");
@@ -313,7 +284,7 @@ app.post("/api/updateNTRCount", jsonParser, async function(req, res, next) {
 		return next(new Error());
 	}
 	let query = "BEGIN TRANSACTION " +
-			"UPDATE RunInstance SET " +
+			"UPDATE DashRunInstance SET " +
 				"NTRCount = " + req.body.CountNTR + ", " +
 				"NTRCapacity = " + req.body.CapacityNTR + ", " +
 				"COUNT1000UL = " + req.body.Count1000uL + ", " +
@@ -323,19 +294,24 @@ app.post("/api/updateNTRCount", jsonParser, async function(req, res, next) {
 			" WHERE EntryID = " + req.body.RunID + "; " +
       		    "COMMIT;";
 	try {
-		let request = new sql.Request(dashboardPool);
+		console.log("Updating tips counts to:");
+		console.log("NTR: " + req.body.CountNTR + "/" + req.body.CapacityNTR);
+		console.log("1000uL: " + req.body.Count1000uL + "/" + req.body.Capacity1000uL);
+		console.log("300uL: " + req.body.Count300uL + "/" + req.body.Capacity300uL);
+		let request = new sql.Request(newDB);
 		const result = await request.query(query);
-	}
-	catch(err){
-		console.log(err + "\n**Error updating tip count**");
-	}
-	let recordSet = await nyscfUtils.getNewSocketData(dashboardPool);
+		let recordSet = await nyscfUtils.getNewSocketData(newDB);
 		if(socketIo){
 			console.log("Tips change detected, emitting on socket");
 			emitTimer.resetTimer();
 			socketIo.sockets.emit('showrows', recordSet);
 		}
-	res.status(200).send();
+
+	}
+	catch(err){
+		console.log(err + "\n**Error updating tip count**");
+	}
+		res.status(200).send();
 });
 
 app.post("/api/deactivateRun", jsonParser, async function(req, res) {
@@ -343,21 +319,21 @@ app.post("/api/deactivateRun", jsonParser, async function(req, res) {
 	requestCount++;
 	let query = "BEGIN TRANSACTION " +
 			"DECLARE @DataID int = " + req.body.RunID + "; " +
-			";WITH CTE AS (SELECT TOP 1 IsComplete AS COMP FROM RunProcess WHERE RunProcess.IsComplete = 0 AND InstanceID = @DataID ORDER BY RunProcessID ASC) " +
+			";WITH CTE AS (SELECT TOP 1 IsComplete AS COMP FROM DashRunProcess WHERE DashRunProcess.IsComplete = 0 AND InstanceID = @DataID ORDER BY RunProcessID ASC) " +
 			"UPDATE CTE SET COMP = 1; " +
-			"UPDATE RunInstance SET " +
+			"UPDATE DashRunInstance SET " +
 				"LastUpdated = CURRENT_TIMESTAMP, " +
 				"IsActive = 0 " +
 			"WHERE EntryID = " + req.body.RunID + ";" +
 		"COMMIT";
 	try{
-		let request = new sql.Request(dashboardPool);
+		let request = new sql.Request(newDB);
 		const result = await request.query(query);
 	}
 	catch(err){
 		console.log(err + "\n**Error deactivating run");
 	}
-	let recordSet = await nyscfUtils.getNewSocketData(dashboardPool);
+	let recordSet = await nyscfUtils.getNewSocketData(newDB);
 		if(socketIo){
 			console.log("A run was deactivated, emitting on socket");
 			emitTimer.resetTimer();
@@ -369,18 +345,18 @@ app.post("/api/deactivateRun", jsonParser, async function(req, res) {
 
 app.get("/api/generateruntimedata", (req, res, next) => {
 	requestCount++;
-	let query = "SELECT RunProcess.InstanceID, " +
-		              "RunInstance.MethodName, " +
-				"RunInstance.MethodCode, " +
-				"RunProcess.BatchSize, " +
-		              "DATEDIFF(second, RunProcess.StartedAt, LEAD(RunProcess.StartedAt) OVER (ORDER BY RunProcess.RunProcessID)) AS ElapsedTime, " +
-		              "RunProcess.ProcessName " +
-		       "FROM RunInstance " +
-		       "INNER JOIN RunProcess ON RunInstance.EntryID = RunProcess.InstanceID " +
-		       "WHERE RunInstance.isActive = 0 " +
-		       "AND RunInstance.CreatedAt > DATEADD(DAY, -190, GETDATE()) " +
-		       "AND RunInstance.StatusOfRun = \'Finished\' " +
-		       "AND RunInstance.SimulationOn = 0;";
+	let query = "SELECT DashRunProcess.InstanceID, " +
+		              "DashRunInstance.MethodName, " +
+				"DashRunInstance.MethodCode, " +
+				"DashRunProcess.BatchSize, " +
+		              "DATEDIFF(second, DashRunProcess.StartedAt, LEAD(DashRunProcess.StartedAt) OVER (ORDER BY DashRunProcess.RunProcessID)) AS ElapsedTime, " +
+		              "DashRunProcess.ProcessName " +
+		       "FROM DashRunInstance " +
+		       "INNER JOIN DashRunProcess ON DashRunInstance.EntryID = DashRunProcess.InstanceID " +
+		       "WHERE DashRunInstance.isActive = 0 " +
+		       "AND DashRunInstance.CreatedAt > DATEADD(DAY, -365, GETDATE()) " +
+		       "AND DashRunInstance.StatusOfRun = \'Finished\' " +
+		       "AND DashRunInstance.SimulationOn = 0;";
 
 	let cyclesLibrary = []; 
 	let statusCode = 503;
@@ -388,11 +364,10 @@ app.get("/api/generateruntimedata", (req, res, next) => {
 
 	const retrieveData = new Promise( (resolve, reject) => {
 
-		let request = new sql.Request(dashboardPool);
+		let request = new sql.Request(newDB);
 		// streaming as recommended at npmjs.com/package/mssql#promises 
 		request.stream = true;
 		request.query(query);
-
 
 		request.on('row', row => {
 				let runEntryID = row.InstanceID;
@@ -452,7 +427,7 @@ app.get("/api/generateruntimedata", (req, res, next) => {
 						else
 							median = (step.times[half - 1] + step.times[half]) / 2.0;
 						ostream.write(method.methodCode + "," + method.name + "," + median + "," + step.name + "," + step.times.length + "," + avg + "\n");
-						res.locals.stepsQuery += "UPDATE MethodProcesses SET ExpectedRuntime = " + parseInt(median) + 
+						res.locals.stepsQuery += "UPDATE DashMethodProcesses SET ExpectedRuntime = " + parseInt(median) + 
 										" WHERE ProcessName = \'" + step.name + "\'" + 
 										" AND MethodCode = \'" + method.methodCode + "\'; ";
 					});
@@ -463,11 +438,11 @@ app.get("/api/generateruntimedata", (req, res, next) => {
 			});
 		});
 	}).then( () => {
-		return new Promise((resolve, reject) => {
+		return new Promise( async (resolve, reject) => {
 			res.locals.stepsQuery += "COMMIT TRANSACTION GO";
-			let updateRequest = new sql.Request(dashboardPool);
+			let updateRequest = new sql.Request(newDB);
 			try {
-				const result = updateRequest.query(res.locals.stepsQuery);
+				const result = await updateRequest.query(res.locals.stepsQuery);
 				statusCode = 200;
 			}
 			catch(e){
@@ -477,7 +452,8 @@ app.get("/api/generateruntimedata", (req, res, next) => {
 		});
 	}).then( () => {
 		return new Promise((resolve, reject) => {
-			res.redirect(statusCode, '/');
+			console.log("Finished generating runtime data, redirecting user");
+			res.redirect(200, 'https://www.google.com');
 			resolve();
 		});
 	}).catch( () => {
@@ -489,14 +465,14 @@ app.get("/api/generateruntimedata", (req, res, next) => {
 app.get("/api/getAllData.json", function(req, res){
 
 	requestCount++;
-	let query = "SELECT RunProcess.InstanceID, RunInstance.MethodName, DATEDIFF(second, RunProcess.StartedAt, LEAD(RunProcess.StartedAt) OVER (ORDER BY RunProcess.RunProcessID)) AS ElapsedTime, RunProcess.ProcessName, RunInstance.SimulationOn, RunInstance.SystemID, RunProcess.TipCountWhenThisStepStarted " +
-		"FROM RunInstance INNER JOIN RunProcess ON RunInstance.EntryID = RunProcess.InstanceID " +
-		"WHERE RunInstance.isActive = 0 AND RunInstance.CreatedAt > DATEADD(DAY, -365, GETDATE()) AND RunInstance.StatusOfRun = \'Finished\'  AND RunInstance.SimulationOn = 0";
+	let query = "SELECT DashRunProcess.InstanceID, DashRunInstance.MethodName, DATEDIFF(second, DashRunProcess.StartedAt, LEAD(DashRunProcess.StartedAt) OVER (ORDER BY DashRunProcess.RunProcessID)) AS ElapsedTime, DashRunProcess.ProcessName, DashRunInstance.SimulationOn, DashRunInstance.SystemID, DashRunProcess.TipCountWhenThisStepStarted " +
+		"FROM DashRunInstance INNER JOIN DashRunProcess ON DashRunInstance.EntryID = DashRunProcess.InstanceID " +
+		"WHERE DashRunInstance.isActive = 0 AND DashRunInstance.CreatedAt > DATEADD(DAY, -365, GETDATE()) AND DashRunInstance.StatusOfRun = \'Finished\'  AND DashRunInstance.SimulationOn = 0";
 
 	let obs = [];
 
 	try {
-		let request = new sql.Request(dashboardPool);
+		let request = new sql.Request(newDB);
 		request.query(query, (err, rows) => {
 			if(err) console.log(err);
 			rows.recordset.forEach( row => {
@@ -519,14 +495,14 @@ app.get("/api/getAllData.json", function(req, res){
 	res.status(200).send();	
 });
 
-
+//updated
 app.get("/api/getMethodTemplates.json", function(req, res){
 
 	requestCount++;
-	let query = "SELECT * FROM MethodProcesses";
+	let query = "SELECT * FROM DashMethodProcesses;";
 	let methods = [];
 	try{
-		let request = new sql.Request(dashboardPool);
+		let request = new sql.Request(newDB);
 		request.query(query, (err, rows) => {
 			if(err) console.log(err);
 			rows.recordset.forEach( row => {
@@ -593,7 +569,7 @@ app.post("/api/editMethod", jsonParser, async function(req, res) {
 
 	requestCount++;
 	let query = "BEGIN TRANSACTION " +
-		"DELETE FROM MethodProcesses WHERE MethodType = \'" + req.body.MethodType + "\' AND MethodCode = \'" + req.body.MethodCode + "\'" +
+		"DELETE FROM DashMethodProcesses WHERE MethodType = \'" + req.body.MethodType + "\' AND MethodCode = \'" + req.body.MethodCode + "\'" +
 									" AND UsesCytomat = " + (req.body.RuntimeContext.UsesCytomat === true ? 1 : 0) + 
 									" AND UsesDecapper = " + (req.body.RuntimeContext.UsesDecapper === true ? 1 : 0) + 
 									" AND UsesEasyCode = " + (req.body.RuntimeContext.UsesEasyCode === true ? 1 : 0) +
@@ -607,13 +583,13 @@ app.post("/api/editMethod", jsonParser, async function(req, res) {
 		runType = "Non-Default";
 
 	if(savingAsDefault){
-		query += "UPDATE MethodProcesses Set RunType = \'Non-default\' WHERE MethodCode = \'" + req.body.MethodCode + "\'; ";
+		query += "UPDATE DashMethodProcesses Set RunType = \'Non-default\' WHERE MethodCode = \'" + req.body.MethodCode + "\'; ";
 	}
 
 
 	let steps = req.body.data;
 	steps.forEach( step => { 
-		query += "INSERT INTO MethodProcesses " + 
+		query += "INSERT INTO DashMethodProcesses " + 
 					"(MethodType, " + 
 					"ProcessName, " + 
 					"TableLoopName, " + 
@@ -654,7 +630,7 @@ app.post("/api/editMethod", jsonParser, async function(req, res) {
 	query += "COMMIT";
 
 	try {
-		let request = new sql.Request(dashboardPool);
+		let request = new sql.Request(newDB);
 		const result = await request.query(query);
 		res.status(200).send();
 	}
@@ -668,18 +644,19 @@ app.get("/api/getRunEntries", async function(req, res) {
 	requestCount++;
 	let dateString = req.query.year + "-" + req.query.month + "-" + req.query.day + " 00:00:00.000";
 	let query = "SELECT " + 
-				"RunInstance.EntryID, RunInstance.MethodName, RunInstance.CreatedAt, RunInstance.LastUpdated, " +
-				"RunInstance.SystemID, RunInstance.StatusOfRun, RunProcess.SourceBarcode, RunInstance.ExpectedRuntime, " + 
-				"RunProcess.ProcessDetails, RunProcess.IsComplete, RunProcess.DestinationBarcode, RunInstance.SimulationOn " + 
-				"FROM RunInstance " +
-				"INNER JOIN RunProcess ON RunProcess.InstanceID = RunInstance.EntryID " +
-				"WHERE RunInstance.CreatedAt > DATEADD(HOUR, -96, \'" + dateString + 
-					"\') AND RunInstance.CreatedAt < DATEADD(HOUR, 96, \'" + dateString + "\')"; 
+				"DashRunInstance.EntryID, DashRunInstance.MethodName, DashRunInstance.CreatedAt, DashRunInstance.LastUpdated, " +
+				"DashRunInstance.SystemID, DashRunInstance.StatusOfRun, DashRunProcess.SourceBarcode, DashRunInstance.ExpectedRuntime, " + 
+				"DashRunProcess.ProcessDetails, DashRunProcess.IsComplete, DashRunProcess.DestinationBarcode, DashRunInstance.SimulationOn " + 
+				"FROM DashRunInstance " +
+				"INNER JOIN DashRunProcess ON DashRunProcess.InstanceID = DashRunInstance.EntryID " +
+				"WHERE DashRunInstance.CreatedAt > DATEADD(HOUR, -96, \'" + dateString + 
+					"\') AND DashRunInstance.CreatedAt < DATEADD(HOUR, 96, \'" + dateString + "\')"; 
 	//				" AND RunInstance.SimulationOn = 0;"
 
 	try {
-		const request = new sql.Request(dashboardPool);
+		const request = new sql.Request(newDB);
 		const result = await request.query(query);
+		console.log("getRunEntriesResult: " + result);
 		res.status(200).send(result.recordset);
 	}
 	catch(err){
@@ -731,7 +708,7 @@ app.get("/api/getReservationBarcodes", async function(req, res, next) {
 				"INNER JOIN Worklists ON Worklists.MethodReservationID = MethodReservations.MethodReservationID " +
 			"WHERE MethodReservations.Date > DATEADD(HOUR, -96, \'" + dateString + "\')";
 	try{
-		const request = new sql.Request(nyscfPool);
+		const request = new sql.Request(newDB);
 		const result = await request.query(query);
 		res.status(200).send(result.recordset);
 	}
@@ -746,7 +723,7 @@ app.get("/api/getAllNYSCFMethods", async function(req, res, next) {
 	requestCount++;
 	let query = "SELECT MethodID, MethodName FROM Lookup_ArrayMethods;"
 	try{
-		const request = new sql.Request(nyscfPool);
+		const request = new sql.Request(newDB);
 		const result = await request.query(query);
 		res.status(200).send(result.recordset);
 	}
@@ -758,9 +735,9 @@ app.get("/api/getAllNYSCFMethods", async function(req, res, next) {
 app.get("/api/getAllDashboardMethods", async function(req, res, next) {
 	requestCount++;
 	let query = "SELECT DISTINCT MethodCode, SystemNumber, NYSCFMethodID " +
-			"FROM MethodProcesses "
+			"FROM DashMethodProcesses;"
 	try {
-		const request = new sql.Request(dashboardPool);
+		const request = new sql.Request(newDB);
 		const result = await request.query(query);
 		res.status(200).send(result.recordset);
 	}
@@ -771,12 +748,12 @@ app.get("/api/getAllDashboardMethods", async function(req, res, next) {
 
 app.get("/api/getExpectedRuntimeOfMethodCode", jsonParser, async function(req, res, next) {
 	requestCount++;
-	let query = "SELECT EntryID, DATEDIFF(second, RunInstance.CreatedAt, RunInstance.LastUpdated) AS ElapsedTime " +
-			"FROM RunInstance WHERE " +
+	let query = "SELECT EntryID, DATEDIFF(second, DashRunInstance.CreatedAt, DashRunInstance.LastUpdated) AS ElapsedTime " +
+			"FROM DashRunInstance WHERE " +
 				"MethodCode = \'" + req.body.MethodCode + "\' AND " +
 				"SimulationOn = 0 AND StatusOfRun = \'Finished\'";
 	try{
-		const request = new sql.Request(dashboardPool);
+		const request = new sql.Request(newDB);
 		const result = await request.query(query);
 		let sum = 0;
 		let count = 0;
@@ -796,7 +773,7 @@ app.get("/api/getExpectedRuntimeOfMethodCode", jsonParser, async function(req, r
 
 app.post("/api/getExpectedRuntimeFromWorklist", jsonParser, async function(req, res, next){
 	requestCount++;
-	let predictedTime = await nyscfUtils.generateSchedule(req.body, dashboardPool);
+	let predictedTime = await nyscfUtils.generateSchedule(req.body, newDB);
 	console.log("Request for runtime of MethodID: " + req.body.MethodID + " on System " + req.body.SystemNumber + " is " + predictedTime + " seconds.");
 	res.json(predictedTime);
 });
@@ -805,9 +782,9 @@ app.get("/api/getWorklistFromWorklistID", async function(req, res, next){
 	let worklistID = req.query.worklistID;
 	console.log("request for worklist ID: " + worklistID);
 	requestCount++;
-	const query = "SELECT log FROM Worklists WHERE RunID = \'" + req.query.worklistID + "\';";
+	const query = "SELECT log FROM DashWorklists WHERE RunID = \'" + req.query.worklistID + "\';";
 	try{
-		const request = new sql.Request(dashboardPool);
+		const request = new sql.Request(newDB);
 		const result = await request.query(query);
 		res.status(200).send(result.recordset);
 	}
@@ -826,7 +803,7 @@ socketIo.use(function(socket, next){
 socketIo.on("connection", async function(socket){
 
 	console.log("User has connected");
-	let recordSet = await nyscfUtils.getNewSocketData(dashboardPool);
+	let recordSet = await nyscfUtils.getNewSocketData(newDB);
 	if(socketIo){
 		emitTimer.resetTimer();
 		console.log("Emitting Data");

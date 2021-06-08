@@ -168,13 +168,16 @@ const generateRunQueryString = async (worklist, connection) => {
 		}
 	}
 
+	let insertCount = 0;
+	insertCount++;
 	let queryToReturn = "DECLARE @newID INT " +
 				"BEGIN TRANSACTION " +
-					"INSERT INTO RunInstance (MethodName, MethodCode, SystemName, SystemID, StatusOfRun, IsActive, SimulationOn, " +
+					"INSERT INTO DashRunInstance (MethodName, MethodCode, CreatedAt, SystemName, SystemID, StatusOfRun, IsActive, SimulationOn, " +
 									"UsingCytomat, UsingVSpin, UsingDecapper, UsingEasyCode, IncubationTime, VSpinTime, WorklistID) " +
 					"VALUES (" +
 						"\'" + worklist.MethodName + "\', " +
 						"\'" + worklist.MethodCode + "\', " +
+						"getdate(), " +
 						"\'" + worklist.SystemName + "\', " +
 						worklist.SystemNumber + ", " +
 						"\'Running\', " +
@@ -188,6 +191,25 @@ const generateRunQueryString = async (worklist, connection) => {
 						vSpinTime + ", " +
 						worklist.WorklistID + ") " +
 					"SET @newID = SCOPE_IDENTITY(); ";
+
+	queryToReturn += "INSERT INTO DashRunProcess (" + 
+						"InstanceID, " +
+						"ProcessName, " + 
+						"ProcessDetails, " +
+						"CreatedAt, " +
+						"SourceBarcode, " + 
+						"DestinationBarcode, " +
+						"BatchSize, " +
+						"IsTracked, " + 
+						"Consumption1000UL, " +
+						"Consumption300UL, " +
+						"ConsumptionNTR, " +
+						"RequiredNTRTips, " + 
+						"Required1000ULTips, " + 
+						"Required300ULTips, " +
+						"IsComplete) " +
+						"VALUES ";
+
 
 	let totalTime = 0;
 	let lastProcessName = "";
@@ -251,28 +273,42 @@ const generateRunQueryString = async (worklist, connection) => {
 								listOfDetails = derivedTasks.Batches[k].Tasks[plateIndexInBatch-1].Details;
 							}
 						}
-						queryToReturn += "INSERT INTO RunProcess (" + 
+						insertCount++;
+						queryToReturn += 
+							/**	
+							"INSERT INTO DashRunProcess (" + 
 										"InstanceID, " +
 										"ProcessName, " + 
-										"ProcessDetails, " + 
+										"ProcessDetails, " +
+										"CreatedAt, " +
 										"SourceBarcode, " + 
 										"DestinationBarcode, " +
 										"BatchSize, " +
 										"IsTracked, " + 
+										"Consumption1000UL, " +
+										"Consumption300UL, " +
+										"ConsumptionNTR, " +
 										"RequiredNTRTips, " + 
 										"Required1000ULTips, " + 
-										"Required300ULTips) " +
+										"Required300ULTips, " +
+										"IsComplete) " +
 									  "VALUES (" + 
-										"@newID, " +
+							**/
+										"(@newID, " +
 										"\'" + taskLoop.Processes[m].ProcessName + "\', " +
 										"\'" + listOfDetails + "\', " +
+										" getdate(), " +
 										"\'" + listOfSourcePlates + "\', " +
 										"\'" + listOfDestinationPlates + "\', " +
 										batchSize + ", " +
 										"\'" + (taskLoop.Processes[m].IsTracked === true ? "1" : "0") + "\', " +
+										"\'0\', " +
+										"\'0\', " +
+										"\'0\', " +
 										"\'" + taskLoop.Processes[m].NTRUsage + "\', " +
 										"\'" + taskLoop.Processes[m].Usage1000UL + "\', " +
-										"\'" + taskLoop.Processes[m].Usage300UL + "\'); ";
+										"\'" + taskLoop.Processes[m].Usage300UL + "\', " +
+										"\'0\'), ";
 					}
 				}
 			}
@@ -295,279 +331,60 @@ const generateRunQueryString = async (worklist, connection) => {
 				}
 				if(OKToAddTask){
 					totalTime += parseFloat(taskLoop.Processes[m].ExpectedRuntime);
-					queryToReturn += "INSERT INTO RunProcess (" + 
+					insertCount++;
+					queryToReturn += 
+						/**
+						"INSERT INTO DashRunProcess (" + 
 										"InstanceID, " +
 										"ProcessName, " + 
 										"ProcessDetails, " + 
+										"CreatedAt, " +
 										"SourceBarcode, " + 
 										"DestinationBarcode, " + 
 										"IsTracked, " + 
+										"Consumption1000UL, " +
+										"Consumption300UL, " +
+										"ConsumptionNTR, " +
 										"RequiredNTRTips, " + 
 										"Required1000ULTips, " + 
-										"Required300ULTips) " +
+										"Required300ULTips, " +
+										"IsComplete) " +
 									  "VALUES (" + 
-										"@newID, " +
+									  **/
+										"(@newID, " +
 										"\'" + taskLoop.Processes[m].ProcessName + "\', " +
 										"\'No Details\', " +
+										"getdate(), " +
 										"\'No Source Plate\', " +
 										"\'No Destination Plate\', " +
+										"\'0\', " +
 										"\'" + (taskLoop.Processes[m].IsTracked === true ? "1" : "0") + "\', " +
+										"\'0\', " +
+										"\'0\', " +
+										"\'0\', " +
 										"\'" + taskLoop.Processes[m].NTRUsage + "\', " +
 										"\'" + taskLoop.Processes[m].Usage1000UL + "\', " +
-										"\'" + taskLoop.Processes[m].Usage300UL + "\'); ";
+										"\'" + taskLoop.Processes[m].Usage300UL + "\', " +
+										"\'0\'), ";
 
 					lastProcessName = taskLoop.Processes[m].ProcessName;
 				}
 			}
 		}
 	}
-	
-	queryToReturn += "COMMIT TRANSACTION SELECT @newID;";
 
-	return queryToReturn;
+	let finalQuery = queryToReturn.substring(0, queryToReturn.length - 2);
+	finalQuery += "; ";
+
+	finalQuery += "COMMIT TRANSACTION SELECT @newID;";
+	console.log("Number of inserts in this transaction: " + insertCount);
+
+	return finalQuery;
 
 }
 
 
 exports.generateRunQueryString = generateRunQueryString;
-
-/**
-
-const generateQueryString = async (worklist, connection) => {
-	let processSteps = await lookupProcessSteps(worklist.MethodCode, worklist.RuntimeContext, connection);
-
-	if(processSteps.length === 0 || !processSteps) { 
-		console.log("Could not find steps associated with this worklist!");
-		return ""; 
-	}
-
-	let usesCytomat = "NULL";
-	let usesDecapper = "NULL";
-	let usesEasyCode = "NULL";
-	let usesVSpin = "NULL";
-	let incubationTime = 0;
-	let vSpinTime = 0;
-	if(!worklist.RuntimeContext) { 
-		console.log("No context provided! Please update driver on system serving " + worklist.MethodCode); 
-	}
-	else{
-		usesCytomat = (worklist.RuntimeContext.UsesCytomat === true ? 1 : (worklist.RuntimeContext.UsesCytomat === false ? 0 : "NULL"));
-		usesDecapper = (worklist.RuntimeContext.UsesDecapper === true ? 1 : (worklist.RuntimeContext.UsesDecapper === false ? 0 : "NULL"));
-		usesVSpin = (worklist.RuntimeContext.UsesVSpin === true ? 1 : (worklist.RuntimeContext.UsesVSpin === false ? 0 : "NULL"));
-		usesEasyCode = (worklist.RuntimeContext.UsesEasyCode === true ? 1 : (worklist.RuntimeContext.UsesEasyCode === false ? 0 : "NULL"));
-		incubationTime = worklist.RuntimeContext.IncubationTime;
-		vSpinTime = worklist.RuntimeContext.SpinTime;
-	}
-
-	console.log("Uses Cytomat: " + usesCytomat);
-	console.log("Uses Decapper: " + usesDecapper);
-	console.log("Uses VSpin: " + usesVSpin);
-	console.log("Uses EasyCode: " + usesEasyCode);
-	console.log("Incubation Time: " + incubationTime);
-	console.log("VSpin Time: " + vSpinTime);
-
-	let arrayOfTaskLoops = [];
-
-	processSteps.forEach( step => {
-
-		let tableLoopPosition = step.TableLoopPosition;
-		let tableLoopName = step.TableLoopName;
-		
-		let found = arrayOfTaskLoops.find( task => tableLoopPosition === task.TableLoopPosition && tableLoopName === task.TableLoopName );
-		if(found){
-			let newTask = {
-				ProcessName: step.ProcessName,
-				ProcessID: step.ProcessID,
-				IsTracked: step.IsTracked,
-				NTRUsage: step.NTRUsage,
-				Usage1000UL: step.Usage1000UL,
-				Usage300UL: step.Usage300UL,
-				ExpectedRuntime: step.ExpectedRuntime
-			}
-			found.Processes.push(newTask);
-		}
-		else {
-			let newTaskLoop = {                              	
-                        	TableLoopPosition: tableLoopPosition,
-                        	TableLoopName: tableLoopName,
-				LoopControlString: step.ControlString,
-				Processes: []
-                        }
-			let newTask = {
-				ProcessName: step.ProcessName,
-				ProcessID: step.ProcessID,
-                                IsTracked: step.IsTracked,
-                                NTRUsage: step.NTRUsage,
-                                Usage1000UL: step.Usage1000UL,
-                                Usage300UL: step.Usage300UL,
-				ExpectedRuntime: step.ExpectedRuntime
-			}
-			newTaskLoop.Processes.push(newTask)
-                        arrayOfTaskLoops.push(newTaskLoop);
-		}
-	});
-
-	let query = "DECLARE @newID INT " + 
-			"BEGIN TRANSACTION " + 
-				"INSERT INTO RunInstance (MethodName, MethodCode, SystemName, SystemID, StatusOfRun, IsActive, SimulationOn, " + 
-								"UsingCytomat, UsingVSpin, UsingDecapper, UsingEasyCode, IncubationTime, VSpinTime, WorklistID) " + 
-				"VALUES (" + 
-					"\'" + worklist.MethodName + "\', " +
-					"\'" + worklist.MethodCode + "\', " +
-					"\'" + worklist.SystemName + "\', " +
-					worklist.SystemNumber + ", " + 
-					"\'Running\', " +
-					"1, " +
-					worklist.SimulationOn + ", " + 
-					usesCytomat + ", " +
-					usesVSpin + ", " +
-					usesDecapper + ", " +
-					usesEasyCode + ", " +
-					incubationTime + ", " +
-					vSpinTime + ", " +
-					worklist.WorklistID + ") " + 
-				"SET @newID = SCOPE_IDENTITY(); ";
-
-	let _testQuery = "DECLARE @newID INT " +
-				"BEGIN TRANSACTION " +
-					"INSERT INTO RunInstance (MethodName, MethodCode, SystemName, SystemID, StatusOfRun, IsActive, SimulationOn, " +
-									"UsingCytomat, UsingVSpin, UsingDecapper, UsingEasyCode, IncubationTime, VSpinTime, WorklistID) " +
-					"VALUES (" +
-						"\'" + worklist.MethodName + "\', " +
-						"\'" + worklist.MethodCode + "\', " +
-						"\'" + worklist.SystemName + "\', " +
-						worklist.SystemNumber + ", " +
-						"\'Running\', " +
-						"1, " +
-						worklist.SimulationOn + ", " +
-						usesCytomat + ", " +
-						usesVSpin + ", " + 
-						usesDecapper + ", " + 
-						usesEasyCode + ", " +
-						incubationTime + ", " +
-						vSpinTime + ", " +
-						worklist.WorklistID + ") " +
-					"SET @newID = SCOPE_IDENTITY(); ";
-
-	let totalTime = 0;
-
-	arrayOfTaskLoops.forEach(  (taskLoop) => {
-
-		let taskAdded = false;
-		let derivedTasks;
-		let allTasks = [];
-		
-		if(taskLoop.LoopControlString !== "Once()"){
-			derivedTasks = scanWorklistForTaskSatisfyingTaskLoopCondition(worklist,taskLoop);
-			if(derivedTasks.Batches.length === 0) {
-				for(let k = 0; k < taskLoop.Processes.length; k++){
-					allTasks.push(taskLoop.Processes[k].ProcessName);
-				}
-			}
-			else{
-				for(let k = 0; k < derivedTasks.Batches.length; k++){
-					allTasks.push(derivedTasks.Batches[k].Tasks[0].Task);
-				}
-			}
-		}
-		else{
-			allTasks.push(taskLoop.TableLoopName);
-		}
-
-		allTasks.forEach( task => {
-			if(taskLoop.TableLoopName === task){
-				taskLoop.Processes.forEach( process => {
-					totalTime += parseFloat(process.ExpectedRuntime);
-					_testQuery += "INSERT INTO RunProcess (" + 
-								"InstanceID, " +
-								"ProcessName, " + 
-								"ProcessID, " +
-								"ProcessDetails, " + 
-								"SourceBarcode, " + 
-								"DestinationBarcode, " + 
-								"IsTracked, " + 
-								"RequiredNTRTips, " + 
-								"Required1000ULTips, " + 
-								"Required300ULTips) " +
-							  "VALUES (" + 
-								"@newID, " +
-								"\'" + process.ProcessName + "\', " +
-								"\'" + process.ProcessID + "\', " +
-								"\'" + task.Details + "\', " +
-								"\'" + task.SourcePlateBarcode + "\', " +
-								"\'" + task.DestinationPlateBarcode + "\', " +
-								"\'" + (process.IsTracked === true ? "1" : "0") + "\', " +
-								"\'" + process.NTRUsage + "\', " +
-								"\'" + process.Usage1000UL + "\', " +
-								"\'" + process.Usage300UL + "\') " 
-				});
-			}
-		});
-
-
-		worklist.Tasks.forEach(  (task) => {
-			if(taskLoop.TableLoopName === task.Task){
-				taskLoop.Processes.forEach( (process) => { 
-					totalTime += parseFloat(process.ExpectedRuntime);
-					query += "INSERT INTO RunProcess (" + 
-							"InstanceID, " +
-							"ProcessName, " + 
-							"ProcessDetails, " + 
-							"SourceBarcode, " + 
-							"DestinationBarcode, " + 
-							"IsTracked, " + 
-							"RequiredNTRTips, " + 
-							"Required1000ULTips, " + 
-							"Required300ULTips) " +
-						  "VALUES (" + 
-							"@newID, " +
-							"\'" + process.ProcessName + "\', " +
-							"\'" + task.Details + "\', " +
-							"\'" + task.SourcePlateBarcode + "\', " +
-							"\'" + task.DestinationPlateBarcode + "\', " +
-							"\'" + (process.IsTracked === true ? "1" : "0") + "\', " +
-							"\'" + process.NTRUsage + "\', " +
-							"\'" + process.Usage1000UL + "\', " +
-							"\'" + process.Usage300UL + "\') " 
-				});
-				taskAdded = true;
-			}
-		});
-		if(!taskAdded){
-			totalTime += parseFloat(taskLoop.Processes[0].ExpectedRuntime);
-			query += "INSERT INTO RunProcess (" + 
-					"InstanceID, " +
-                        		"ProcessName, " + 
-                        		"ProcessDetails, " + 
-                        		"SourceBarcode, " + 
-                        		"DestinationBarcode, " + 
-                        		"IsTracked, " + 
-                        		"RequiredNTRTips, " + 
-                        		"Required1000ULTips, " + 
-                        		"Required300ULTips) " +
-                        	  "VALUES (" + 
-					"@newID, " +
-                        		"\'" + taskLoop.Processes[0].ProcessName + "\', " +
-                        		"\'" + "No Details" + "\', " +
-                        		"\'" + "No Source Plate" + "\', " +
-                        		"\'" + "No Destination Plate" + "\', " +
-                        		"\'" + (taskLoop.Processes[0].IsTracked === true ? "1" : "0") + "\', " +
-                        		"\'" + taskLoop.Processes[0].NTRUsage + "\', " +
-                        		"\'" + taskLoop.Processes[0].Usage1000UL + "\', " +
-                        		"\'" + taskLoop.Processes[0].Usage300UL + "\'); " 
-		}
-	});
-
-	query += "UPDATE RunInstance Set ExpectedRuntime = " + totalTime + " WHERE EntryID = @newID; ";
-
-	query += "COMMIT TRANSACTION SELECT @newID;";
-
-	return query;
-}
-
-exports.generateQueryString = generateQueryString;
-
-**/
 
 async function lookupProcessSteps(methodCode, context, connection){
 	let usesCytomat = "NULL";
@@ -577,7 +394,7 @@ async function lookupProcessSteps(methodCode, context, connection){
 	let query = "";
 	if(context.UsesCytomat === -1 || context.UsesDecapper === -1 || context.UsesVSpin === -1 || context.UsesEasyCode === -1) { 
 		console.log("No context provided! Assuming default runtime settings " + methodCode); 
-		query = "SELECT * FROM MethodProcesses WHERE MethodCode = \'" + methodCode + "\' AND RunType = \'Default\'";		
+		query = "SELECT * FROM DashMethodProcesses WHERE MethodCode = \'" + methodCode + "\' AND RunType = \'Default\'";		
 	}
 	else{
 		usesCytomat = (context.UsesCytomat === 1 ? " = 1" : (context.UsesCytomat === 0 ? " = 0" : " = 0"));
@@ -585,13 +402,12 @@ async function lookupProcessSteps(methodCode, context, connection){
 		usesVSpin = (context.UsesVSpin === 1 ? " = 1" : (context.UsesVSpin === 0 ? " = 0" : " = 0"));
 		usesEasyCode = (context.UsesEasyCode === 1 ? " = 1" : (context.UsesEasyCode === 0 ? " = 0" : " = 0"));
 
-		query = "SELECT * FROM MethodProcesses WHERE MethodCode = \'" + methodCode + "\'" + 
+		query = "SELECT * FROM DashMethodProcesses WHERE MethodCode = \'" + methodCode + "\'" + 
 				"AND UsesCytomat " + usesCytomat + " " + 
 				"AND UsesDecapper " + usesDecapper + " " +
 				"AND UsesVSpin " + usesVSpin + " " +
 				"AND UsesEasyCode " + usesEasyCode + ";";
 	}
-	
 	
 	try{
 		let request = new sql.Request(connection);
@@ -606,7 +422,7 @@ async function lookupProcessSteps(methodCode, context, connection){
 }
 
 async function lookupMethodCode(methodID, systemNumber, connection){
-	let query = "SELECT MethodCode FROM MethodProcesses WHERE NYSCFMethodID = " + methodID + " AND SystemNumber = " + systemNumber;
+	let query = "SELECT MethodCode FROM DashMethodProcesses WHERE NYSCFMethodID = " + methodID + " AND SystemNumber = " + systemNumber;
 	let request = new sql.Request(connection);
 	const result = await request.query(query);
 	return result.recordset[0].MethodCode;
@@ -614,13 +430,17 @@ async function lookupMethodCode(methodID, systemNumber, connection){
 
 async function getNewSocketData(dbConnection) {
 
-	let query = "Select RunInstance.*, RunProcess.* FROM RunInstance " +
-			"INNER JOIN RunProcess ON RunProcess.InstanceID = RunInstance.EntryID " +
-			"WHERE RunInstance.CreatedAt > DATEADD(HOUR, -24, GETDATE());";
-
-	let request = new sql.Request(dbConnection);
-	const result = await request.query(query);
-	return result.recordset;
+	let query = "Select DashRunInstance.*, DashRunProcess.* FROM DashRunInstance " +
+			"INNER JOIN DashRunProcess ON DashRunProcess.InstanceID = DashRunInstance.EntryID " +
+			"WHERE DashRunInstance.CreatedAt > DATEADD(HOUR, -24, GETDATE());";
+	try{
+		let request = new sql.Request(dbConnection);
+		const result = await request.query(query);
+		return result.recordset;
+	}
+	catch(err){
+		console.log("Query for current run data failed with err + \n" + err);
+	}
 }
 
 exports.getNewSocketData = getNewSocketData;

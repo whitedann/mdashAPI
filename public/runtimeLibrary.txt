@@ -1,477 +1,409 @@
-*****NEW DATA GENERATED AT Mon Mar 22 2021 19:13:22 GMT+0000 (Coordinated Universal Time)*****
-NYSCF052.2,Passage_1T15,93,Initialization,11,112.54545454545455
-NYSCF052.2,Passage_1T15,113,Add Media to Intermediate Plate,11,117.45454545454545
-NYSCF052.2,Passage_1T15,2267,Geltrex Preprocess of Daughter Plates,11,2084.090909090909
-NYSCF052.2,Passage_1T15,26,Refill Media Trough,11,84.81818181818181
-NYSCF052.2,Passage_1T15,196,Get Motherplate From Cytomat,11,259.54545454545456
-NYSCF052.2,Passage_1T15,80,Transfer Volume to MYST Plate,11,96.54545454545455
-NYSCF052.2,Passage_1T15,125,Add Accutase to Dissociate Cells,11,136
-NYSCF052.2,Passage_1T15,1388,Incubate Plate,11,1402.5454545454545
-NYSCF052.2,Passage_1T15,600,Neutralize Accutase & Transfer to Intermediate Plate,11,565.6363636363636
-NYSCF052.2,Passage_1T15,790,Centrifuge Intermediate Plate,9,1079.111111111111
-NYSCF052.2,Passage_1T15,5327,Passage Cells to Daughter Plate,9,5124.444444444444
-NYSCF052.2,Passage_1T15,169,Get Source Plate From Cytomat,2,169
-NYSCF052.2,Passage_1T15,697,Sending Intermediate Plate To Centrifuge,2,697
-NYSCF052.2,Passage_1T15,133,Intermediate Plate Media Remove,2,133
-NYSCF052.2,Passage_1T15,273,Intermediate Plate Media Add,2,273
-NYSCF052.2,Passage_1T15,75,Aliquot Dead Total Plate,2,75
-NYSCF052.2,Passage_1T15,169.5,Send Dead Total To Cytomat,2,169.5
-NYSCF052.2,Passage_1T15,441.5,Aliquot Set Of Daughter Plates,6,444.3333333333333
-NYSCF052.2,Passage_1T15,1114.5,Send Set Of Daughter Plates To Cytomat,6,1064
-NYSCF082,Media Exchange (96-Well),163,Get Plate From Cytomat,299,156.14715719063545
-NYSCF082,Media Exchange (96-Well),44,Aspirate Old Media,201,101.65671641791045
-NYSCF082,Media Exchange (96-Well),85,Dispense New Media,199,96.678391959799
-NYSCF082,Media Exchange (96-Well),146.5,Return Last Plate to Cytomat,68,133.5
-NYSCF082,Media Exchange (96-Well),172,Send Last Plate to Cytomat,1,172
-NYSCF082,Media Exchange (96-Well),40,Place Plates On Deck,9,97.55555555555556
-NYSCF082,Media Exchange (96-Well),16,Remove Plates From Deck,9,21.22222222222222
-NYSCF082,Media Exchange (96-Well),85,Dispense Old Media,13,75.23076923076923
-NYSCF082,Media Exchange (96-Well),83,Media Exchange,90,115.81111111111112
-NYSCF080,Media Exchange (96-Well),227,Get Plate From Cytomat,2295,263.27581699346405
-NYSCF080,Media Exchange (96-Well),45,Aspirate Old Media,1867,53.55382967327263
-NYSCF080,Media Exchange (96-Well),113,Dispense New Media,888,127.53265765765765
-NYSCF080,Media Exchange (96-Well),170,Send Last Plate to Cytomat,84,209.11904761904762
-NYSCF080,Media Exchange (96-Well),116,Dispense Old Media,1030,127.63883495145632
-NYSCF080,Media Exchange (96-Well),171.5,Return Last Plate to Cytomat,172,214.05232558139534
-NYSCF080,Media Exchange (96-Well),161.5,Place Plates on Deck,22,177.86363636363637
-NYSCF080,Media Exchange (96-Well),42,Remove Plates From Deck,22,67.0909090909091
-NYSCF080,Media Exchange (96-Well),171,Media Exchange,547,176.20292504570384
-NYSCF027,12/24-Well Media Exchange,226,Bring Plate to Deck,159,281.9496855345912
-NYSCF027,12/24-Well Media Exchange,363,Media Exchange,341,385.2697947214076
-NYSCF027,12/24-Well Media Exchange,138,Send Last Plate To Cytomat,60,102.23333333333333
-NYSCF027,12/24-Well Media Exchange,72,Place Plates on Deck,10,81
-NYSCF027,12/24-Well Media Exchange,382.5,Remove Plates From Deck,10,368.9
-NYSCF027,12/24-Well Media Exchange,58.5,Place Plate Pair on Deck,40,213.125
-NYSCF027,12/24-Well Media Exchange,49.5,Remove Plate Pair From Deck,40,72.5
-NYSCF027,12/24-Well Media Exchange,184,Get Plate From Cytomat,110,219.6727272727273
-NYSCF027,12/24-Well Media Exchange,180.5,Return Last Plate To Cytomat,38,234.6315789473684
-NYSCF081,Media Exchange (96-Well),188,Get Plate From Cytomat,1209,232.8626964433416
-NYSCF081,Media Exchange (96-Well),46,Aspirate Old Media,1035,57.05990338164251
-NYSCF081,Media Exchange (96-Well),145,Dispense New Media,1080,153.53703703703704
-NYSCF081,Media Exchange (96-Well),133,Return Last Plate to Cytomat,61,171.1639344262295
-NYSCF081,Media Exchange (96-Well),179,Place Plates on Deck,21,155.23809523809524
-NYSCF081,Media Exchange (96-Well),52.5,Remove Plates From Deck,20,117
-NYSCF081,Media Exchange (96-Well),130,Return Last Plat to Cytomat,52,158.6346153846154
-NYSCF081,Media Exchange (96-Well),217,Media Exchange,268,244.53358208955223
-NYSCF081,Media Exchange (96-Well),134,Return Last Plate To Cytomat,20,146.1
-NYSCF053.2,Passage_1T5_3Col_CnC,84,Verify Plates On Deck,5,84.4
-NYSCF053.2,Passage_1T5_3Col_CnC,119,Add Media to Intermediate Plate,5,120.2
-NYSCF053.2,Passage_1T5_3Col_CnC,686,Geltrex Preprocess Daughter Plates,5,707.4
-NYSCF053.2,Passage_1T5_3Col_CnC,192,Get Source Plate From Cytomat,10,245.2
-NYSCF053.2,Passage_1T5_3Col_CnC,73,Transfer Volume to MYST Plate,5,72.6
-NYSCF053.2,Passage_1T5_3Col_CnC,126,Add Accutase to Source Plate,5,126.2
-NYSCF053.2,Passage_1T5_3Col_CnC,1374,Incubate Plate,5,1423.2
-NYSCF053.2,Passage_1T5_3Col_CnC,49,Add Media to Neutralize Accutase,3,49.333333333333336
-NYSCF053.2,Passage_1T5_3Col_CnC,162,Transfer to Intermediate Plate,3,162.33333333333334
-NYSCF053.2,Passage_1T5_3Col_CnC,740,Centrifuge Intermediate Plate,5,767.2
-NYSCF053.2,Passage_1T5_3Col_CnC,408,Intermediate Plate Media Removal and Addition,5,423.2
-NYSCF053.2,Passage_1T5_3Col_CnC,486,Aliquot Dead Total Plate,5,580
-NYSCF053.2,Passage_1T5_3Col_CnC,10,Aliquot Daughter Plate,25,34.16
-NYSCF053.2,Passage_1T5_3Col_CnC,166,Send Plates to Cytomat,15,187.93333333333334
-NYSCF053.2,Passage_1T5_3Col_CnC,214.5,Dissociate Source Plate,2,214.5
-NYSCF053.2,Passage_1T5_3Col_CnC,165.5,Mix And Transfer to Intermediate Plate,2,165.5
-NYSCF053.2,Passage_1T5_3Col_CnC,239.5,Stage Daughter Plates,2,239.5
-NYSCF053.2,Passage_1T5_3Col_CnC,242.5,Send Daughter Plate to Cytomat,10,308.8
-NYSCF030,Consolidation,88,Stage Counterbalance and Pre-fill Intermediate,5,76.8
-NYSCF030,Consolidation,234.5,Get Source Plate From Cytomat,42,261.0238095238095
-NYSCF030,Consolidation,123,Remove Old Media,42,182.45238095238096
-NYSCF030,Consolidation,62,Add Accutase,42,120.23809523809524
-NYSCF030,Consolidation,1319.5,Incubate Plate,42,964.0952380952381
-NYSCF030,Consolidation,207,Bring Plate to Deck,42,407.5952380952381
-NYSCF030,Consolidation,315.5,Transfer Source to Intermediate,42,330.5238095238095
-NYSCF030,Consolidation,205,Transfer Intermediate to Intermediate Deep Well Plate,41,296.7317073170732
-NYSCF030,Consolidation,161.5,Source Plate Remove, Intermediate to Waste,42,313.8809523809524
-NYSCF030,Consolidation,98.5,Perform Counterbalance Match Transfer,12,106.41666666666667
-NYSCF030,Consolidation,642,Transport Intermediate Deep Well Plate to Centrifuge,5,571
-NYSCF030,Consolidation,122.5,Get Destination Plate From Cytomat,12,181.41666666666666
-NYSCF030,Consolidation,91.5,Place Dead Total Plate,12,194.58333333333334
-NYSCF030,Consolidation,392,Transfer From Deep Well to Destination Plate ,5,398.2
-NYSCF030,Consolidation,391.5,Send Destination Plate to Cytomat,12,604.25
-NYSCF030,Consolidation,145,Send Dead Total Plate to Cytomat,12,137.58333333333334
-NYSCF030,Consolidation,42,Pre-fill Intermediate,7,94.57142857142857
-NYSCF030,Consolidation,209,Centrifuge Intermediate,7,234.42857142857142
-NYSCF030,Consolidation,98,Transfer From Deep Well Plate to Destination Plate,7,72.42857142857143
-NYSCF045,Media Exchange (96-Well),187,Get Plate From Cytomat,547,230.6672760511883
-NYSCF045,Media Exchange (96-Well),116,Dispense New Media,462,128.19480519480518
-NYSCF045,Media Exchange (96-Well),44,Aspirate Old Media,436,48.4105504587156
-NYSCF045,Media Exchange (96-Well),157,Return Last Plate to Cytomat,87,209.60919540229884
-NYSCF045,Media Exchange (96-Well),152,Media Exchange,88,192.88636363636363
-NYSCF045,Media Exchange (96-Well),40.5,Bring Plates To Deck,4,41.75
-NYSCF045,Media Exchange (96-Well),28,Remove Plates From Deck,4,63.75
-NYSCF054.1,Passage_IntraReplicate_CnC,66,Verify Plates On Deck,13,61.38461538461539
-NYSCF054.1,Passage_IntraReplicate_CnC,158,Add Media to Intermediate Plate,19,240.78947368421052
-NYSCF054.1,Passage_IntraReplicate_CnC,420,Geltrex Preprocess Daughter Plates,13,429.9230769230769
-NYSCF054.1,Passage_IntraReplicate_CnC,199,Get Motherplate From Cytomat,13,226.23076923076923
-NYSCF054.1,Passage_IntraReplicate_CnC,107,Remove Media From Source Plate,13,151.15384615384616
-NYSCF054.1,Passage_IntraReplicate_CnC,62,Add Accutase to Source Plate,13,338.7692307692308
-NYSCF054.1,Passage_IntraReplicate_CnC,1237,Incubate Plate,13,1232.923076923077
-NYSCF054.1,Passage_IntraReplicate_CnC,335,Get Source Plate From Cytomat,13,365.6923076923077
-NYSCF054.1,Passage_IntraReplicate_CnC,212,Neutralize Accutase and Transfer to Intermediate Plate,13,345.9230769230769
-NYSCF054.1,Passage_IntraReplicate_CnC,673,Centrifuge Intermediate Plate,13,686.8461538461538
-NYSCF054.1,Passage_IntraReplicate_CnC,133,Remove Supernatant From Intermediate Plate,13,154.23076923076923
-NYSCF054.1,Passage_IntraReplicate_CnC,274,Add Media to Supernatant Plate,7,292.42857142857144
-NYSCF054.1,Passage_IntraReplicate_CnC,262,Aliquot Dead Total Plate,13,316.9230769230769
-NYSCF054.1,Passage_IntraReplicate_CnC,29,Aliquot Daughter Plates,24,268.125
-NYSCF054.1,Passage_IntraReplicate_CnC,683,Send Daughter Plates To Cytomat,13,719.6153846153846
-NYSCF054.1,Passage_IntraReplicate_CnC,195,Send Source Plate To Cytomat,3,187.66666666666666
-NYSCF054.1,Passage_IntraReplicate_CnC,123,Stage Daughter Plates,3,123
-NYSCF054.1,Passage_IntraReplicate_CnC,353,Aliquot Daughter Plate Batch,3,353.3333333333333
-NYSCF082,Consolidation,76,Preload intermediate with media,1,76
-NYSCF082,Consolidation,159,Get source plate From Cytomat,2,159
-NYSCF082,Consolidation,401,Remove media and accutase rinse,2,401
-NYSCF082,Consolidation,2171,Incubate Plate,2,2171
-NYSCF082,Consolidation,438,Retrieve plate from cytomat and transfer to intermediate,2,438
-NYSCF082,Consolidation,300.5,Transfer from source intermediate to deep well intermediate,2,300.5
-NYSCF082,Consolidation,189,Prepare deck for the next source plate,2,189
-NYSCF082,Consolidation,78,Prepare counterbalance,1,78
-NYSCF082,Consolidation,658,Spin down intermediate plate,1,658
-NYSCF082,Consolidation,157,Get destination plate from cytomat,1,157
-NYSCF082,Consolidation,98,Place dead total plate onto the deck,1,98
-NYSCF082,Consolidation,467,Seeding dead total plate and final plate,1,467
-NYSCF082,Consolidation,152,Return final plate to cytomat,1,152
-NYSCF082,Consolidation,288,Send dead total plate to cytomat,1,288
-NYSCF014,12/24-Well Media Exchange,178,Get Plate From Cytomat,69,176.91304347826087
-NYSCF014,12/24-Well Media Exchange,339,Media Exchange,68,393.8235294117647
-NYSCF014,12/24-Well Media Exchange,143,Return Last Plate to Cytomat,25,147.96
-NYSCF014,12/24-Well Media Exchange,64,Place Plates On Deck,22,90.95454545454545
-NYSCF014,12/24-Well Media Exchange,651,Media Exchange Plate,22,639.0909090909091
-NYSCF014,12/24-Well Media Exchange,59,Remove Plates From Deck,22,79.5909090909091
-NYSCF038,Passage To Cryovial (Partial Passage),240,Verify Plates & Get Source Plate,90,287.03333333333336
-NYSCF038,Passage To Cryovial (Partial Passage),180,Source Plate Media Remove, Accutase Rinse and Addition,90,197.4
-NYSCF038,Passage To Cryovial (Partial Passage),1597.5,Incubate Plate,90,1691.0333333333333
-NYSCF038,Passage To Cryovial (Partial Passage),349,Dissociation & Transfer to Intermediate,90,344.23333333333335
-NYSCF038,Passage To Cryovial (Partial Passage),18,Centrifuge Intermediate Plate,90,61.51111111111111
-NYSCF038,Passage To Cryovial (Partial Passage),123,Place Matrix Rack and Synth-A-Freeze,90,166.32222222222222
-NYSCF038,Passage To Cryovial (Partial Passage),419,Retrieve Plate From Cytomat,90,558.2444444444444
-NYSCF038,Passage To Cryovial (Partial Passage),530,Add and Remove Media From Intermediate Plate,90,564.0222222222222
-NYSCF038,Passage To Cryovial (Partial Passage),206,Seed Dead Total Plate,90,219.86666666666667
-NYSCF038,Passage To Cryovial (Partial Passage),86,Transfer to Destination Rack,90,94.4
-NYSCF038,Passage To Cryovial (Partial Passage),368,Remove Matrix Rack,90,404.3666666666667
-NYSCF038,Passage To Cryovial (Partial Passage),163,Determine Tip Sequence and Stage Tips,84,164.20238095238096
-NYSCF031,Passage To Cryovial (Partial Passage),65.5,Verify Plates On Deck,34,147.47058823529412
-NYSCF031,Passage To Cryovial (Partial Passage),184,Source Plate Media Removal and Accutase Addition,34,185.58823529411765
-NYSCF031,Passage To Cryovial (Partial Passage),1410.5,Incubate Plate,34,1418.5
-NYSCF031,Passage To Cryovial (Partial Passage),333.5,Dissociate Cells and Transfer to Intermediate,34,338.4117647058824
-NYSCF031,Passage To Cryovial (Partial Passage),18.5,Centrifuge Intermediate Plate,34,105.08823529411765
-NYSCF031,Passage To Cryovial (Partial Passage),305.5,Determine Tip Sequence and Stage Tips,34,324.02941176470586
-NYSCF031,Passage To Cryovial (Partial Passage),250,Retrieve Plate From Centrifuge,34,274.3235294117647
-NYSCF031,Passage To Cryovial (Partial Passage),318,Decap Matrix Rack,29,378.17241379310343
-NYSCF031,Passage To Cryovial (Partial Passage),175,Remove Supernatant and Resuspend,33,171.75757575757575
-NYSCF031,Passage To Cryovial (Partial Passage),109,Seed Dead Total Plate,33,136
-NYSCF031,Passage To Cryovial (Partial Passage),414,Transfer to Destination Rack,33,379.4848484848485
-NYSCF012,Consolidation,73,Preload Deep Well Plate With Media,31,64.93548387096774
-NYSCF012,Consolidation,82.5,Get Source Plate From Cytomat,78,122.11538461538461
-NYSCF012,Consolidation,172,Source Plate Media Remove,73,181.75342465753425
-NYSCF012,Consolidation,149,Source Plate Accutase Rinse/Addition,73,236.87671232876713
-NYSCF012,Consolidation,1269,Incubate Plate,73,1252.3972602739725
-NYSCF012,Consolidation,158,Return Source Plate to Deck,73,299.4931506849315
-NYSCF012,Consolidation,358,Transfer Source to Intermediate Plate,73,330.013698630137
-NYSCF012,Consolidation,124,Transfer Intermediate to Intermediate Deep Well Plate,73,303.3150684931507
-NYSCF012,Consolidation,89,Source Plate Remove, Intermediate to Waste,73,139.21917808219177
-NYSCF012,Consolidation,83,Perform Counterbalance Match Transfer,31,149.29032258064515
-NYSCF012,Consolidation,654,Transport Intermediate Deep Well Plate to Centrifuge,31,654.4516129032259
-NYSCF012,Consolidation,127,Get Destination Plate From Cytomat,31,231.80645161290323
-NYSCF012,Consolidation,46,OPTIONAL: Change Media Prompt,31,77.80645161290323
-NYSCF012,Consolidation,315,Intermediate Plate Resuspension,31,304.5806451612903
-NYSCF012,Consolidation,115,Seed Dead Total Plate,31,169.51612903225808
-NYSCF012,Consolidation,35,Transfer From Deep Well to Destination Plate,31,45.25806451612903
-NYSCF012,Consolidation,28,Send Destination Plate to Cytomat,31,122.58064516129032
-NYSCF012,Consolidation,48,Send Dead Total Plate to Cytomat,31,104.06451612903226
-NYSCF018,Media Exchange (96-Well),221,Bring Plate to Deck,117,258.8888888888889
-NYSCF018,Media Exchange (96-Well),45,Aspirate Old Media,157,51.0828025477707
-NYSCF018,Media Exchange (96-Well),98,Dispense New Media,193,113.42487046632124
-NYSCF018,Media Exchange (96-Well),168,Send Last Plate to Cytomat,14,208
-NYSCF018,Media Exchange (96-Well),169.5,Bring Plates to Deck,12,217.58333333333334
-NYSCF018,Media Exchange (96-Well),45,Remove Plates From Deck,11,56
-NYSCF018,Media Exchange (96-Well),156,Retrieve Plate From Cytomat,143,153.6083916083916
-NYSCF018,Media Exchange (96-Well),103.5,Return Last Plate to Cytomat,30,129.7
-NYSCF018,Media Exchange (96-Well),96,Media Exchange,111,127.83783783783784
-NYSCF066,MediaExchange96W_CnC_InclOptionEB,791,Get Plate from Cytomat,1,791
-NYSCF066,MediaExchange96W_CnC_InclOptionEB,243,Aspirate Old Media,1,243
-NYSCF066,MediaExchange96W_CnC_InclOptionEB,146,Dispense New Media,1,146
-NYSCF066,MediaExchange96W_CnC_InclOptionEB,156,Return Plate to Cytomat,1,156
-NYSCF062,FreezeCompress_CnC,75,Initialize,2,75
-NYSCF062,FreezeCompress_CnC,714,Bring Motherplates to Deck,6,825.3333333333334
-NYSCF062,FreezeCompress_CnC,47.5,Remove Old Media,18,73.55555555555556
-NYSCF062,FreezeCompress_CnC,62,Add Accutase,8,62.375
-NYSCF062,FreezeCompress_CnC,230.5,Send Motherplate to Cytomat,4,245.5
-NYSCF062,FreezeCompress_CnC,288.5,Bring Motherplate to Deck,18,286.94444444444446
-NYSCF062,FreezeCompress_CnC,31,Add Media to Neutralize Accutase,8,31.125
-NYSCF062,FreezeCompress_CnC,155,Transfer Motherplate to Intermediate,8,157.625
-NYSCF062,FreezeCompress_CnC,827,Centrifuge Intermediate Plate,6,697.6666666666666
-NYSCF062,FreezeCompress_CnC,25,Remove Supernatant from,2,25
-NYSCF062,FreezeCompress_CnC,134,Add Synth-A-Freeze,6,173.66666666666666
-NYSCF062,FreezeCompress_CnC,407.5,Aliquot DAPI Plate,2,407.5
-NYSCF062,FreezeCompress_CnC,142.5,Place Matrix Rack,6,207.16666666666666
-NYSCF062,FreezeCompress_CnC,64.5,Transfer to Cryotubes,6,152.33333333333334
-NYSCF062,FreezeCompress_CnC,220,Cap Cryotubes,2,220
-NYSCF062,FreezeCompress_CnC,213,Incubate Plate,4,268.75
-NYSCF062,FreezeCompress_CnC,75,Initialization,4,75
-NYSCF062,FreezeCompress_CnC,125,Accutase Rinse and Add Accutase,10,126.9
-NYSCF062,FreezeCompress_CnC,183.5,Send Plate to Cytomat,10,229.1
-NYSCF062,FreezeCompress_CnC,47,Wait For First Plate to Finish Incubation,4,42.75
-NYSCF062,FreezeCompress_CnC,134,Quadrant Mixing,10,146.9
-NYSCF062,FreezeCompress_CnC,31,Neutralize Accutase,10,34.2
-NYSCF062,FreezeCompress_CnC,138,Transfer to Intermediate Plate,10,139.4
-NYSCF062,FreezeCompress_CnC,17,Discard Motherplate,10,49.8
-NYSCF062,FreezeCompress_CnC,85,Remove Supernatant From Intermediate,4,84.75
-NYSCF062,FreezeCompress_CnC,270,Aliquot Dead Total Cells,4,262
-NYSCF062,FreezeCompress_CnC,252,Decapping Matrix Rack (if automated),4,268.75
-NYSCF062,FreezeCompress_CnC,272,Cap Cryotubes And Freeze,4,280.75
-NYSCF032,Passage 1TX,72,Gathering Plates Onto The Deck...,29,79.89655172413794
-NYSCF032,Passage 1TX,36,Media Remove,29,47.55172413793103
-NYSCF032,Passage 1TX,67,Accutase Rinse,29,74.37931034482759
-NYSCF032,Passage 1TX,61,Media Add,29,62.6551724137931
-NYSCF032,Passage 1TX,1417,Incubate Plate,29,1544.2413793103449
-NYSCF032,Passage 1TX,28,Neutralize Accutase ,29,27.586206896551722
-NYSCF032,Passage 1TX,206,Quadrant Mixing,29,207.93103448275863
-NYSCF032,Passage 1TX,59,Transfer to Intermediate,29,58.3448275862069
-NYSCF032,Passage 1TX,33,Dispose Source Plate,29,54.10344827586207
-NYSCF032,Passage 1TX,671,Centrifuge Intermediate Plate,29,677.3448275862069
-NYSCF032,Passage 1TX,43,Remove Supernatant,29,44.172413793103445
-NYSCF032,Passage 1TX,60,Resuspend Pellets,29,65.48275862068965
-NYSCF032,Passage 1TX,115,Seed Dead Total Plate,29,168.9655172413793
-NYSCF032,Passage 1TX,663,Passage To Daughter Plates,29,720.7931034482758
-NYSCF051,Freeze_5TC_Staggered_CnC,74,Initialization,8,74.375
-NYSCF051,Freeze_5TC_Staggered_CnC,563,Begin Dissociation of Plate,30,563.9333333333333
-NYSCF051,Freeze_5TC_Staggered_CnC,525,Harvest Plate to Intermediate,25,528.32
-NYSCF051,Freeze_5TC_Staggered_CnC,793,Centrifuge Intermediate,5,763
-NYSCF051,Freeze_5TC_Staggered_CnC,212,Remove Media From Intermediate Plate,5,239.2
-NYSCF051,Freeze_5TC_Staggered_CnC,475,Add Synth-A-Freeze,7,457
-NYSCF051,Freeze_5TC_Staggered_CnC,983,Place Matrix Rack, Transfer to Cryovials,5,947.2
-NYSCF051,Freeze_5TC_Staggered_CnC,163,Get Source Plate From Cytomat,10,179.5
-NYSCF051,Freeze_5TC_Staggered_CnC,204.5,Accutase Rinse and Addition,10,221.7
-NYSCF051,Freeze_5TC_Staggered_CnC,201,Send Plate To Cytomat For Incubation,10,241.8
-NYSCF051,Freeze_5TC_Staggered_CnC,195,Return Source Plate To Deck,10,200.5
-NYSCF051,Freeze_5TC_Staggered_CnC,218,Dissociate Cells And Neutralize Accutase,10,235.5
-NYSCF051,Freeze_5TC_Staggered_CnC,150.5,Transfer To Intermediate Deep Well,10,152.8
-NYSCF051,Freeze_5TC_Staggered_CnC,1833,Send Intermediate Plate To VSpin,2,1833
-NYSCF051,Freeze_5TC_Staggered_CnC,90.5,Remove Media From Intermediate,2,90.5
-NYSCF051,Freeze_5TC_Staggered_CnC,240.5,Aliquot Dead Total Plate,2,240.5
-NYSCF051,Freeze_5TC_Staggered_CnC,26,Send Dead Total Plate To Cytomat,2,26
-NYSCF051,Freeze_5TC_Staggered_CnC,1825.5,Place Destination Matrix Rack,2,1825.5
-NYSCF051,Freeze_5TC_Staggered_CnC,149.5,Decap Matrix Rack,2,149.5
-NYSCF051,Freeze_5TC_Staggered_CnC,316,Transfer To Cryotubes,2,316
-NYSCF051,Freeze_5TC_Staggered_CnC,119,Recap Matrix Rack,2,119
-NYSCF051,Freeze_5TC_Staggered_CnC,10.5,Freeze Matrix Rack,2,10.5
-NYSCF050,FreezeCompress_CnC,74,Initialize,1,74
-NYSCF050,FreezeCompress_CnC,889.5,Bring Motherplates to Deck,4,868
-NYSCF050,FreezeCompress_CnC,106,Remove Old Media,7,84.57142857142857
-NYSCF050,FreezeCompress_CnC,62,Add Accutase,4,62
-NYSCF050,FreezeCompress_CnC,87,Send Motherplate to Cytomat,4,177.5
-NYSCF050,FreezeCompress_CnC,122,Bring Motherplate to Deck,7,105.71428571428571
-NYSCF050,FreezeCompress_CnC,181.5,Add Media to Neutralize Accutase,4,181.75
-NYSCF050,FreezeCompress_CnC,185.5,Transfer Motherplate to Intermediate,4,177.25
-NYSCF050,FreezeCompress_CnC,47,Centrifuge Intermediate Plate,4,203
-NYSCF050,FreezeCompress_CnC,46,Remove Supernatant,1,46
-NYSCF050,FreezeCompress_CnC,102,Add Synth-A-Freeze,1,102
-NYSCF050,FreezeCompress_CnC,247,Aliquot DAPI Plate,1,247
-NYSCF050,FreezeCompress_CnC,199,Place Matrix Rack,4,242.25
-NYSCF050,FreezeCompress_CnC,31.5,Transfer to Cryotubes,4,39.25
-NYSCF050,FreezeCompress_CnC,465,Cap Cryotubes,1,465
-NYSCF050,FreezeCompress_CnC,75,Initialization,3,74.66666666666667
-NYSCF050,FreezeCompress_CnC,123,Accutase Rinse and Add Accutase,3,123
-NYSCF050,FreezeCompress_CnC,186,Send Plate To Cytomat,3,224.66666666666666
-NYSCF050,FreezeCompress_CnC,46,Wait For First Plate to Finish Incubation,3,46.333333333333336
-NYSCF050,FreezeCompress_CnC,223,Quadrant Mixing,3,251
-NYSCF050,FreezeCompress_CnC,47,Neutralize Accutase,3,46.666666666666664
-NYSCF050,FreezeCompress_CnC,123,Transfer to Intermediate Plate,3,122.66666666666667
-NYSCF050,FreezeCompress_CnC,245,Discard Motherplate,3,234.33333333333334
-NYSCF050,FreezeCompress_CnC,123,Remove Supernatant From Intermediate,3,123
-NYSCF050,FreezeCompress_CnC,263,Add Synth-a-Freeze,3,264.3333333333333
-NYSCF050,FreezeCompress_CnC,22,Aliquot Dead Total Cells,3,53.333333333333336
-NYSCF050,FreezeCompress_CnC,137,Decapping Matrix Rack (if automated),3,137
-NYSCF050,FreezeCompress_CnC,137,Cap Cryotubes And Freeze,3,137.33333333333334
-NYSCF078,12/24-Well Media Exchange,169,Retrieve Plate From Cytomat,148,190.75675675675674
-NYSCF078,12/24-Well Media Exchange,300,Perform Media Exchange,148,264.4594594594595
-NYSCF078,12/24-Well Media Exchange,138,Return Last Plate to Cytomat,84,133.9047619047619
-NYSCF039,EB Passage,173.5,Get Source Plate,10,231.7
-NYSCF039,EB Passage,74,Remove Media From Source Plate,10,158.9
-NYSCF039,EB Passage,257.5,Accutase Rinse & Accutase Addition,10,247.5
-NYSCF039,EB Passage,1387,Incubate Plate,10,1159.4
-NYSCF039,EB Passage,41,Mix To Dissociate Cells,10,72.3
-NYSCF039,EB Passage,33.5,Add Media to Neutralize Accutase,10,114.6
-NYSCF039,EB Passage,205.5,Transfer To Intermediate,10,217.2
-NYSCF039,EB Passage,811.5,Centrifuge Intermediate,10,781.7
-NYSCF039,EB Passage,291,Remove Media From Intermediate,9,259.1111111111111
-NYSCF039,EB Passage,27.5,Add Media to Intermediate,8,41.125
-NYSCF039,EB Passage,97,Resuspend Pellet,8,111.625
-NYSCF039,EB Passage,249.5,Create DAPI Plate,8,254.75
-NYSCF039,EB Passage,178,Stamp EB Plate,8,198
-NYSCF039,EB Passage,183.5,Send Plate Back to Cytomat,8,188.125
-NYSCF025.1,Transfection,731.5,Transfection Main,12,800.9166666666666
-NYSCF079,Media Exchange (96-Well),205,Retrieve Plate From Cytomat,216,205.38888888888889
-NYSCF079,Media Exchange (96-Well),56,Aspirate Old Media,216,67.24537037037037
-NYSCF079,Media Exchange (96-Well),94,Dispense New Media,216,99.2824074074074
-NYSCF079,Media Exchange (96-Well),151,Send Last Plate Back To Cytomat,65,166.73846153846154
-NYSCF036,System6_Thaw24Cryotubes,555,Place Matrix Rack & Decap,11,602.8181818181819
-NYSCF036,System6_Thaw24Cryotubes,409,Add Media to Cryotubes,11,409.6363636363636
-NYSCF036,System6_Thaw24Cryotubes,1229,Decap, Spin, Recap Plate,11,1240.1818181818182
-NYSCF036,System6_Thaw24Cryotubes,181,Get Destination Plate From Cytomat,11,188
-NYSCF036,System6_Thaw24Cryotubes,375,Remove Media From Cryotubes,11,371
-NYSCF036,System6_Thaw24Cryotubes,101,Add Media To Cryotubes,11,200.27272727272728
-NYSCF036,System6_Thaw24Cryotubes,222,Preprocess Dead Total Plate,11,225.9090909090909
-NYSCF036,System6_Thaw24Cryotubes,199,Seed Dead Total Plate,11,204.54545454545453
-NYSCF036,System6_Thaw24Cryotubes,149,Transfer From Cryotubes to Destination Plate,11,150.9090909090909
-NYSCF036,System6_Thaw24Cryotubes,663,Return Destination Plate to Cytomat,11,704.4545454545455
-NYSCF064,Freeze_5TC_Staggered_CnC,157,Initialization,15,197.4
-NYSCF064,Freeze_5TC_Staggered_CnC,676.5,Begin Dissociation of Plate ,32,701.84375
-NYSCF064,Freeze_5TC_Staggered_CnC,596,Harvest Plate to Intermediate,29,669.0344827586207
-NYSCF064,Freeze_5TC_Staggered_CnC,654,Centrifuge Intermediate,13,670.0769230769231
-NYSCF064,Freeze_5TC_Staggered_CnC,563,Remove Media From Intermediate Plate,13,560.6153846153846
-NYSCF064,Freeze_5TC_Staggered_CnC,566,Add Synth-A-Freeze,13,558.0769230769231
-NYSCF064,Freeze_5TC_Staggered_CnC,636,Place Matrix Rack, Transfer to Cryovials,13,747.5384615384615
-NYSCF067.2,Passage_1T15,93,Initilization,4,98
-NYSCF067.2,Passage_1T15,1184,Add Media to Intermediate Plate,4,1208
-NYSCF067.2,Passage_1T15,849,Geltrex Preprocess Daughter Plates,4,1003.25
-NYSCF067.2,Passage_1T15,112,Refill Media Trough,4,175
-NYSCF067.2,Passage_1T15,168.5,Get Motherplate From Cytomat,4,184.5
-NYSCF067.2,Passage_1T15,103.5,Transfer Volume to MYST Plate,4,103.25
-NYSCF067.2,Passage_1T15,721.5,Add Accutase to Dissociate Cells,4,725.25
-NYSCF067.2,Passage_1T15,1405,Incubate Plate,4,1452.5
-NYSCF067.2,Passage_1T15,656.5,Neutralize Accutase & Transfer to Intermediate Plate,4,1431.25
-NYSCF067.2,Passage_1T15,2917,Centrifuge Intermediate Plate,4,3032.75
-NYSCF067.2,Passage_1T15,2258,Passage Cells to Daughter Plate,4,2274.75
-NYSCF083,Passage Normalization,683.5,Dissociate Source Plates,8,709.125
-NYSCF083,Passage Normalization,1670.5,Transfer Cells To Intermediate,8,1847.25
-NYSCF083,Passage Normalization,62,Equilibrate Plates For Centrifugation,8,56.875
-NYSCF083,Passage Normalization,675,Centrifuge Intermediate Plate,7,674
-NYSCF083,Passage Normalization,433,Aspirate Supernatant & Resuspend Pellet,7,575
-NYSCF083,Passage Normalization,120,Aliquot DAPI Plate,7,140.85714285714286
-NYSCF083,Passage Normalization,1485,Read Cell Counts of DAPI Plate,7,1731.2857142857142
-NYSCF083,Passage Normalization,915,Seed Daughter Plates,7,1212.2857142857142
-NYSCF083,Passage Normalization,1,Scan DAPI Plate,1,1
-NYSCF072.2,Passage 1TX,252,Gathering Plates Onto The Deck...,29,351.2758620689655
-NYSCF072.2,Passage 1TX,37,Media Remove,28,47.357142857142854
-NYSCF072.2,Passage 1TX,73,Accutase Rinse,27,75.77777777777777
-NYSCF072.2,Passage 1TX,73,Media Add,27,133.14814814814815
-NYSCF072.2,Passage 1TX,1569,Incubate Plate,27,1652.4074074074074
-NYSCF072.2,Passage 1TX,134,Quadrant Mixing,27,127.77777777777777
-NYSCF072.2,Passage 1TX,50,Neutralize Accutase,27,105
-NYSCF072.2,Passage 1TX,67,Transfer To Intermediate,27,149.77777777777777
-NYSCF072.2,Passage 1TX,33,Dispose Source Plate,27,124.03703703703704
-NYSCF072.2,Passage 1TX,752,Centrifuge Intermediate Plate,27,822.4444444444445
-NYSCF072.2,Passage 1TX,44,Remove Supernatant,27,62.81481481481482
-NYSCF072.2,Passage 1TX,283,Resuspend Pellet & Handle Dead Total Plate,26,386.84615384615387
-NYSCF072.2,Passage 1TX,1556,Passage To Daughter Plate,26,1302.3076923076924
-NYSCF020,Thaw,287.5,Preprocess Destination ,8,299
-NYSCF020,Thaw,87,Stage Tips For Matrix Processing,9,104.55555555555556
-NYSCF020,Thaw,12.5,Bring Matrix Rack To Deck,6,121.66666666666667
-NYSCF020,Thaw,458,Decap And Scan Matrix Rack,10,442.3
-NYSCF020,Thaw,98,Add Media To Matrix Rack,9,118.77777777777777
-NYSCF020,Thaw,904,Matrix Rack Cap and Spin,10,888.9
-NYSCF020,Thaw,156,Matrix Rack Aspirate Supernatant,10,146.3
-NYSCF020,Thaw,143,Matrix Rack Pellet Resuspension,10,296.6
-NYSCF020,Thaw,119,Dead Total Plate Processing,10,138.8
-NYSCF020,Thaw,285,Aliquot To Destination,7,349.7142857142857
-NYSCF020,Thaw,35,Remove Destination Plates,7,50
-NYSCF020,Thaw,214.5,Send Dead Total Plate To Cytomat,2,214.5
-NYSCF020,Thaw,325.5,Recap and Remove Matrix Rack,6,327
-NYSCF020,Thaw,147,Preprocess Destination Plate Batch,2,147
-NYSCF020,Thaw,82,Seed Destination Plate Batch,3,153.66666666666666
-NYSCF020,Thaw,91,Send Destination Plates To Cytomat,3,228.66666666666666
-NYSCF020,Thaw,298,Recap Matrix Rack And Remove,1,298
-NYSCF0NN,Media Exchange (Non-Array 384),108.5,Get Plate From Cytomat,56,390.85714285714283
-NYSCF0NN,Media Exchange (Non-Array 384),1073,Media Exchange,118,955.8983050847457
-NYSCF0NN,Media Exchange (Non-Array 384),6,Return Last Plate To Cytomat,23,65.43478260869566
-NYSCF0NN,Media Exchange (Non-Array 384),36,Place Plates On Deck,87,53.55172413793103
-NYSCF0NN,Media Exchange (Non-Array 384),19,Remove Plates From Deck,62,34.88709677419355
-NYSCF093,Media Exchange (Non-Array 384),28,Get Plate From Cytomat,6,36.5
-NYSCF093,Media Exchange (Non-Array 384),262,Media Exchange,6,265.6666666666667
-NYSCF093,Media Exchange (Non-Array 384),15.5,Send Last Plate to Cytomat,6,15.833333333333334
-NYSCF093,Media Exchange (Non-Array 384),117.5,Place Plate Batch On Deck,16,301.6875
-NYSCF093,Media Exchange (Non-Array 384),271,Media Exchange Plate Batch,6,268.6666666666667
-NYSCF093,Media Exchange (Non-Array 384),14,Remove Plate Batch From Deck,6,14.833333333333334
-NYSCF074,Passage Normalization,1687,Dissociate Source Plates,15,1630.6666666666667
-NYSCF074,Passage Normalization,2216,Transfer Cells To Intermediate,15,2198.133333333333
-NYSCF074,Passage Normalization,690,Centrifuge Intermediate Plate,15,628.8
-NYSCF074,Passage Normalization,1419.5,Aspirate Supernatant & Resuspend Pellet,6,1411.6666666666667
-NYSCF074,Passage Normalization,101,Aliquot Dead Total Plate,14,112.57142857142857
-NYSCF074,Passage Normalization,1179,Read Cell Counts of DAPI Plate,6,1248
-NYSCF074,Passage Normalization,1714,Seed Daughter Plates,6,1555.3333333333333
-NYSCF074,Passage Normalization,1440.5,Resuspend Pellet,8,1467.5
-NYSCF074,Passage Normalization,1231,Check Cell Count,8,1260.125
-NYSCF074,Passage Normalization,1723,Seed Destination Plates,8,1768.75
-NYSCF021,Sort,31.5,Scan Dead Total,4,43.25
-NYSCF021,Sort,81.5,Bring Source Plate From Cytomat,4,85.25
-NYSCF021,Sort,296.5,Media Removal and Accutase Addition,4,333.75
-NYSCF021,Sort,1472,Incubate Plate ,4,1513.75
-NYSCF021,Sort,406.5,Quadrant Mixing,4,406.5
-NYSCF021,Sort,97,Add MACs Buffer and Beads to Deck,4,110.25
-NYSCF021,Sort,934,Transfer to Harvest,4,944.25
-NYSCF021,Sort,614.5,Return Growth Plate to Cytomat,4,612
-NYSCF021,Sort,586,Centrifuge Harvest Plate,8,556.125
-NYSCF021,Sort,1800,Remove MACS and Bead Addition,4,1800
-NYSCF021,Sort,183.5,Bead Incubation And Destination Pre-Processing,4,183.75
-NYSCF021,Sort,672,Harvest Plate MACs Addition,4,708.25
-NYSCF021,Sort,2122.5,Harvest MACs Removal and Addition,4,2128.25
-NYSCF021,Sort,585.5,MultiMACS Separation,4,575.25
-NYSCF021,Sort,523.5,Centrifuge Collection,4,538.25
-NYSCF021,Sort,234.5,Collection MACs Removal,4,235.5
-NYSCF021,Sort,1659,Media to Collection,4,1709.75
-NYSCF021,Sort,36.5,Dead Total Final Count,4,85.5
-NYSCF069.1,Passage_IntraReplicate_CnC,67,Verify Plates On Deck,1,67
-NYSCF069.1,Passage_IntraReplicate_CnC,201.5,Add Media to Intermediate Plate,2,201.5
-NYSCF069.1,Passage_IntraReplicate_CnC,834,Geltrex Preprocess,1,834
-NYSCF069.1,Passage_IntraReplicate_CnC,346,Get Motherplate From Cytomat,1,346
-NYSCF069.1,Passage_IntraReplicate_CnC,47,Remove Media From Source Plate,1,47
-NYSCF069.1,Passage_IntraReplicate_CnC,122,Add Accutase to Source Plate,1,122
-NYSCF069.1,Passage_IntraReplicate_CnC,1394,Incubate Plate,1,1394
-NYSCF069.1,Passage_IntraReplicate_CnC,477,Get Source Plate From Cytomat,1,477
-NYSCF069.1,Passage_IntraReplicate_CnC,210,Neutralize Accutase and Transfer to Intermediate Plate,1,210
-NYSCF069.1,Passage_IntraReplicate_CnC,812,Centrifuge Intermediate Plate,1,812
-NYSCF069.1,Passage_IntraReplicate_CnC,133,Remove Supernatant From Intermediate Plate,1,133
-NYSCF069.1,Passage_IntraReplicate_CnC,281,Aliquot Dead Total Plate,1,281
-NYSCF069.1,Passage_IntraReplicate_CnC,478,Aliquot Daughter Plates,1,478
-NYSCF069.1,Passage_IntraReplicate_CnC,684,Send Daughter Plates To Cytomat,1,684
-NYSCF068.2,Passage_1T5_3Col_CnC,84,Verify Plates On Deck,3,84
-NYSCF068.2,Passage_1T5_3Col_CnC,122,Add Media to Intermediate Plate,3,121.66666666666667
-NYSCF068.2,Passage_1T5_3Col_CnC,691,Geltrex Preprocess Daughter Plates,3,691.6666666666666
-NYSCF068.2,Passage_1T5_3Col_CnC,278.5,Get Source Plate From Cytomat,6,1671.6666666666667
-NYSCF068.2,Passage_1T5_3Col_CnC,74.5,Transfer Volume,2,74.5
-NYSCF068.2,Passage_1T5_3Col_CnC,129,Add Accutase to Source Plate,3,129.33333333333334
-NYSCF068.2,Passage_1T5_3Col_CnC,1370,Incubate Plate,3,1333.3333333333333
-NYSCF068.2,Passage_1T5_3Col_CnC,82,Add Media to Neutralize Accutase,2,82
-NYSCF068.2,Passage_1T5_3Col_CnC,174.5,Transfer to Intermediate Plate,2,174.5
-NYSCF068.2,Passage_1T5_3Col_CnC,664,Centrifuge Intermediate,3,734.6666666666666
-NYSCF068.2,Passage_1T5_3Col_CnC,444,Intermediate Plate Media Removal and Addition,3,432
-NYSCF068.2,Passage_1T5_3Col_CnC,281,Aliquot Dead Total Plate,3,238.33333333333334
-NYSCF068.2,Passage_1T5_3Col_CnC,11,Aliquot Daughter Plate,7,133.85714285714286
-NYSCF068.2,Passage_1T5_3Col_CnC,1104,Send Plates to Cytomat,2,1104
-NYSCF068.2,Passage_1T5_3Col_CnC,73,Transfer Volume to MYST Plate,1,73
-NYSCF068.2,Passage_1T5_3Col_CnC,185,Dissociate Source Plate,1,185
-NYSCF068.2,Passage_1T5_3Col_CnC,165,Mix And Transfer to Intermediate Plate,1,165
-NYSCF068.2,Passage_1T5_3Col_CnC,241,Stage Daughter Plates,1,241
-NYSCF068.2,Passage_1T5_3Col_CnC,224,Send Daughter Plate to Cytomat,5,218.2
-NYSCF063,Pellet_CnC,144,Get Source Plate,4,150
-NYSCF063,Pellet_CnC,113,Remove Old Media,4,138.75
-NYSCF063,Pellet_CnC,143,Accutase Rinse,4,158.75
-NYSCF063,Pellet_CnC,117,Add Accutase,4,126.5
-NYSCF063,Pellet_CnC,57,Begin Incubation of Plate,4,132.25
-NYSCF063,Pellet_CnC,20,Wait Until First Plate Finishes Incubating,1,20
-NYSCF063,Pellet_CnC,244,Get Plate From Cytomat,4,238.25
-NYSCF063,Pellet_CnC,133,Quadrant Mix,4,133.5
-NYSCF063,Pellet_CnC,31,Neutralize Accutase,4,35.5
-NYSCF063,Pellet_CnC,126.5,Transfer to Intermediate,4,129.25
-NYSCF063,Pellet_CnC,300,Create DAPI Plate,1,300
-NYSCF063,Pellet_CnC,822,Centrifuge Intermediate,1,822
-NYSCF063,Pellet_CnC,421,Aspirate Supernatant,1,421
-NYSCF035,EBMediaExchange96W,764.5,Media Exchange Begin,4,860
-NYSCF035,EBMediaExchange96W,10.5,Media Exchange End,4,13.25
-NYSCF035,EBMediaExchange96W,158,Get Plate Batch From Cytomat,1,158
-NYSCF035,EBMediaExchange96W,415,Media Exchange Batch,1,415
-NYSCF035,EBMediaExchange96W,191,Send Plate Batch to Cytomat,1,191
-NYSCF049,Pellet_CnC,198,Get Source Plate,3,206
-NYSCF049,Pellet_CnC,31,Remove Old Media,3,88.66666666666667
-NYSCF049,Pellet_CnC,147.5,Accutase Rinse,2,147.5
-NYSCF049,Pellet_CnC,333.5,Add Accutase,2,333.5
-NYSCF049,Pellet_CnC,421.5,Begin Incubation Of Plate,2,421.5
-NYSCF049,Pellet_CnC,60,Wait Until First Plate Finishes Incubating,1,60
-NYSCF049,Pellet_CnC,61,Get Plate From Cytomat,1,61
-NYSCF049,Pellet_CnC,192,Quadrant Mix,1,192
-NYSCF049,Pellet_CnC,46,Neutralize Accutase,1,46
-NYSCF049,Pellet_CnC,59,Transfer To Intermediate,1,59
-NYSCF049,Pellet_CnC,62,Create DAPI Plate,1,62
-NYSCF049,Pellet_CnC,193,Centrifuge Intermediate,1,193
-NYSCF049,Pellet_CnC,45,Aspirate Supernatant,1,45
-NYSCF076.2,Transfection,1147,Transfection Main,5,1212.6
+*****NEW DATA GENERATED AT Mon Jun 07 2021 16:07:57 GMT+0000 (Coordinated Universal Time)*****
+N020,Thaw,376.5,Process Destination Plate and Place in Stackers,2,376.5
+N020,Thaw,100,Stage Tips For Matrix Processing,5,184.6
+N020,Thaw,291,Place Matrix Rack on Deck,5,347.2
+N020,Thaw,333,Decap and Scan Matrix Rack,5,466.8
+N020,Thaw,119,Add Media To Matrix Rack,5,118.8
+N020,Thaw,1237,Matrix Rack Cap and Spin,4,1242.75
+N020,Thaw,484,Matrix Rack Aspirate Supernatant and Resuspension,5,668.6
+N020,Thaw,83,Dead Total Plate Processing,5,84.2
+N020,Thaw,358,Seed Destination Plate Batch,5,738
+N020,Thaw,161.5,Send Destination Plates To Cytomat,2,161.5
+N020,Thaw,165,Send Dead Total Plate To Cytomat,2,165
+N020,Thaw,263,Recap Matrix Rack,5,248.4
+N020,Thaw,48,Remove Matrix Rack From Deck,5,59.2
+N020,Thaw,444,Process Destination Plate Batch,3,435
+N020,Thaw,269,Matrix Rack Cap,1,269
+N020,Thaw,652,Manually Centrifuge Matrix Rack,1,652
+N020,Thaw,39,Remove Destination Plates From Deck,3,52.666666666666664
+N020,Thaw,84,Manually Remove Dead Total Plate from Deck,1,84
+N020,Thaw,36,Manually Remove Dead Total Plate From Deck,2,36
+NYSCF080,Media Exchange (96-Well),185,Get Plate From Cytomat,282,211.9113475177305
+NYSCF080,Media Exchange (96-Well),172,Media Exchange,297,201.22222222222223
+NYSCF080,Media Exchange (96-Well),150,Return Last Plate to Cytomat,25,169.56
+NYSCF080,Media Exchange (96-Well),151,Place Plates on Deck,15,150.2
+NYSCF080,Media Exchange (96-Well),41,Remove Plates From Deck,15,160.66666666666666
+NYSCF045,Media Exchange (96-Well),169,Get Plate From Cytomat,130,202.7076923076923
+NYSCF045,Media Exchange (96-Well),155.5,Media Exchange,146,192.86301369863014
+NYSCF045,Media Exchange (96-Well),139,Return Last Plate to Cytomat,20,170.55
+NYSCF045,Media Exchange (96-Well),102.5,Bring Plates To Deck,16,146.625
+NYSCF045,Media Exchange (96-Well),15.5,Remove Plates From Deck,16,106.0625
+NYSCF082,Media Exchange (96-Well),198,Get Plate From Cytomat,201,238.99502487562188
+NYSCF082,Media Exchange (96-Well),152,Media Exchange,228,211.1578947368421
+NYSCF082,Media Exchange (96-Well),158.5,Return Last Plate to Cytomat,38,193
+NYSCF082,Media Exchange (96-Well),105,Place Plates On Deck,27,128.96296296296296
+NYSCF082,Media Exchange (96-Well),30,Remove Plates From Deck,27,56.148148148148145
+NYSCF035,EB Media Exchange,278,Get Plate Batch From Cytomat,4,303.25
+NYSCF035,EB Media Exchange,833.5,Media Exchange Batch,4,826.5
+NYSCF035,EB Media Exchange,275,Send Plate Batch to Cytomat,4,313
+NYSCF035,EB Media Exchange,149,Place Plates On Deck,4,167.25
+NYSCF035,EB Media Exchange,817,Media Exchange,4,715.25
+NYSCF035,EB Media Exchange,272.5,Remove Plates From Deck,4,682
+NYSCF027,12/24-Well Media Exchange,64,Place Plate Pair on Deck,29,101.34482758620689
+NYSCF027,12/24-Well Media Exchange,673,Media Exchange,47,685.5531914893617
+NYSCF027,12/24-Well Media Exchange,26,Remove Plate Pair From Deck,29,38.793103448275865
+NYSCF027,12/24-Well Media Exchange,209,Get Plate From Cytomat,18,216.27777777777777
+NYSCF027,12/24-Well Media Exchange,150,Return Last Plate To Cytomat,12,170.41666666666666
+NYSCF051,Freeze_5TC_Staggered_CnC,74,Initialization,3,74
+NYSCF051,Freeze_5TC_Staggered_CnC,137,Get Source Plate From Cytomat,5,219.2
+NYSCF051,Freeze_5TC_Staggered_CnC,206,Accutase Rinse and Addition,5,215.6
+NYSCF051,Freeze_5TC_Staggered_CnC,195,Send Plate To Cytomat For Incubation,5,201.6
+NYSCF051,Freeze_5TC_Staggered_CnC,142,Return Source Plate To Deck,5,145.6
+NYSCF051,Freeze_5TC_Staggered_CnC,207,Dissociate Cells And Neutralize Accutase,15,207.73333333333332
+NYSCF051,Freeze_5TC_Staggered_CnC,150,Transfer To Intermediate Deep Well,5,153
+NYSCF051,Freeze_5TC_Staggered_CnC,867,Send Intermediate Plate To VSpin,3,683.6666666666666
+NYSCF051,Freeze_5TC_Staggered_CnC,146,Remove Media From Intermediate,3,159
+NYSCF051,Freeze_5TC_Staggered_CnC,227,Add Synth-A-Freeze,3,202
+NYSCF051,Freeze_5TC_Staggered_CnC,30,Aliquot Dead Total Plate,3,62
+NYSCF051,Freeze_5TC_Staggered_CnC,29,Send Dead Total Plate To Cytomat,1,29
+NYSCF051,Freeze_5TC_Staggered_CnC,352,Place Destination Matrix Rack,3,260.3333333333333
+NYSCF051,Freeze_5TC_Staggered_CnC,74,Decap Matrix Rack,3,133.66666666666666
+NYSCF051,Freeze_5TC_Staggered_CnC,252,Transfer To Cryotubes,3,241.66666666666666
+NYSCF051,Freeze_5TC_Staggered_CnC,141,Recap Matrix Rack,3,118
+NYSCF051,Freeze_5TC_Staggered_CnC,1,Freeze Matrix Rack,1,1
+NYSCF051,Freeze_5TC_Staggered_CnC,70,Manually Place Source Plate,10,92.5
+NYSCF051,Freeze_5TC_Staggered_CnC,195.5,Accutase Rinse And Addition,10,210.6
+NYSCF051,Freeze_5TC_Staggered_CnC,38,Manually Return Source Plate To Incubator,10,66.9
+NYSCF051,Freeze_5TC_Staggered_CnC,90.5,Manually Place Source Plate On Deck,10,136.2
+NYSCF051,Freeze_5TC_Staggered_CnC,135.5,Transfer Cells To Intermediate Deep Well,10,214
+NYSCF051,Freeze_5TC_Staggered_CnC,232,Manually Remove Dead Total Plate,2,232
+NYSCF014,12/24-Well Media Exchange,139,Get Plate From Cytomat,5,150.4
+NYSCF014,12/24-Well Media Exchange,352,Media Exchange,5,356.8
+NYSCF014,12/24-Well Media Exchange,230,Return Last Plate to Cytomat,3,226.33333333333334
+NYSCF014,12/24-Well Media Exchange,60,Place Plates On Deck,12,100.41666666666667
+NYSCF014,12/24-Well Media Exchange,662,Media Exchange Plate,12,689.75
+NYSCF014,12/24-Well Media Exchange,47.5,Remove Plates From Deck,12,67.75
+NYSCF021,Sort,31,Add MACS Buffer and Beads to Deck,2,31
+NYSCF052.2,Passage_1T15,93,Add Media to Intermediate Plate,2,93
+NYSCF052.2,Passage_1T15,114,Preprocess Daughter Plate Batch,5,993.2
+NYSCF052.2,Passage_1T15,173.5,Refill Media Trough and Place Accutase on Deck,2,173.5
+NYSCF052.2,Passage_1T15,80,Get Motherplate From Cytomat,2,80
+NYSCF052.2,Passage_1T15,126,Transfer Volume to MYST Plate,2,126
+NYSCF052.2,Passage_1T15,1359,Add Accutase to Dissociate Cells,2,1359
+NYSCF052.2,Passage_1T15,171.5,Send Plate To Cytomat,2,171.5
+NYSCF052.2,Passage_1T15,394.5,Incubate Plate,2,394.5
+NYSCF052.2,Passage_1T15,987,Get Source Plate From Cytomat,2,987
+NYSCF052.2,Passage_1T15,230.5,Dissociate Cells and Neutralize Accutase,2,230.5
+NYSCF052.2,Passage_1T15,273,Transfer Cells to Intermediate Plate,2,273
+NYSCF052.2,Passage_1T15,75.5,Discard Motherplate,2,75.5
+NYSCF052.2,Passage_1T15,152.5,Centrifuge Intermediate Plate,2,152.5
+NYSCF052.2,Passage_1T15,383.5,Intermediate Plate Media Removal and Addition,2,383.5
+NYSCF052.2,Passage_1T15,895.5,Aliquot Dead Total Plate,2,895.5
+NYSCF052.2,Passage_1T15,499,Send Dead Total Plate to Cytomat,2,499
+NYSCF052.2,Passage_1T15,878,Aliquot Set Of Daughter Plates,4,904.25
+NYSCF052.2,Passage_1T15,204.5,Send Set Of Daughter Plates To Cytomat,4,201.75
+N38,Passage To Cryovial (Partial Passage),11,Initialize,11,48.27272727272727
+N38,Passage To Cryovial (Partial Passage),50,Place Labware On Deck,11,78.45454545454545
+N38,Passage To Cryovial (Partial Passage),146,Retrieve Source Plate From Cytomat,11,188.1818181818182
+N38,Passage To Cryovial (Partial Passage),186,Remove Old Media and Add Accutase,11,193.1818181818182
+N38,Passage To Cryovial (Partial Passage),189,Send Source Plate For Incubation,11,219.9090909090909
+N38,Passage To Cryovial (Partial Passage),1166,Incubate Source Plate,11,1274.090909090909
+N38,Passage To Cryovial (Partial Passage),151,Return Source Plate to Deck,11,191.63636363636363
+N38,Passage To Cryovial (Partial Passage),349,Dissociate Plate and Transfer,11,393.3636363636364
+N38,Passage To Cryovial (Partial Passage),157,Send Intermediate Plate to VSpin,11,168.45454545454547
+N38,Passage To Cryovial (Partial Passage),155,Place Matrix Rack and Synth-A-Freeze,11,288.72727272727275
+N38,Passage To Cryovial (Partial Passage),378,Finish Spin Cycle,11,747.7272727272727
+N38,Passage To Cryovial (Partial Passage),337,Decap Matrix Rack,11,338.09090909090907
+N38,Passage To Cryovial (Partial Passage),172,Remove Supernatant and Resuspend Pellet,11,172.72727272727272
+N38,Passage To Cryovial (Partial Passage),187,Seed Dead Total Plate and Remove,11,181.0909090909091
+N38,Passage To Cryovial (Partial Passage),86,Dispense Synth-A-Freeze and Transfer,11,124.0909090909091
+N38,Passage To Cryovial (Partial Passage),336,Recap Matrix Rack,11,328.3636363636364
+NYSCF012,Consolidation,77.5,Preload Deep Well Plate With Media,2,77.5
+NYSCF012,Consolidation,144,Get Source Plate From Cytomat,1,144
+NYSCF012,Consolidation,257,Source Plate Media Remove,1,257
+NYSCF012,Consolidation,150,Source Plate Accutase Rinse/Addition,1,150
+NYSCF012,Consolidation,1630,Incubate Plate,1,1630
+NYSCF012,Consolidation,233,Return Source Plate to Deck,1,233
+NYSCF012,Consolidation,393,Transfer Source to Intermediate Plate,1,393
+NYSCF012,Consolidation,1221,Transfer Intermediate to Intermediate Deep Well Plate,1,1221
+NYSCF012,Consolidation,217,Source Plate Remove, Intermediate to Waste,1,217
+NYSCF012,Consolidation,76,Perform Counterbalance Match Transfer,1,76
+NYSCF012,Consolidation,733,Transport Intermediate Deep Well Plate to Centrifuge,1,733
+NYSCF012,Consolidation,138,Get Destination Plate From Cytomat,1,138
+NYSCF012,Consolidation,133,OPTIONAL: Change Media Prompt,1,133
+NYSCF012,Consolidation,304,Intermediate Plate Resuspension,1,304
+NYSCF012,Consolidation,76,Seed Dead Total Plate,1,76
+NYSCF012,Consolidation,145,Transfer From Deep Well to Destination Plate,1,145
+NYSCF012,Consolidation,137,Send Destination Plate to Cytomat,1,137
+NYSCF012,Consolidation,204.5,Place Source Plate On Deck,2,204.5
+NYSCF012,Consolidation,150,Counterbalance Match Transfer,1,150
+NYSCF012,Consolidation,1838,Transfer Intermediate To VSpin,1,1838
+NYSCF012,Consolidation,112,Place Destination Plate On Deck,1,112
+NYSCF012,Consolidation,404,Optional: Media Change,1,404
+NYSCF012,Consolidation,565,Intermediate Plate Resuspension & Seed Dead Total Plate,1,565
+NYSCF012,Consolidation,120,Transfer From Intermediate To Destination Plate,1,120
+NYSCF012,Consolidation,94,Remove Plates From Deck,1,94
+N012,Consolidation,77,Perform Scan of Dead/Total and Int2,3,82.66666666666667
+N012,Consolidation,319,Preload Int2 with Media,3,304.3333333333333
+N012,Consolidation,1,Begin Source Plate Processing,3,1
+N012,Consolidation,81,Tip Stage for First Source Plate Accutase,2,81
+N012,Consolidation,135,Retrieve First Source Plate From Cytomat,2,135
+N012,Consolidation,271.5,Accutase Removal/Rinse/Addition First Source Plate,2,271.5
+N012,Consolidation,104,Send First Source Plate To Cytomat,2,104
+N012,Consolidation,2,Source Plate Process Loop Begin,7,41.285714285714285
+N012,Consolidation,293,Tip Stage For Accutase Addition,4,399.25
+N012,Consolidation,152,Retrieve Source Plate From Cytomat,4,174.75
+N012,Consolidation,270.5,Accutase Removal/Rinse/Addition Source Plate,4,257.25
+N012,Consolidation,100.5,Begin Source Plate Incubation,4,116
+N012,Consolidation,68,Stage Int1 For Source Plate,7,90.85714285714286
+N012,Consolidation,320,Wait For Incubation Timer,7,423.42857142857144
+N012,Consolidation,269,Return Source Plate From Cytomat,6,261.1666666666667
+N012,Consolidation,335,Add Media To Source And Transfer to Int1,7,350.85714285714283
+N012,Consolidation,165,Transfer From Int1 to Int2,7,245.85714285714286
+N012,Consolidation,123.5,Send Source Plate To Cytomat,6,286
+N012,Consolidation,94,Centrifuge Int2,3,428.3333333333333
+N012,Consolidation,160.5,Get Destination Plate From Cytomat,2,160.5
+N012,Consolidation,670,Seed Dead/Total And Destination Plates,2,670
+N012,Consolidation,158,Send Destination Plate To Cytomat,2,158
+N012,Consolidation,249,Remove Dead/Total Plate From Deck,3,185.33333333333334
+N012,Consolidation,128,Tip Stage For First Source Plate Accutase,1,128
+N012,Consolidation,89,Manually Place First Source Plate On Deck,1,89
+N012,Consolidation,225,Accutase Removal/Rinse/Addition First Plate,1,225
+N012,Consolidation,18,Manually Transfer First Source Plate To Cytomat For Incubation,1,18
+N012,Consolidation,221,Manually Return Source Plate To Deck,1,221
+N012,Consolidation,748,Manually Return Source Plate To Cytomat,1,748
+N012,Consolidation,588,Manually Place Destination Plate,1,588
+N012,Consolidation,103,Seed Dead/Total And Destination Plate,1,103
+N012,Consolidation,8,Manually Remove Destination Plate,1,8
+NYSCF081,Media Exchange (96-Well),150,Get Plate From Cytomat,201,180.5870646766169
+NYSCF081,Media Exchange (96-Well),221.5,Media Exchange,206,248.6601941747573
+NYSCF081,Media Exchange (96-Well),114,Return Last Plate To Cytomat,17,147.05882352941177
+NYSCF081,Media Exchange (96-Well),187,Place Plates on Deck,5,689.6
+NYSCF081,Media Exchange (96-Well),103,Remove Plates From Deck,5,102
+NYSCF081,Media Exchange (96-Well),171.5,Verify Plates On Deck,2,171.5
+NYSCF081,Media Exchange (96-Well),1060,Manually Discard Mother Plate,2,1060
+N109,Flexible Media Exchange,323.5,Begin Processing Plate,140,322.22857142857146
+NYSCF031,Passage To Cryovial,22.5,Initialize,12,62.916666666666664
+NYSCF031,Passage To Cryovial,55.5,Place Intermediate and Counterbalance On Deck,10,59.4
+NYSCF031,Passage To Cryovial,151,Get Source Plate From Cytomat,10,169.7
+NYSCF031,Passage To Cryovial,188,Source Plate Media Removal and Addition,10,191.9
+NYSCF031,Passage To Cryovial,149,Send Plate to Incubator,10,256.2
+NYSCF031,Passage To Cryovial,1201,Incubate Plate,10,1186.3
+NYSCF031,Passage To Cryovial,140.5,Return Plate From Incubator,10,164.7
+NYSCF031,Passage To Cryovial,349,Dissociate Cells and Transfer to Intermediate,12,358.6666666666667
+NYSCF031,Passage To Cryovial,134,Centrifuge Intermediate Plate,5,106
+NYSCF031,Passage To Cryovial,228.5,Place Matrix Rack on Deck,12,427.8333333333333
+NYSCF031,Passage To Cryovial,277.5,End Spin Cycle,12,312
+NYSCF031,Passage To Cryovial,316.5,Decap Matrix Rack,12,347.9166666666667
+NYSCF031,Passage To Cryovial,175.5,Remove Supernatant and Resuspend Pellet,12,169.25
+NYSCF031,Passage To Cryovial,62,Seed Dead Total Plate,12,69.75
+NYSCF031,Passage To Cryovial,143.5,Send Dead Total Plate To Cytomat,10,151.5
+NYSCF031,Passage To Cryovial,86,Transfer to Destination Rack,10,82.7
+NYSCF031,Passage To Cryovial,327,Recap Matrix Rack,12,337.1666666666667
+NYSCF031,Passage To Cryovial,153,Begin Centrifuge Intermediate Plate,7,156.28571428571428
+NYSCF031,Passage To Cryovial,67.5,Place Source, Intermediate and Dead Total Plates,2,67.5
+NYSCF031,Passage To Cryovial,170,Source Plate Media Removal and Accutase Addition,2,170
+NYSCF031,Passage To Cryovial,19.5,Manually Incubate Source Plate,2,19.5
+NYSCF031,Passage To Cryovial,1200,Incubate Source Plate,2,1200
+NYSCF031,Passage To Cryovial,74.5,Return Source Plate to Deck,2,74.5
+NYSCF031,Passage To Cryovial,42,Manually Remove Dead Total Plate,2,42
+NYSCF031,Passage To Cryovial,83.5,Add Synth-A-Freeze and Transfer to Destination Rack,2,83.5
+NYSCF039,EB Passage,116,Get Source Plate From Cytomat,1,116
+NYSCF039,EB Passage,74,Remove Media From Source Plate,1,74
+NYSCF039,EB Passage,140,Accutase Rinse & Accutase Addition,1,140
+NYSCF039,EB Passage,807,Send Source Plate to Cytomat,1,807
+NYSCF039,EB Passage,516,Incubate Plate,1,516
+NYSCF039,EB Passage,167,Return Source Plate From Cytomat,1,167
+NYSCF039,EB Passage,40,Mix To Dissociate Cells,1,40
+NYSCF039,EB Passage,34,Add Media to Neutralize Accutase,1,34
+NYSCF039,EB Passage,206,Transfer to Intermediate,1,206
+NYSCF039,EB Passage,696,Centrifuge Intermediate,1,696
+NYSCF039,EB Passage,327,Remove Media From Intermediate,1,327
+NYSCF039,EB Passage,27,Add Media to Intermediate,1,27
+NYSCF039,EB Passage,96,Resuspend Pellet,1,96
+NYSCF039,EB Passage,99,Create DAPI Plate,1,99
+NYSCF039,EB Passage,132,Send DAPI Plate to Cytomat,1,132
+NYSCF039,EB Passage,178,Stamp EB Plate,1,178
+NYSCF039,EB Passage,184,Send Daughter Plate to Cytomat,1,184
+NYSCF067,Passage_1T15,107.5,Initialize,2,107.5
+NYSCF067,Passage_1T15,116,Add Media to Intermediate Plate,2,116
+NYSCF067,Passage_1T15,788,Preprocess Daughter Plate Batch,6,856.1666666666666
+NYSCF067,Passage_1T15,12,Refill Media Trough and Place Accutase on Deck,2,12
+NYSCF067,Passage_1T15,181,Get Motherplate From Cytomat,1,181
+NYSCF067,Passage_1T15,81.5,Transfer Volume to MYST Plate,2,81.5
+NYSCF067,Passage_1T15,183.5,Add Accutase to Dissociate Cells,2,183.5
+NYSCF067,Passage_1T15,196,Send Plate To Cytomat,1,196
+NYSCF067,Passage_1T15,1164.5,Incubate Plate,2,1164.5
+NYSCF067,Passage_1T15,172,Get Source Plate From Cytomat,1,172
+NYSCF067,Passage_1T15,186,Dissociate Cells and Neutralize Accutase,2,186
+NYSCF067,Passage_1T15,147,Transfer Cells to Intermediate Plate,2,147
+NYSCF067,Passage_1T15,18,Discard Motherplate,1,18
+NYSCF067,Passage_1T15,665.5,Centrifuge Intermediate Plate,2,665.5
+NYSCF067,Passage_1T15,493,Intermediate Plate Media Removal and Addition,2,493
+NYSCF067,Passage_1T15,120,Aliquot Dead Total Plate,2,120
+NYSCF067,Passage_1T15,143,Send Dead Total Plate to Cytomat,1,143
+NYSCF067,Passage_1T15,386,Aliquot Set Of Daughter Plates,6,386.3333333333333
+NYSCF067,Passage_1T15,755,Send Set Of Daughter Plates To Cytomat,3,891
+NYSCF067,Passage_1T15,174,Place Motherplate On Deck,1,174
+NYSCF067,Passage_1T15,107,Manually Place Source Plate in Incubator,1,107
+NYSCF067,Passage_1T15,166,Return Source Plate To Deck,1,166
+NYSCF067,Passage_1T15,39,Manually Discard Motherplate,1,39
+NYSCF067,Passage_1T15,190,Manually Remove Dead Total Plate,1,190
+NYSCF067,Passage_1T15,56,Manually Remove Set Of Daughter Plates,3,81.66666666666667
+NYSCF018,Media Exchange (96-Well),181,Retrieve Plate From Cytomat,119,264.7647058823529
+NYSCF018,Media Exchange (96-Well),165,Media Exchange,136,220.2058823529412
+NYSCF018,Media Exchange (96-Well),151.5,Return Last Plate to Cytomat,28,168.46428571428572
+NYSCF018,Media Exchange (96-Well),103,Bring Plates to Deck,17,128.7058823529412
+NYSCF018,Media Exchange (96-Well),56,Remove Plates From Deck,17,239.64705882352942
+NYSCF032,Passage 1TX,293,Gathering Plates Onto The Deck...,6,320.1666666666667
+NYSCF032,Passage 1TX,36,Media Remove,6,36.166666666666664
+NYSCF032,Passage 1TX,67,Accutase Rinse,6,71
+NYSCF032,Passage 1TX,62,Media Add,6,65.66666666666667
+NYSCF032,Passage 1TX,1635.5,Incubate Plate,10,1277.6
+NYSCF032,Passage 1TX,28,Neutralize Accutase ,6,28
+NYSCF032,Passage 1TX,206,Quadrant Mixing,6,205.66666666666666
+NYSCF032,Passage 1TX,59.5,Transfer to Intermediate,6,59.5
+NYSCF032,Passage 1TX,33,Dispose Source Plate,6,33.166666666666664
+NYSCF032,Passage 1TX,702.5,Centrifuge Intermediate Plate,8,560.75
+NYSCF032,Passage 1TX,43,Remove Supernatant,6,45.5
+NYSCF032,Passage 1TX,60,Resuspend Pellets,6,89
+NYSCF032,Passage 1TX,239,Seed Dead Total Plate,6,377.3333333333333
+NYSCF032,Passage 1TX,1307.5,Passage To Daughter Plates,6,1354.1666666666667
+NYSCF032,Passage 1TX,211,Place Intermediate and Dead Total Plate On Deck,1,211
+NYSCF032,Passage 1TX,32,Get Source Plate From Cytomat,2,32
+NYSCF032,Passage 1TX,36.5,Source Plate Media Removal and Accutase Addition,4,43.75
+NYSCF032,Passage 1TX,62,Send Source Plate to Cytomat,1,62
+NYSCF032,Passage 1TX,28.5,Quadrant Mix to Dissociate Cells,4,72.5
+NYSCF032,Passage 1TX,205.5,Neutralize Accutase and Transfer to Intermediate,4,169
+NYSCF032,Passage 1TX,33.5,Remove Supernatant and Resuspend Pellet,4,196.75
+NYSCF032,Passage 1TX,491,Create Dead Total Plate,4,456
+NYSCF032,Passage 1TX,61,Send Dead Total Plate to Cytomat,1,61
+NYSCF032,Passage 1TX,206,Bring Destination Plate To Deck,1,206
+NYSCF032,Passage 1TX,1385,Create Destination Plate,1,1385
+NYSCF032,Passage 1TX,121,Send Destination Plate To Cytomat,1,121
+NYSCF032,Passage 1TX,71,Place Source, Intermediate, Dead Total Plate On Deck,1,71
+NYSCF032,Passage 1TX,67,Manually Return Plate To Cytomat,3,66.66666666666667
+NYSCF032,Passage 1TX,2056,Manually Return Plate to Deck,1,2056
+NYSCF032,Passage 1TX,42,Manually Send Dead Total Plate To Cytomat,3,42.333333333333336
+NYSCF032,Passage 1TX,66,Manually Retrieve Destination Plates,1,66
+NYSCF032,Passage 1TX,147,Create Destination Plates,3,138.66666666666666
+NYSCF032,Passage 1TX,596,Manually Place Destination Plates Into Cytomat,3,911.6666666666666
+NYSCF032,Passage 1TX,72,Place Source, Intermediate and Dead Total Plates On Deck,2,72
+NYSCF032,Passage 1TX,1901,Manually Return Plate To Deck,2,1901
+NYSCF032,Passage 1TX,59.5,Manually Centrifuge Intermediate Plate,2,59.5
+NYSCF032,Passage 1TX,72.5,Manually Retrieve Plate Destination Plates,2,72.5
+N071,Passage To Cryovial (Partial Passage),18,Initialize,3,16.333333333333332
+N071,Passage To Cryovial (Partial Passage),55,Place Intermediate and Dead Total Plate,2,55
+N071,Passage To Cryovial (Partial Passage),185,Get Source Plate From Cytomat,2,185
+N071,Passage To Cryovial (Partial Passage),186,Source Plate Media Removal and Accutase Addition,3,181.66666666666666
+N071,Passage To Cryovial (Partial Passage),155,Send Plate to Incubator,2,155
+N071,Passage To Cryovial (Partial Passage),1256,Incubate Plate,3,1318.6666666666667
+N071,Passage To Cryovial (Partial Passage),138,Return Plate From Incubator,2,138
+N071,Passage To Cryovial (Partial Passage),319,Dissociate Cells and Transfer to Intermediate,3,269.6666666666667
+N071,Passage To Cryovial (Partial Passage),232.5,Centrifuge Intermediate Plate,2,232.5
+N071,Passage To Cryovial (Partial Passage),184,Place Matrix Rack on Deck,3,181
+N071,Passage To Cryovial (Partial Passage),351,End Spin Cycle,3,410.6666666666667
+N071,Passage To Cryovial (Partial Passage),341,Decap Matrix Rack,3,293.3333333333333
+N071,Passage To Cryovial (Partial Passage),169,Remove Supernatant and Resuspend Pellet,3,331.3333333333333
+N071,Passage To Cryovial (Partial Passage),199,Seed Dead Total Plate,3,172
+N071,Passage To Cryovial (Partial Passage),130,Send Dead Total Plate To Cytomat,2,130
+N071,Passage To Cryovial (Partial Passage),388,Add Synth-A-Freeze and Transfer to Destination Rack,3,360.3333333333333
+N071,Passage To Cryovial (Partial Passage),3.5,Recap Matrix Rack,2,3.5
+N071,Passage To Cryovial (Partial Passage),103,Place Source, Intermediate and Dead Total Plates,1,103
+N071,Passage To Cryovial (Partial Passage),20,Manually Send Source Plate To Cytomat,1,20
+N071,Passage To Cryovial (Partial Passage),307,Return Source Plate to Deck,1,307
+N071,Passage To Cryovial (Partial Passage),438,Manually Remove Dead Total Plate,1,438
+N071,Passage To Cryovial (Partial Passage),148,Begin Centrifuge Intermediate Plate,1,148
+NYSCF054.1,Passage_IntraReplicate_CnC,66,Verify Plates On Deck,1,66
+NYSCF054.1,Passage_IntraReplicate_CnC,141,Geltrex Preprocess Daughter Plates,1,141
+NYSCF054.1,Passage_IntraReplicate_CnC,416,Get Motherplate From Cytomat,1,416
+NYSCF054.1,Passage_IntraReplicate_CnC,176,Remove Media From Source Plate,1,176
+NYSCF054.1,Passage_IntraReplicate_CnC,107,Add Accutase to Source Plate,1,107
+NYSCF054.1,Passage_IntraReplicate_CnC,63,Send Source Plate To Cytomat,1,63
+NYSCF054.1,Passage_IntraReplicate_CnC,141,Incubate Plate,1,141
+NYSCF054.1,Passage_IntraReplicate_CnC,1223,Get Source Plate From Cytomat,1,1223
+NYSCF054.1,Passage_IntraReplicate_CnC,312,Neutralize Accutase and Transfer to Intermediate Plate,1,312
+NYSCF054.1,Passage_IntraReplicate_CnC,326,Centrifuge Intermediate Plate,1,326
+NYSCF054.1,Passage_IntraReplicate_CnC,848,Remove Supernatant From Intermediate Plate,1,848
+NYSCF054.1,Passage_IntraReplicate_CnC,131,Add Media to Intermediate Plate,1,131
+NYSCF054.1,Passage_IntraReplicate_CnC,270,Aliquot Dead Total Plate,1,270
+NYSCF054.1,Passage_IntraReplicate_CnC,231,Stage Daughter Plates,1,231
+NYSCF054.1,Passage_IntraReplicate_CnC,123,Aliquot Daughter Plate Batch,1,123
+NYSCF054.1,Passage_IntraReplicate_CnC,352,Send Daughter Plates To Cytomat,1,352
+NYSCF007,Flexible Media Exchange,259,Bring Plate Batch To Deck,3,183.33333333333334
+NYSCF007,Flexible Media Exchange,142,Process Plate Batch,3,180
+NYSCF007,Flexible Media Exchange,256,Remove Plates From Deck,3,217.33333333333334
+NYSCF0NN,Media Exchange (Non-Array 384),27,Place Plates On Deck,11,151.72727272727272
+NYSCF0NN,Media Exchange (Non-Array 384),653,Media Exchange,11,699.9090909090909
+NYSCF0NN,Media Exchange (Non-Array 384),14,Remove Plates From Deck,11,14.454545454545455
+NYSCF072.2,Passage 1TX,80,Place Source, Intermediate and Dead Total Plate On Deck,2,80
+NYSCF072.2,Passage 1TX,55.5,Source Plate Media Removal and Accutase Addition,4,57
+NYSCF072.2,Passage 1TX,73,Manually Return Plate To Cytomat,3,87
+NYSCF072.2,Passage 1TX,73,Incubate Plate,4,532.5
+NYSCF072.2,Passage 1TX,1358,Manually Return Plate to Deck,3,1380.6666666666667
+NYSCF072.2,Passage 1TX,100.5,Neutralize Accutase and Transfer to Intermediate,4,96
+NYSCF072.2,Passage 1TX,62,Manually Centrifuge Intermediate Plate,3,99.33333333333333
+NYSCF072.2,Passage 1TX,142.5,Remove Supernatant and Resuspend Pellet,4,314.25
+NYSCF072.2,Passage 1TX,39,Create Dead Total Plate,4,152.5
+NYSCF072.2,Passage 1TX,870,Manually Send Dead Total Plate To Cytomat,3,712.6666666666666
+NYSCF072.2,Passage 1TX,128,Place Source and Intermediate Plates On Deck,1,128
+NYSCF072.2,Passage 1TX,92,Quadrant Mix to Dissociate Cells,2,92
+NYSCF072.2,Passage 1TX,289,Place Source, Intermediate and Dead Total Plates On Deck,1,289
+NYSCF072.2,Passage 1TX,86.5,Get Source Plate From Cytomat,2,86.5
+NYSCF072.2,Passage 1TX,72,Send Source Plate To Cytomat,1,72
+NYSCF072.2,Passage 1TX,33,Centrifuge Intermediate Plate,1,33
+NYSCF072.2,Passage 1TX,264,Send Dead Total Plate To Cytomat,1,264
+NYSCF072.2,Passage 1TX,1514,Bring Daughter Plate To Deck,1,1514
+NYSCF072.2,Passage 1TX,17,Create Daughter Plate,1,17
+N095,Lysis Buffer Addition,60.5,Scan Labware,2,60.5
+N095,Lysis Buffer Addition,100.5,Add Lysis,2,100.5
+N095,Lysis Buffer Addition,215.5,Seal or Cap Plate,2,215.5
+N095,Lysis Buffer Addition,27.5,Move Plate To Shaker,2,27.5
+N095,Lysis Buffer Addition,17,Confirm Plate Transport,2,17
+N095,Lysis Buffer Addition,304.5,Shake Plate,2,304.5
+N095,Lysis Buffer Addition,26.5,Return Plate,2,26.5
+N094,Cell Painting 384,152.5,Scan Plates,4,137
+N094,Cell Painting 384,412.5,Remove Media,4,384.75
+N094,Cell Painting 384,495,MitoTracker Addition,4,494.5
+N094,Cell Painting 384,54,MitTracker Incubation,4,350.25
+N094,Cell Painting 384,1132,PFA Addition,4,1238.75
+N094,Cell Painting 384,258.5,PFA Incubation,4,246.25
+N094,Cell Painting 384,1110.5,PFA Removal,2,1110.5
+NYSCF036,Thaw 24 Cryotubes,300,Place Matrix Rack,2,300
+NYSCF036,Thaw 24 Cryotubes,536,Decap Matrix Rack,2,536
+NYSCF036,Thaw 24 Cryotubes,332,Add Media to Cryotubes,2,332
+NYSCF036,Thaw 24 Cryotubes,971.5,Cap and Spin Matrix Rack,2,971.5
+NYSCF036,Thaw 24 Cryotubes,163,Manually Place Destination Plate,1,163
+NYSCF036,Thaw 24 Cryotubes,374,Remove Media From Cryotubes,2,374
+NYSCF036,Thaw 24 Cryotubes,99.5,Add Media To Cryotubes,2,99.5
+NYSCF036,Thaw 24 Cryotubes,237,Preprocess Destination Plate,2,237
+NYSCF036,Thaw 24 Cryotubes,197,Transfer Cells to Dead Total Plate,2,197
+NYSCF036,Thaw 24 Cryotubes,148.5,Transfer Cells to Destination Plate,2,148.5
+NYSCF036,Thaw 24 Cryotubes,144,Manually Remove Destion Plate,1,144
+NYSCF036,Thaw 24 Cryotubes,15,Manually Remove Dead Total Plate,1,15
+NYSCF036,Thaw 24 Cryotubes,356,Recap Matrix Rack,1,356
+NYSCF036,Thaw 24 Cryotubes,169,Get Destination Plate From Cytomat,1,169
+NYSCF036,Thaw 24 Cryotubes,136,Send Destination Plate To Cytomat,1,136
+NYSCF036,Thaw 24 Cryotubes,158,Send Dead Total Plate To Cytomat,1,158
+NYSCF036,Thaw 24 Cryotubes,420,Cap Matrix Rack,1,420
+NYSCF068.2,Passage 1T5,84,Verify Plates On Deck,1,84
+NYSCF068.2,Passage 1T5,122,Add Media to Intermediate Plate,1,122
+NYSCF068.2,Passage 1T5,1046.5,Get Source Plate From Cytomat,2,1046.5
+NYSCF068.2,Passage 1T5,246,Transfer Volume to MYST Plate,1,246
+NYSCF068.2,Passage 1T5,119,Add Accutase to Source Plate,1,119
+NYSCF068.2,Passage 1T5,129,Incubate Plate,1,129
+NYSCF068.2,Passage 1T5,182,Mix And Transfer To Intermediate Plate,1,182
+NYSCF068.2,Passage 1T5,185,Manually Centrifuge Plate,1,185
+NYSCF068.2,Passage 1T5,165,Intermediate Plate Media Removal and Addition,1,165
+NYSCF068.2,Passage 1T5,1091,Aliquot Dead Total Plate,1,1091
+NYSCF068.2,Passage 1T5,415,Stage Daughter Plates,1,415
+NYSCF068.2,Passage 1T5,11,Aliquot Daughter Plate,5,107.8
+NYSCF068.2,Passage 1T5,135,Send Plates to Cytomat,5,107.6
+NYSCF050,FreezeCompress_CnC,75,Initialization,1,75
+NYSCF050,FreezeCompress_CnC,614,Place Motherplates on Deck,1,614
+NYSCF050,FreezeCompress_CnC,84,Remove Old Media and Add Accutase,4,98.5
+NYSCF050,FreezeCompress_CnC,121.5,Return Motherplate to Incubator,4,116.25
+NYSCF050,FreezeCompress_CnC,298,Wait For Plates To Finish Incubation,1,298
+NYSCF050,FreezeCompress_CnC,92,Return Motherplate to Deck,4,101
+NYSCF050,FreezeCompress_CnC,129.5,Quadrant Mix Wells,4,123.5
+NYSCF050,FreezeCompress_CnC,157.5,Neutralize Accutase and Transfer to Intermediate,4,171.25
+NYSCF050,FreezeCompress_CnC,83,Manually Discard Motherplate,4,80.75
+NYSCF050,FreezeCompress_CnC,30,Manually Centrifuge Intermediate Plate,1,30
+NYSCF050,FreezeCompress_CnC,137,Remove Media From Intermediate Plate,1,137
+NYSCF050,FreezeCompress_CnC,17,Add Synth-A-Freeze,1,17
+NYSCF050,FreezeCompress_CnC,244,Aliquot Dead Total Plate,1,244
+NYSCF050,FreezeCompress_CnC,136,Manually Remove Dead Total Plate,1,136
+NYSCF050,FreezeCompress_CnC,30,Place Decapped Matrix Rack,1,30
+NYSCF050,FreezeCompress_CnC,139,Add Synth-A-Freeze to Cryotubes,1,139
+NYSCF050,FreezeCompress_CnC,8,Transfer from Intermediate to Cryotubes,1,8
+NYSCF050,FreezeCompress_CnC,616,Manually Remove and Cap Cryotubes,1,616
